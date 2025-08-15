@@ -1,7 +1,53 @@
+.footer{
+    height: 340px;
+    background: #FCF7F8;
+}
 
 
+.footerInfo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
 
+.footerInfo iframe{
+    width: 325px;
+    height: 244px;
+    box-shadow: 8px 8px 16px 0px #00000040;
+    border: none;
+}
 
+.footerContato {
+    width: 302px;
+    height: 265px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+}
+
+.footerContato div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footerContato h1 {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: 4%;
+    color: #4E8098;
+}
+
+.footerContato p {
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 5%;
+    color: #274553;
+}
 
 
 .copyright {
