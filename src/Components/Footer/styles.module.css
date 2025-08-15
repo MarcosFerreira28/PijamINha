@@ -1,0 +1,20 @@
+
+
+
+
+
+
+.copyright {
+    height: 37px;
+    background: #3E677A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copyright p {
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 16px;
+    color: #97C3D8;
+}
