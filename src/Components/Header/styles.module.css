@@ -1,9 +1,47 @@
 .header {
-    width: 1440px;
     height: 178px;
     background: #74010B;
     box-shadow: 0px 4px 4px 0px #00000040;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.loboimg {
+    width: 144px;
+    height: 142px;
+}
+
+.nav{
+    width: 596px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    gap: 37px;
+}
+
+.nav p {
+    font-family: Nunito Sans;
+    font-weight: 600;
+    font-size: 25px;
+    color: #FCF7F8;
+}
+
+.icons {
+    width: 160px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icons div {
+    width: 68px;
+    height: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
