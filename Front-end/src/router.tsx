@@ -20,6 +20,7 @@ const router = createBrowserRouter([
                             favorite={true}
                             on_sale={true}
                             sale_percent={10}
+                            
                         />,
             }
         ]
