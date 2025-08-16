@@ -17,7 +17,7 @@ const router = createBrowserRouter([
                             name="Pijama feminino longo - estampa poá daksdajs ndna jsndjs najn dsjan jdn ajn"
                             price={79.99}
                             image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg"
-                            favorite={false}
+                            favorite={true}
                             on_sale={true}
                             sale_percent={10}
                         />,
