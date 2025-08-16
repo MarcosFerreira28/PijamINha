@@ -5,7 +5,7 @@ import favoritadoimg from "../../Assets/Favoritado.png";
 import type { CardPijama } from "../../Types/CardPijama";
 import { useState } from "react";
 
-
+// AJUSTAR PARA COLOCAR O WIDTH E HEIGHT DO PROPS
 export default function Card(props: CardPijama) {
     const [favorited, setFavorited] = useState(props.favorite);
 
