@@ -8,8 +8,12 @@ export default function Card(props: CardPijama) {
     return (
         <div className={styles.card}>
             <div className={styles.images}>
-                <img src={props.favorite ? favoritado : coracao} alt="coracao" className={styles.coracao}/>
-                <img src={props.on_sale ? desconto: ""} className={styles.desconto}/>
+                {props.favorite ? (
+                    <img src={favoritado} alt="coracao" className={styles.coracao}/>
+                ) : (
+                    <img src={coracao} alt="coracao" className={styles.coracao}/>
+                )}
+                {props.on_sale && (<img src={desconto} className={styles.desconto}/>)}
                 <img src={props.image} alt="img fundo" className={styles.fundo}/> 
             </div>
 
