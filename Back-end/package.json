@@ -1,0 +1,33 @@
+{
+  "dependencies": {
+    "@fastify/cors": "11.1.0",
+    "@fastify/jwt": "10.0.0",
+    "@prisma/client": "6.14.0",
+    "@types/bcryptjs": "2.4.6",
+    "@types/node": "24.3.0",
+    "bcrypt": "6.0.0",
+    "dotenv": "17.2.1",
+    "fastify": "5.5.0",
+    "jsonwebtoken": "9.0.2",
+    "tsup": "8.5.0",
+    "tsx": "4.20.4",
+    "typescript": "5.9.2",
+    "zod": "4.0.17"
+  },
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "node build/server.js",
+    "build": "tsup src --out-dir build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jsonwebtoken": "9.0.10",
+    "prisma": "6.14.0"
+  }
+}

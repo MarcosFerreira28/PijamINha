@@ -1,0 +1,144 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/*Todos os enum do projeto*/
+
+enum SeasonType {
+  WINTER
+  SUMMER
+  SPRING
+  AUTUMN
+}
+
+enum BodyType {
+  ADULT
+  CHILD
+}
+
+enum GenderType {
+  MALE
+  FEMALE
+}
+
+enum SizeType {
+  PP
+  P
+  M
+  G
+  GG
+}
+
+enum PaymentType {
+  MONEY
+  CREDIT_CARD
+  DEBIT_CARD
+  PIX
+}
+
+/*Todos os modelos do projeto*/
+
+model Feedback {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  rating      Float
+
+  @@map("feedbacks")
+}
+
+model Pajama {
+  id          Int        @id @default(autoincrement())
+  name        String
+  description String
+  image       String
+  price       Float
+  season      SeasonType
+  type        BodyType
+  gender      GenderType
+  favorite    Boolean
+  onSale      Boolean
+  salePercent Float?
+
+  pajamaSize PajamaSize[] @relation()
+  salePajama SalePajama[] @relation()
+
+  @@map("pajamas")
+}
+
+model PajamaSize {
+  id            Int      @id @default(autoincrement())
+  stockQuantity Int
+  size          SizeType
+
+  pajamaId Int
+  pajama   Pajama @relation(fields: [pajamaId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map("pajamasSize")
+}
+
+model Sale {
+  id            Int         @id @default(autoincrement())
+  buyerName     String
+  cpf           String
+  price         Float
+  paymentMethod PaymentType
+  installments  Int         @default(1)
+  cardNumber    String?
+
+  salePajama SalePajama[] @relation()
+  address    Address?     @relation()
+
+  @@map("sales")
+}
+
+model SalePajama {
+  id       Int   @id @default(autoincrement())
+  quantity Int
+  price    Float
+
+  pajamaId Int
+  pajama   Pajama @relation(fields: [pajamaId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  saleId Int  @unique
+  sale   Sale @relation(fields: [saleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([pajamaId, saleId])
+  @@map("salePajamas")
+}
+
+model Address {
+  id           Int    @id @default(autoincrement())
+  zipCode      String
+  state        String
+  city         String
+  neighborhood String
+  adress       String
+  number       String
+
+  saleId Int  @unique
+  sale   Sale @relation(fields: [saleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map("address")
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  name     String
+  username String @unique
+  email    String @unique
+  password String
+
+  @@map("users")
+}
