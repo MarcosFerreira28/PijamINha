@@ -1,0 +1,23 @@
+:root {
+    --vermelho-0: #ED8E96;
+    --vermelho-100: #E06A73;
+    --vermelho-200: #B82935;
+    --vermelho-300: #A31621;
+    --vermelho-400: #74010B;
+    --vermelho-500: #3E0005;
+
+    --azul-0: #97C3D8;
+    --azul-100: #72A8C1;
+    --azul-200: #4E8098;
+    --azul-300: #3E677A;
+    --azul-400: #274553;
+
+    --cinza-0: #F5F8FF;
+    --cinza-100: #CED3DC;
+    --cinza-200: #A4A8B0;
+    --cinza-300: #87888B;
+    --cinza-400: #5F6165;
+
+    --preto: #171717;
+    --branco: #FCF7F8;
+}
