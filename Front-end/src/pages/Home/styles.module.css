@@ -33,3 +33,78 @@
 
     color: var(--azul-400);
 }
+
+.swiper {
+    height: 62vh;
+}
+
+.swiperSlide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vantagens {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    margin: 14.5vh 0 14.5vh 0;
+}
+
+.vantagens div {
+    width: 23vw;
+    height: 45vh;
+    gap: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vantagens img{
+    width: 11vw;
+    height: 25vh;
+}
+
+.vantagens p {
+    font-family: Nunito Sans;
+    font-weight: 600;
+    font-style: Italic;
+    font-size: 32px;
+    text-align: center;
+    color: black;
+}
+
+.cardContainer {
+    width: 95vw;
+    height: 140vh;
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+    margin-bottom: 17vh;
+}
+
+.cardContainer h1 {
+    font-family: Numans;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 48px;
+    color: var(--vermelho-400);
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.feedbacks {
+    height: 93vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    /* gap: 34px; */
+}
