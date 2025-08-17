@@ -1,4 +1,5 @@
 export type CardPijama = {
+    //talvez inserir o id
     name: string;
     price: number;
     image: string;
