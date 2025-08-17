@@ -102,9 +102,33 @@
 
 .feedbacks {
     height: 93vh;
+    margin-bottom: 17vh;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     /* justify-content: center; */
     /* gap: 34px; */
+}
+
+.feedbackButton {
+    width: 52vw;
+    height: 15.5vh;
+    margin-bottom: 6vh;
+
+    background-color: var(--azul-200);
+    color: white;
+    border: none;
+
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 36px;
+    text-align: center;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.feedbackButton:hover {
+    background-color: var(--azul-400);
 }
