@@ -76,7 +76,7 @@ export default function Home() {
                     {/* componente feedbacks em carrosel e somente os com 4 ou mais estrelas */}
                 </div>
 
-                <button>Também quero dar um feedback!</button>
+                <button className={styles.feedbackButton}>Também quero dar um feedback!</button>
                 {/* adicionar link to para pagina de feedback */}
             </span>
 
