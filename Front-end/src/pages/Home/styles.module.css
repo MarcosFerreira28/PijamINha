@@ -12,6 +12,24 @@
 
     background: #72A8C1;
     box-shadow: 0px 4px 16px 0px #00000040;
-    background-image: url("src/assets/fundoBranco.png");
 
+    background-image: url("src/assets/fundoBranco.png");
+    background-size: 105%;
+    background-position: center;
+}
+
+.apresentacao img {
+    width: 25.3vw;
+    height: 57.3vh;
+}
+
+.apresentacao p {
+    width: 55.85vw;
+    font-family: Nunito Sans;
+    font-weight: 400;
+    font-style: Italic;
+    font-size: 39px;
+    text-align: center;
+
+    color: var(--azul-400);
 }
