@@ -4,6 +4,8 @@ import desconto from "../../Assets/Desconto.png";
 import favoritadoimg from "../../Assets/Favoritado.png";
 import type { CardPijama } from "../../Types/CardPijama";
 import { useState } from "react";
+import Favoritar from "../../Functions/Favoritar";
+import Desfavoritar from "../../Functions/Desfavoritar";
 
 // AJUSTAR PARA COLOCAR O WIDTH E HEIGHT DO PROPS
 export default function Card(props: CardPijama) {
@@ -12,9 +14,9 @@ export default function Card(props: CardPijama) {
     function handleFavorite() {
         setFavorited(!favorited);
         if (favorited) {
-            // colocar como favorito na base
+            Favoritar();//passar a informação necessária aqui
         } else {
-            // retirar seu favorito na base
+            Desfavoritar();//passar a informação necessária aqui
         }
     }
 
