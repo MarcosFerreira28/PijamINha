@@ -86,7 +86,7 @@
     margin-bottom: 17vh;
 }
 
-.cardContainer h1 {
+.cardContainer .titulo {
     font-family: Numans;
     font-weight: 400;
     font-style: Regular;

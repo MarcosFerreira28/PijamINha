@@ -14,6 +14,7 @@ import PromocaoNatal from '../../Assets/PromocaoNatal.png';
 import PromocaoValentines from '../../Assets/PromocaoValentines.png';
 import PromocaoGrupo from '../../Assets/PromocaoGrupo.png';
 import Card from '../../Components/Card/Card';
+import Feedback from '../../Components/Feedback/Feedback';
 
 
 
@@ -62,7 +63,7 @@ export default function Home() {
                 </div>
 
                 <div className={styles.cardContainer}>
-                    <h1>Nossas últimas promoções!</h1>
+                    <h1 className={styles.titulo}>Nossas últimas promoções!</h1>
                     <div className={styles.cards}>
                         <Card name="Pijama feminino longo - estampa poá daksdajs ndna jsndjs najn dsjan jdn ajn" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={false} />
                         <Card name="Pijama feminino longo - estampa poá daksdajs ndna jsndjs najn dsjan jdn ajn" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={false} />
@@ -73,7 +74,11 @@ export default function Home() {
 
                 <div className={styles.feedbacks}>
                     <h1>Feedbacks</h1>
+                    <div style={{ display: 'flex', gap: '16px' }}>
+                        <Feedback name='Fulano da Silva' rating={4.6} description='Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaa aaaaaaa aaaaaa  aaaaa aaaaaaaaaaaaaaaa aaaa aaaaaaaaaaaa aaaaaaaaaa aaaaaaa aaaaaaaaaaaaaa aaaa qdjhsd wdjqhdfqhhwqn fnnfqwhf hwb dwqh dw dhqfwqdhw  qwhd wh dwhqwhwq dsdgsg gdgsdgs gsfdgg sgdsdgdsgds ' />
+                        <Feedback name='Fulano da Silva' rating={4.6} description='Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' />
                     {/* componente feedbacks em carrosel e somente os com 4 ou mais estrelas */}
+                    </div>
                 </div>
 
                 <button className={styles.feedbackButton}>Também quero dar um feedback!</button>
