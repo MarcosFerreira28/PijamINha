@@ -13,6 +13,7 @@ import delivery from '../../Assets/Delivery.png';
 import PromocaoNatal from '../../Assets/PromocaoNatal.png';
 import PromocaoValentines from '../../Assets/PromocaoValentines.png';
 import PromocaoGrupo from '../../Assets/PromocaoGrupo.png';
+import Card from '../../Components/Card/Card';
 
 
 
@@ -25,52 +26,60 @@ export default function Home() {
                 <p>Se os lobos soubessem desse conforto, nem sopravam casas, iam dormir!</p>
             </div>
 
-            <Swiper
+            <Swiper className={styles.swiper}
             modules={[Navigation, Pagination]}
             navigation
             pagination={{ clickable: true }}
             spaceBetween={30}
             slidesPerView={1}
+            loop
             >
-                <SwiperSlide>
-                    <img src={PromocaoNatal} alt="foto pijama" />
+                <SwiperSlide className={styles.swiperSlide}>
+                    <img src={PromocaoNatal} />
                 </SwiperSlide>
-                <SwiperSlide>
-                    <img src={PromocaoValentines} alt="foto de pessoas" />
+                <SwiperSlide className={styles.swiperSlide}>
+                    <img src={PromocaoValentines} />
                 </SwiperSlide>
-                <SwiperSlide>
-                    <img src={PromocaoGrupo} alt="foto de caminhão" />
+                <SwiperSlide className={styles.swiperSlide}>
+                    <img src={PromocaoGrupo}/>
                 </SwiperSlide>
             </Swiper>
 
-            <div className={styles.vantagens}>
-                <div>
-                    <img src={pijamaMulher} alt="foto pijama" />
-                    <p>Pijamas confortáveis e com tecnologia</p>
+            <span style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                <div className={styles.vantagens}>
+                    <div>
+                        <img src={pijamaMulher} alt="foto pijama" />
+                        <p>Pijamas confortáveis e com tecnologia</p>
+                    </div>
+                    <div>
+                        <img src={people} alt="foto de pessoas" />
+                        <p>Modelos para todas as idades e tamanhos</p>
+                    </div>
+                    <div>
+                        <img src={delivery} alt="foto de caminhao" />
+                        <p>Frete grátis em todo o Brasil e exterior</p>
+                    </div>
                 </div>
-                <div>
-                    <img src={people} alt="foto de pessoas" />
-                    <p>Modelos para todas as idades e tamanhos</p>
+
+                <div className={styles.cardContainer}>
+                    <h1>Nossas últimas promoções!</h1>
+                    <div className={styles.cards}>
+                        <Card name="Pijama feminino longo - estampa poá daksdajs ndna jsndjs najn dsjan jdn ajn" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={false} />
+                        <Card name="Pijama feminino longo - estampa poá daksdajs ndna jsndjs najn dsjan jdn ajn" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={false} />
+                        <Card name="Pijama feminino longo - estampa poá daksdajs ndna jsndjs najn dsjan jdn ajn" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={false} />
+                    </div>
+                    {/* 3 cards aleatorios que ao clicar vai pra sua pagina individual precisa do get na base */}
                 </div>
-                <div>
-                    <img src={delivery} alt="foto de caminhao" />
-                    <p>Frete grátis em todo o Brasil e exterior</p>
+
+                <div className={styles.feedbacks}>
+                    <h1>Feedbacks</h1>
+                    {/* componente feedbacks em carrosel e somente os com 4 ou mais estrelas */}
                 </div>
-            </div>
 
-            <div className={styles.cards}>
-                <h1>Nossas últimas promoções!</h1>
-                {/* 3 cards aleatorios que ao clicar vai pra sua pagina individual */}
-            </div>
+                <button>Também quero dar um feedback!</button>
+                {/* adicionar link to para pagina de feedback */}
+            </span>
 
-            <div className={styles.feedbacks}>
-                <h1>Feedbacks</h1>
-                {/* componente feedbacks em carrosel e somente os com 4 ou mais estrelas */}
-            </div>
-
-            <button>Também quero dar um feedback!</button>
-            {/* adicionar link to para pagina de feedback */}
-        
         </div>
     )
 }
