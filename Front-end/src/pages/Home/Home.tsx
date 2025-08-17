@@ -1,8 +1,19 @@
 import styles from './styles.module.css';
+
+import '../../../node_modules/swiper/swiper.css'
+import '../../../node_modules/swiper/modules/pagination.min.css'
+import '../../../node_modules/swiper/modules/navigation.min.css'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+
 import loboHome from '../../Assets/LoboHome.png';
 import pijamaMulher from '../../Assets/PijamaMulher.png';
 import people from '../../Assets/People.png';
 import delivery from '../../Assets/Delivery.png';
+import PromocaoNatal from '../../Assets/PromocaoNatal.png';
+import PromocaoValentines from '../../Assets/PromocaoValentines.png';
+import PromocaoGrupo from '../../Assets/PromocaoGrupo.png';
+
 
 
 export default function Home() {
@@ -14,7 +25,23 @@ export default function Home() {
                 <p>Se os lobos soubessem desse conforto, nem sopravam casas, iam dormir!</p>
             </div>
 
-            <img src="" alt="" /> {/* aqui tem que ter o carrosel, componente Banner */}
+            <Swiper
+            modules={[Navigation, Pagination]}
+            navigation
+            pagination={{ clickable: true }}
+            spaceBetween={30}
+            slidesPerView={1}
+            >
+                <SwiperSlide>
+                    <img src={PromocaoNatal} alt="foto pijama" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={PromocaoValentines} alt="foto de pessoas" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={PromocaoGrupo} alt="foto de caminhão" />
+                </SwiperSlide>
+            </Swiper>
 
             <div className={styles.vantagens}>
                 <div>
