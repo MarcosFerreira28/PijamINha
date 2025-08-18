@@ -1,7 +1,69 @@
 
 .mainCadastro{
+    max-width: 100%;
+    height: auto;
     background-image: url("../../assets/FundoVermelho.png");
+    background-repeat: repeat;
     background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
+}
+
+.cardCadastro{
+    width: 521px;
+    height: 624px;
+    background-color: rgba(116, 1, 11, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 95px 0 71px 0;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px 0 hsla(0, 0%, 0%, 0.5);
+}
+.cardCadastro h1{
+    font-family: 'Numans';
+    color: white;
+    font-weight: 400;
+    font-size: 48px;
+    padding-top: 41px;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-radius: 2px;
+}
+.inputs input{
+    width: 335.65px;
+    height: 44px;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Roboto';
+    color: hsla(0, 0%, 0%, 0.5);
+}
+.inputs input::placeholder{
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Roboto';
+    color: hsla(0, 0%, 0%, 0.5);
+}
+.btnRegistrar{
+    width: 157px;
+    height: 44px;
+    border-radius: 10px;
+    background-color: hsla(355, 76%, 36%, 1);
+    box-shadow: 0 5px 6px 0 hsla(0, 0%, 0%, 0.25);
+    color: white;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 24px; 
+    border: none;  
+    cursor: pointer; 
+    margin-bottom: 72px;
+
+    &:hover{
+        background-color: rgba(162, 22, 34, 0.705);
+    }
 }
