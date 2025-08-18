@@ -18,19 +18,19 @@ import Feedback from '../../Components/Feedback/Feedback';
 import setaesquerda from '../../Assets/setaesquerda.png';
 import setadireita from '../../Assets/setadireita.png';
 
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import type { FeedbackType } from '../../Types/Feedback.ts';
 
 
 
 export default function Home() {
     const feedbacks: FeedbackType[] = [
-        { name: 'Fulano da Silva', rating: 4.6, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaa aaaaaaa aaaaaa  aaaaa aaaaaaaaaaaaaaaa aaaa aaaaaaaaaaaa aaaaaaaaaa aaaaaaa aaaaaaaaaaaaaa aaaa qdjhsd wdjqhdfqhhwqn fnnfqwhf hwb dwqh dw dhqfwqdhw  qwhd wh dwhqwhwq dsdgsg gdgsdgs gsfdgg sgdsdgdsgds ' },
-        { name: 'Fulano da Silva', rating: 4.6, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
-        { name: 'Fulano da Silva', rating: 4.6, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
-        { name: 'Fulano da Silva', rating: 4.6, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
-        { name: 'Fulano da Silva', rating: 4.6, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
-        { name: 'Fulano da Silva', rating: 4.6, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
+        { name: 'Fulano da Silva', rating: 4, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaa aaaaaaa aaaaaa  aaaaa aaaaaaaaaaaaaaaa aaaa aaaaaaaaaaaa aaaaaaaaaa aaaaaaa aaaaaaaaaaaaaa aaaa qdjhsd wdjqhdfqhhwqn fnnfqwhf hwb dwqh dw dhqfwqdhw  qwhd wh dwhqwhwq dsdgsg gdgsdgs gsfdgg sgdsdgdsgds ' },
+        { name: 'Fjoger', rating: 4.6, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
+        { name: 'cacetinho', rating: 4.2, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
+        { name: 'marcola', rating: 5, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
+        { name: 'sof da Silva', rating: 4.8, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
+        { name: 'que isso da Silva', rating: 4.1, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
     ];
 
     function agruparFeedbacks(feedbacks: FeedbackType[]) {
@@ -42,9 +42,25 @@ export default function Home() {
     }
     const feedbacksAgrupados = agruparFeedbacks(feedbacks);
 
-    //refs para navegação do carrosel
+    // refs para navegação do carrossel
     const prevRef = useRef(null);
     const nextRef = useRef(null);
+    const [swiperInstance, setSwiperInstance] = useState<any>(null);
+
+    // Atualiza as refs após renderizar para garantir que ambas as setas funcionem
+    //colocando as funções padrão do init do swiper em um useeffect
+    useEffect(() => {
+        if (swiperInstance && prevRef.current && nextRef.current) {
+            // @ts-ignore
+            swiperInstance.params.navigation.prevEl = prevRef.current;
+            // @ts-ignore
+            swiperInstance.params.navigation.nextEl = nextRef.current;
+            swiperInstance.navigation.destroy();
+            swiperInstance.navigation.init();
+            swiperInstance.navigation.update();
+        }
+    }, [swiperInstance, prevRef, nextRef]);
+
 
     return (
         <div className={styles.home}>
@@ -106,19 +122,13 @@ export default function Home() {
                             modules={[Navigation]}
                             slidesPerView={1}
                             navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
-                            onInit={(swiper) => {
-                                // @ts-ignore
-                                swiper.params.navigation.prevEl = prevRef.current;
-                                // @ts-ignore
-                                swiper.params.navigation.nextEl = nextRef.current;
-                                swiper.navigation.init();
-                                swiper.navigation.update();
-                            }}
+                            onSwiper={setSwiperInstance}
+                            loop
                             className={styles.feedbacksSwiper}
                         >
                             {feedbacksAgrupados.map((grupo, idx) => (
                                 <SwiperSlide key={idx}>
-                                    <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+                                    <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', padding: '0 20px 20px 20px' }}>
                                         {grupo.map((feedbackCard, i) => (
                                             <Feedback key={i} {...feedbackCard} />
                                         ))}
