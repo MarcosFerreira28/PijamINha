@@ -13,16 +13,16 @@ export default function Cadastro(){
                     placeholder="Nome"
                     />
                     <input type="text" 
-                    placeholder="Nome"
+                    placeholder="Nome de Usuário"
                     />
                     <input type="email" 
-                    placeholder="Nome"
+                    placeholder="E-mail"
                     />
                     <input type="password" 
-                    placeholder="Nome"
+                    placeholder="Senha"
                     />
                     <input type="password" 
-                    placeholder="Nome"
+                    placeholder="Confirmar senha"
                     />
                 </div>
                 
