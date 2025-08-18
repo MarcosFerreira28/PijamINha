@@ -15,6 +15,10 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />
+            },
+            {
+                path: "/feedback",
+                // element: pagina para fazer um feedback
             }
         ]
     }

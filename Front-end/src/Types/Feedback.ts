@@ -1,5 +1,4 @@
-export type Feedback = {
-    id: string;
+export type FeedbackType = {
     name: string;
     description: string;
     rating: number;

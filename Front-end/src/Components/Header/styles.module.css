@@ -26,7 +26,7 @@
 .nav p {
     font-family: Nunito Sans;
     font-weight: 600;
-    font-size: 25px;
+    font-size: 1.8vw;
     color: #FCF7F8;
 }
 
@@ -38,10 +38,20 @@
     justify-content: space-between;
 }
 
+.icons img {
+    width: 4.1vw;
+    height: 9.4vh;
+}
+
 .icons div {
     width: 5vw;
     height: 5.5vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.icons div img {
+    width: 2vw;
+    height: 4.6vh;
 }
