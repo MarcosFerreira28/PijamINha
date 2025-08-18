@@ -4,7 +4,7 @@ import estrelaPintada from "../../assets/estrelaPintada.png";
 import estrelaMetade from "../../assets/estrelaMetade.png";
 import styles from './styles.module.css';
 
-export default function Feedback({name, rating, description} : FeedbackType){
+export default function FeedbackCard({name, rating, description} : FeedbackType){
     return (
         <div className={styles.feedbackContainer}>
             <h1>{name}</h1>

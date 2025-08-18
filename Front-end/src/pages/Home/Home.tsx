@@ -14,12 +14,13 @@ import PromocaoNatal from '../../Assets/PromocaoNatal.png';
 import PromocaoValentines from '../../Assets/PromocaoValentines.png';
 import PromocaoGrupo from '../../Assets/PromocaoGrupo.png';
 import Card from '../../Components/Card/Card';
-import Feedback from '../../Components/Feedback/Feedback';
+import Feedback from '../../Components/FeedbackCard/FeedbackCard.tsx';
 import setaesquerda from '../../Assets/setaesquerda.png';
 import setadireita from '../../Assets/setadireita.png';
 
 import { useRef, useEffect, useState } from 'react';
 import type { FeedbackType } from '../../Types/Feedback.ts';
+import { Link } from 'react-router-dom';
 
 
 
@@ -140,8 +141,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                <button className={styles.feedbackButton}>Também quero dar um feedback!</button>
-                {/* adicionar link to para pagina de feedback */}
+                <Link to="/feedback"><button className={styles.feedbackButton}>Também quero dar um feedback!</button></Link>
             </span>
         </div>
     )
