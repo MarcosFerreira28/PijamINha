@@ -4,7 +4,7 @@ export default function Cadastro(){
 
     return(
         <div className={styles.mainCadastro}>
-          
+
            <div className={styles.cardCadastro}>
                 <h1>Registre-se</h1>
                 

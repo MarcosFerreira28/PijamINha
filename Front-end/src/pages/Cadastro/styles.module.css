@@ -4,7 +4,7 @@
     height: auto;
     background-image: url("../../assets/FundoVermelho.png");
     background-repeat: repeat;
-    background-size: cover;
+    background-size: 120%;
     background-position: center;
     display: flex;
     justify-content: center;
