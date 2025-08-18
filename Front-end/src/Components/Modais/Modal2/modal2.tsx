@@ -47,7 +47,7 @@ const schema = z
 
     const onSubmit = (data: FormData) => {
         console.log("Dados de pagamento:", data);
-        setAbrirModal3(true); // abre Modal3
+        setAbrirModal3(true); 
     };
     const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
         if (e.target === e.currentTarget) {
@@ -73,7 +73,9 @@ const schema = z
                 <select {...register("parcelamento")}>
                     <option value="">Selecione o parcelamento</option>
                     <option value="1">À vista</option>
+                    <option value="1">2x sem juros</option>
                     <option value="3">3x sem juros</option>
+                    <option value="3">4x sem juros</option>
                     <option value="5">5x sem juros</option>
                 </select>
 
@@ -89,10 +91,10 @@ const schema = z
             <div className={style.botoes}>
                 <button type="button" onClick={onClose} className={style.voltar}>
                     <img src={seta} alt="seta"></img>
-                VOLTAR
+                    <p>VOLTAR</p>
                 </button>
                 <button type="submit" className={style.enviar}>
-                ENVIAR
+                    <p>ENVIAR</p>
                 </button>
             </div>
             </form>

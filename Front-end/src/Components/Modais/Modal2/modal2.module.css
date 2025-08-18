@@ -23,9 +23,11 @@
 .modal h2 {
     font-family: Numans, sans-serif;
     font-weight: 400;
-    font-size: 36px;
     text-align: center;
     margin-bottom: 20px;
+    font-size: 48px;
+    line-height: 100%;
+
 }
 
 .formulario {
@@ -38,8 +40,15 @@
 .formulario input {
     padding: 10px;
     border: none;
-    border-radius: 6px;
     font-size: 16px;
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 5%;
+    color: #00000080;
+
+
 }
 
 .botoes {
@@ -49,6 +58,9 @@
 }
 
 .voltar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     background: var(--azul-400);
     color: white;
     border: none;
@@ -59,8 +71,18 @@
     font-size: 16px;
 }
 
+.voltar p {
+    font-family: Montserrat;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 24px;
+    line-height: 100%;
+    text-align: center;
+
+}
+
 .voltar:hover {
-    background: var(--azul-200);
+    background: var(--azul-300);
 }
 
 .enviar {
@@ -75,9 +97,18 @@
     box-shadow: 0 5px 6px rgba(0, 0, 0, 0.25);
     transition: background 0.3s;
 }
+.enviar p{
+    font-family: Montserrat;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 24px;
+    line-height: 100%;
+    text-align: center;
+
+}
 
 .enviar:hover {
-    background:var(--azul-200);
+    background: var(--azul-300);
 }
 
 .fechar {
