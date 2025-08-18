@@ -106,9 +106,29 @@
 
     display: flex;
     flex-direction: column;
-    align-items: center;
-    /* justify-content: center; */
-    /* gap: 34px; */
+    justify-content: center;
+    gap: 34px;
+}
+
+.feedbacksSwiper {
+    width: 100%;
+    max-width: 90vw;
+}
+
+.feedbacksTitulo {
+    font-family: Numans;
+    font-weight: 400;
+    font-size: 48.1px;
+    margin-left: 5.3vw;
+
+    color: var(--vermelho-400);
+}
+
+.feedbacks .setas {
+    /* padding: 0 10px 0 0; */
+    width: 4.8vw;
+    height: 11vh;
+    cursor: pointer;
 }
 
 .feedbackButton {

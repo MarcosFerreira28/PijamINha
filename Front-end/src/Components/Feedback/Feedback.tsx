@@ -1,10 +1,10 @@
-import type { Feedback } from '../../Types/Feedback';
+import type { FeedbackType } from '../../Types/Feedback';
 import estrelaVazia from '../../Assets/estrelaVazia.png';
 import estrelaPintada from "../../assets/estrelaPintada.png";
 import estrelaMetade from "../../assets/estrelaMetade.png";
 import styles from './styles.module.css';
 
-export default function Feedback({name, rating, description} : Feedback){
+export default function Feedback({name, rating, description} : FeedbackType){
     return (
         <div className={styles.feedbackContainer}>
             <h1>{name}</h1>
