@@ -14,10 +14,54 @@ import PromocaoNatal from '../../Assets/PromocaoNatal.png';
 import PromocaoValentines from '../../Assets/PromocaoValentines.png';
 import PromocaoGrupo from '../../Assets/PromocaoGrupo.png';
 import Card from '../../Components/Card/Card';
+import Feedback from '../../Components/FeedbackCard/FeedbackCard.tsx';
+import setaesquerda from '../../Assets/setaesquerda.png';
+import setadireita from '../../Assets/setadireita.png';
+
+import { useRef, useEffect, useState } from 'react';
+import type { FeedbackType } from '../../Types/Feedback.ts';
+import { Link } from 'react-router-dom';
 
 
 
 export default function Home() {
+    const feedbacks: FeedbackType[] = [
+        { name: 'Fulano da Silva', rating: 4, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaa aaaaaaa aaaaaa  aaaaa aaaaaaaaaaaaaaaa aaaa aaaaaaaaaaaa aaaaaaaaaa aaaaaaa aaaaaaaaaaaaaa aaaa qdjhsd wdjqhdfqhhwqn fnnfqwhf hwb dwqh dw dhqfwqdhw  qwhd wh dwhqwhwq dsdgsg gdgsdgs gsfdgg sgdsdgdsgds ' },
+        { name: 'Fjoger', rating: 4.6, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
+        { name: 'cacetinho', rating: 4.2, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
+        { name: 'marcola', rating: 5, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
+        { name: 'sof da Silva', rating: 4.8, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
+        { name: 'que isso da Silva', rating: 4.1, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
+    ];
+
+    function agruparFeedbacks(feedbacks: FeedbackType[]) {
+        const result = [];
+        for (let i = 0; i < feedbacks.length; i += 3) {
+            result.push(feedbacks.slice(i, i + 3));
+        }
+        return result;
+    }
+    const feedbacksAgrupados = agruparFeedbacks(feedbacks);
+
+    // refs para navegação do carrossel
+    const prevRef = useRef(null);
+    const nextRef = useRef(null);
+    const [swiperInstance, setSwiperInstance] = useState<any>(null);
+
+    // Atualiza as refs após renderizar para garantir que ambas as setas funcionem
+    //colocando as funções padrão do init do swiper em um useeffect
+    useEffect(() => {
+        if (swiperInstance && prevRef.current && nextRef.current) {
+            // @ts-ignore
+            swiperInstance.params.navigation.prevEl = prevRef.current;
+            // @ts-ignore
+            swiperInstance.params.navigation.nextEl = nextRef.current;
+            swiperInstance.navigation.destroy();
+            swiperInstance.navigation.init();
+            swiperInstance.navigation.update();
+        }
+    }, [swiperInstance, prevRef, nextRef]);
+
 
     return (
         <div className={styles.home}>
@@ -62,7 +106,7 @@ export default function Home() {
                 </div>
 
                 <div className={styles.cardContainer}>
-                    <h1>Nossas últimas promoções!</h1>
+                    <h1 className={styles.titulo}>Nossas últimas promoções!</h1>
                     <div className={styles.cards}>
                         <Card name="Pijama feminino longo - estampa poá daksdajs ndna jsndjs najn dsjan jdn ajn" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={false} />
                         <Card name="Pijama feminino longo - estampa poá daksdajs ndna jsndjs najn dsjan jdn ajn" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={false} />
@@ -72,14 +116,33 @@ export default function Home() {
                 </div>
 
                 <div className={styles.feedbacks}>
-                    <h1>Feedbacks</h1>
-                    {/* componente feedbacks em carrosel e somente os com 4 ou mais estrelas */}
+                    <h1 className={styles.feedbacksTitulo}>Feedbacks</h1>
+                    <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                        <img src={setaesquerda} alt="Anterior" ref={prevRef} className={styles.setas} />
+                        <Swiper
+                            modules={[Navigation]}
+                            slidesPerView={1}
+                            navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
+                            onSwiper={setSwiperInstance}
+                            loop
+                            className={styles.feedbacksSwiper}
+                        >
+                            {feedbacksAgrupados.map((grupo, idx) => (
+                                <SwiperSlide key={idx}>
+                                    <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', padding: '0 20px 20px 20px' }}>
+                                        {grupo.map((feedbackCard, i) => (
+                                            <Feedback key={i} {...feedbackCard} />
+                                        ))}
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                        <img src={setadireita} alt="Próximo" ref={nextRef} className={styles.setas} />
+                    </div>
                 </div>
 
-                <button className={styles.feedbackButton}>Também quero dar um feedback!</button>
-                {/* adicionar link to para pagina de feedback */}
+                <Link to="/feedback"><button className={styles.feedbackButton}>Também quero dar um feedback!</button></Link>
             </span>
-
         </div>
     )
 }

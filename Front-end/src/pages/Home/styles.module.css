@@ -83,10 +83,10 @@
     display: flex;
     flex-direction: column;
     gap: 34px;
-    margin-bottom: 17vh;
+    margin-bottom: 10vh;
 }
 
-.cardContainer h1 {
+.cardContainer .titulo {
     font-family: Numans;
     font-weight: 400;
     font-style: Regular;
@@ -102,13 +102,33 @@
 
 .feedbacks {
     height: 93vh;
-    margin-bottom: 17vh;
+    margin-bottom: 10vh;
 
     display: flex;
     flex-direction: column;
-    align-items: center;
-    /* justify-content: center; */
-    /* gap: 34px; */
+    justify-content: center;
+    gap: 34px;
+}
+
+.feedbacksSwiper {
+    width: 100%;
+    max-width: 90vw;
+}
+
+.feedbacksTitulo {
+    font-family: Numans;
+    font-weight: 400;
+    font-size: 48.1px;
+    margin-left: 6.3vw;
+
+    color: var(--vermelho-400);
+}
+
+.feedbacks .setas {
+    /* padding: 0 10px 0 0; */
+    width: 4.8vw;
+    height: 11vh;
+    cursor: pointer;
 }
 
 .feedbackButton {
