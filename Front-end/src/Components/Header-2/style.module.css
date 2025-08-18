@@ -1,0 +1,42 @@
+.header {
+    background: #FCF7F8;
+    max-width: 1440px;
+    height: 178px;
+    opacity: 1;
+    top: 178px;
+}
+
+.links {
+    max-width: 1440px;
+    height: 178px;
+    font-family: Numans;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: 4%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    padding: 0rem 0rem 0rem 2rem;
+
+}
+.car{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--cinza-200);
+    text-decoration: none;
+}
+
+.link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--cinza-200);
+    text-decoration: none;
+}
+
+.ativo{
+    color: var(--vermelho-300);
+}
