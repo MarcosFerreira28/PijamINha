@@ -1,0 +1,7 @@
+
+.mainCadastro{
+    background-image: url("../../assets/FundoVermelho.png");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
