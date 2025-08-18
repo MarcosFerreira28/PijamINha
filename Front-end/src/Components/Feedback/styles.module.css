@@ -29,24 +29,26 @@
     box-sizing: border-box;
 }
 
-.feedbackContainer p {
+.descriptionContainer {
     width: 25.7vw;
-    height: 25vh;
+    height: 24.5vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    margin-bottom: 8vh;
+}
 
+.feedbackContainer p {
     font-family: Nunito Sans;
     font-weight: 400;
     font-style: Italic;
-    font-size: 16px;
+    font-size: 1.1vw;
     text-align: center;
     vertical-align: bottom;
-    margin-bottom: 8vh;
-/* 
+
     display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+    -webkit-line-clamp: 7;
+    line-clamp: 7;
     -webkit-box-orient: vertical;
-    overflow: hidden; */
+    overflow: hidden;
 }

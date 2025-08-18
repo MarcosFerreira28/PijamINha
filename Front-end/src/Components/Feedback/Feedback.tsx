@@ -23,7 +23,9 @@ export default function Feedback({name, rating, description} : Feedback){
                     )
                 }
             </div>
-            <p>{description}</p>
+            <div className={styles.descriptionContainer}>
+                <p>{description}</p>
+            </div>
         </div>
     )
 }
