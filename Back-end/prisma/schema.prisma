@@ -67,8 +67,8 @@ model Pajama {
   season      SeasonType
   type        BodyType
   gender      GenderType
-  favorite    Boolean
-  onSale      Boolean
+  favorite    Boolean @default(false)
+  onSale      Boolean @default(true)
   salePercent Float?
 
   pajamaSize PajamaSize[] @relation()

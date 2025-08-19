@@ -25,7 +25,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <img src={logoDormindo} alt="lobodormindo" />
+                <img src={logoDormindo} alt="lobodormindo" style={{width: "16vw"}} />
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.1873241132716!2d-43.135835125815646!3d-22.906460537857185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x99817e444e692b%3A0xfd5e35fb577af2f5!2sUFF%20-%20Instituto%20de%20Computa%C3%A7%C3%A3o!5e0!3m2!1spt-BR!2sbr!4v1755272772925!5m2!1spt-BR!2sbr"></iframe>            
             </div>
             <div className={styles.copyright}>
