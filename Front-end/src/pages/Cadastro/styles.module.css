@@ -67,3 +67,16 @@
         background-color: rgba(162, 22, 34, 0.705);
     }
 }
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4.75rem;
+}
+.errorMessage{
+    color: white;
+    font-size: 14px;
+    bottom: -20px;
+}

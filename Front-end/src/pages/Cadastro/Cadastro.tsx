@@ -44,37 +44,55 @@ export default function Cadastro() {
             <div className={styles.cardCadastro}>
                 <h1>Registre-se</h1>
 
-                <form onSubmit={handleSubmit(createUser)}>
+                <form className={styles.form} onSubmit={handleSubmit(createUser)}>
                     <div className={styles.inputs}>
                         <input type="text"
                             placeholder="Nome"
                             {...register('nome')}
                         />
-                        {errors.nome && <span>{errors.nome.message}</span>}
+                        {errors.nome && 
+                        <span className={styles.errorMessage}>{errors.nome.message}</span>
+                        }
+                        
                         <input type="text"
                             placeholder="Nome de Usuário"
                             {...register('usuario')}
                         />
-                        {errors.usuario && <span>{errors.usuario.message}</span>}
+                        {errors.usuario && 
+                        <span className={styles.errorMessage}>{errors.usuario.message}</span>
+                        }
+                        
                         <input type="email"
                             placeholder="E-mail"
                             {...register('email')}
                         />
-                        {errors.email && <span>{errors.email.message}</span>}
+                        {errors.email && 
+                        <span className={styles.errorMessage}>{errors.email.message}</span>
+                        }
+                        
                         <input type="password"
                             placeholder="Senha"
                             {...register('senha')}
                         />
-                        {errors.senha && <span>{errors.senha.message}</span>}
+                        {errors.senha && 
+                        <span className={styles.errorMessage}>{errors.senha.message}</span>
+                        }
+                        
                         <input type="password"
                             placeholder="Confirmar senha"
                             {...register('confirmarSenha')}
                         />
-                        {errors.confirmarSenha && <span>{errors.confirmarSenha.message}</span>}
+                        {errors.confirmarSenha && 
+                        <span className={styles.errorMessage}>{errors.confirmarSenha.message}</span>
+                        }
                     </div>
+                    
+                    <button type='submit' disabled={isSubmitting} className={styles.btnRegistrar}>{isSubmitting ? 'REGISTRANDO...' : 'REGISTRAR'}</button>
+                    {errors.root && 
+                    <span className={styles.errorMessage}>{errors.root.message}</span>
+                    }
                 </form>
-                <button disabled={isSubmitting} className={styles.btnRegistrar}>{isSubmitting ? 'REGISTRANDO...' : 'REGISTRAR'}</button>
-                {errors.root && <span>{errors.root.message}</span>}
+
             </div>
         </div>
     )
