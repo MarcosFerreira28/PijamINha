@@ -5,11 +5,11 @@ import cpf from 'cpf'
 import { zodResolver } from "@hookform/resolvers/zod"
 
 const userSchema = z.object({
-    nome: z.string().regex(/^[^/d]+$/ , {
+    nome: z.string().regex(/^[^/d]+$/, {
         message: 'Não pode ter números'
     }),
     usuario: z.string().refine(value => value.trim().length > 0, { message: 'Não pode ter espaços' }),
-    email: z.string().nonempty('O E-mail não pode ser vazio').refine(value => z.string().email().safeParse(value).success, { 
+    email: z.string().nonempty('O E-mail não pode ser vazio').refine(value => z.string().email().safeParse(value).success, {
         message: 'O e-mail não é válido'
     }),
     senha: z.string().nonempty('Senha não pode ser vazia').min(6, 'Deve ter no mínimo 6 caracteres').refine(value => value.trim().length > 0, { message: 'Não pode ter espaços' }),
@@ -22,7 +22,7 @@ const userSchema = z.object({
 type User = z.infer<typeof userSchema>
 
 export default function Cadastro() {
-    const { register, handleSubmit, reset } = useForm<User>({
+    const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<User>({
         resolver: zodResolver(userSchema)
     })
 
@@ -44,22 +44,27 @@ export default function Cadastro() {
                             placeholder="Nome"
                             {...register('nome')}
                         />
+                        {errors.nome && <span>{errors.nome.message}</span>}
                         <input type="text"
                             placeholder="Nome de Usuário"
                             {...register('usuario')}
                         />
+                        {errors.usuario && <span>{errors.usuario.message}</span>}
                         <input type="email"
                             placeholder="E-mail"
                             {...register('email')}
                         />
+                        {errors.email && <span>{errors.email.message}</span>}
                         <input type="password"
                             placeholder="Senha"
                             {...register('senha')}
                         />
+                        {errors.senha && <span>{errors.senha.message}</span>}
                         <input type="password"
                             placeholder="Confirmar senha"
                             {...register('confirmarSenha')}
                         />
+                        {errors.confirmarSenha && <span>{errors.confirmarSenha.message}</span>}
                     </div>
                 </form>
                 <button className={styles.btnRegistrar}>REGISTRAR</button>
