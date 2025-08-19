@@ -15,6 +15,7 @@ export default function Carrinho() {
         preco: 78.9,
         quantidade: 1,
         img: "https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg",
+        limit: 12,
         },
         {
         id: 2,
@@ -24,6 +25,7 @@ export default function Carrinho() {
         preco: 78.9,
         quantidade: 1,
         img: "https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg",
+        limit: 10,
         },
     ]);
 
@@ -39,7 +41,11 @@ export default function Carrinho() {
 
     const aumentar = (id: number) => {
         setProdutos((prev) =>
-        prev.map((p) => (p.id === id ? { ...p, quantidade: p.quantidade + 1 } : p))
+        prev.map((p) =>
+            p.id === id && p.quantidade < p.limit
+            ? { ...p, quantidade: p.quantidade + 1 }
+            : p
+        )
         );
     };
 
@@ -74,15 +80,26 @@ export default function Carrinho() {
                 <div className={style.quant}>
                     <label>Quantidade:</label>
                     <div className={style.botaototal}>
-                        <button onClick={() => diminuir(produto.id)} className={style.botao}>
-                            <img src={menos} alt="-" />
-                        </button>
-                        <span className={style.valor}>{produto.quantidade}</span>
-                        <button onClick={() => aumentar(produto.id)} className={style.botao}>
-                            <img src={mais} alt="+" />
-                        </button>
+                    <button
+                        onClick={() => diminuir(produto.id)}
+                        className={style.botao}
+                        disabled={produto.quantidade <= 1}
+                    >
+                        <img src={menos} alt="-" />
+                    </button>
+                    <span className={style.valor}>{produto.quantidade}</span>
+                    <button
+                        onClick={() => aumentar(produto.id)}
+                        className={style.botao}
+                        disabled={produto.quantidade >= produto.limit}
+                    >
+                        <img src={mais} alt="+" />
+                    </button>
                     </div>
-                    <p className={style.detalhes}>Não perca sua oportunidade! Há apenas mais <b>12</b> peças disponíveis!</p>
+                    <p className={style.detalhes}>
+                    Não perca sua oportunidade! Há apenas{" "}
+                    <b>{produto.limit}</b> peças disponíveis!
+                    </p>
                 </div>
                 <p className={style.Vtotal}>
                     R$ {(produto.preco * produto.quantidade).toFixed(2)}
@@ -92,8 +109,8 @@ export default function Carrinho() {
             ))}
 
             <div className={style.totalGeral}>
-                <p>Total</p>
-                <p className={style.totalValor}>R$ {totalGeral.toFixed(2)}</p>
+            <p>Total</p>
+            <p className={style.totalValor}>R$ {totalGeral.toFixed(2)}</p>
             </div>
 
             <div className={style.comprarTudo}>
@@ -110,5 +127,6 @@ export default function Carrinho() {
         </>
     );
 }
+
 
 //zustand

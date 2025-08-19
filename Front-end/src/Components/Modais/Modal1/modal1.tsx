@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import style from "./modal1.module.css";
 import Modal2 from "../Modal2/modal2";
+import x from "../../../assets/X.png"
 
 const schema = z.object({
     nome: z.string().min(3, "Nome deve ter no mínimo 3 caracteres"),
@@ -118,7 +119,7 @@ const schema = z.object({
             )}
 
             <button className={style.fechar} onClick={onClose}>
-            X
+            <img src={x} alt="x" />
             </button>
         </div>
 

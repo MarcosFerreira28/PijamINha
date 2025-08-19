@@ -119,6 +119,10 @@
     display: flex;
 
 }
+.botao:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 
 .valor {
     padding: 10px 20px;
