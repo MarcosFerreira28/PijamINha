@@ -1,5 +1,5 @@
 import styles from "./styles.module.css"
-import { Link } from "react-router-dom" 
+import { Link } from "react-router-dom"
 
 export default function Login() {
 
@@ -10,7 +10,11 @@ export default function Login() {
 
                 <div className={styles.tituloEdesc}>
                     <h1>Login</h1>
-                    <h2>Faça login para ter acesso aos pijamas dos seus <span>sonhos!</span></h2>
+                    <div className={styles.desc}>
+                        <p>Faça login para ter acesso aos</p> 
+                        <p>pijamas dos seus <span>sonhos!</span></p>
+                    </div>
+
                 </div>
 
                 <form className={styles.inputsEbotoes}>

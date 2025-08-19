@@ -19,3 +19,33 @@
     border-radius: 2px;
     box-shadow: 0 4px 4px 0 hsla(0, 0%, 0%, 0.5);
 }
+.tituloEdesc{
+    width: 390px;
+    height: 133px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 31px;
+    align-items: center;
+    color: white;
+    padding-top: 53px;
+    padding-bottom: 32px;
+    letter-spacing: 4%;
+}
+.tituloEdesc h1{
+    font-family: 'Numans';
+    font-weight: 400;
+    font-size: 48px;
+}
+.desc{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto Serif';
+    font-weight: 500;
+    font-size: 20px;
+}
+.desc span{
+    font-weight: 900;
+}
