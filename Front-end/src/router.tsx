@@ -1,13 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "./RootLayout";
-import Card from "./Components/Card/Card";
 import Home from "./pages/Home/Home";
+import Carrinho from "./pages/Carrinho/Carrinho";
+import Favoritos from "./pages/Favoritos/Favoritos";
+
 
 const router = createBrowserRouter([
-    // {
-    //     path: "/",
-    //     element: <Login />,
-    // },
     {
         path: "/",
         element: <RootLayout />,
@@ -17,8 +15,12 @@ const router = createBrowserRouter([
                 element: <Home />
             },
             {
-                path: "/feedback",
-                // element: pagina para fazer um feedback
+                path:"/carrinho",
+                element:<Carrinho/>
+            },
+            {
+                path:"/favoritos",
+                element:<Favoritos/>
             }
         ]
     }
