@@ -13,11 +13,11 @@ const userSchema = z.object({
     }),
     senha: z.string().nonempty('Senha não pode ser vazia').min(6, 'Deve ter no mínimo 6 caracteres').refine(value => value.trim().length > 0, { message: 'Não pode ter espaços' }),
     confirmarSenha: z.string().nonempty('A confirmação de senha não pode ser vazia')
-    })
+})
     .refine((data) => data.senha === data.confirmarSenha, {
         message: 'As senhas não coincidem',
         path: ['confirmarSenha']
-});
+    });
 
 
 type User = z.infer<typeof userSchema>
@@ -48,50 +48,47 @@ export default function Cadastro() {
 
                 <form className={styles.form} onSubmit={handleSubmit(createUser)}>
                     <div className={styles.inputs}>
-                        <input type="text"
+                        <div className={styles.cadaInput}><input type="text"
                             placeholder="Nome"
                             {...register('nome')}
                         />
-                        {errors.nome && 
-                        <span className={styles.errorMessage}>{errors.nome.message}</span>
-                        }
-                        
-                        <input type="text"
+                            {errors.nome &&
+                                <span className={styles.errorMessage}>{errors.nome.message}
+                                </span>
+                            }</div>
+                        <div className={styles.cadaInput}><input type="text"
                             placeholder="Nome de Usuário"
                             {...register('usuario')}
                         />
-                        {errors.usuario && 
-                        <span className={styles.errorMessage}>{errors.usuario.message}</span>
-                        }
-                        
-                        <input type="email"
+                            {errors.usuario &&
+                                <span className={styles.errorMessage}>{errors.usuario.message}</span>
+                            }</div>
+                        <div className={styles.cadaInput}><input type="email"
                             placeholder="E-mail"
                             {...register('email')}
                         />
-                        {errors.email && 
-                        <span className={styles.errorMessage}>{errors.email.message}</span>
-                        }
-                        
-                        <input type="password"
+                            {errors.email &&
+                                <span className={styles.errorMessage}>{errors.email.message}</span>
+                            }</div>
+                        <div className={styles.cadaInput}><input type="password"
                             placeholder="Senha"
                             {...register('senha')}
                         />
-                        {errors.senha && 
-                        <span className={styles.errorMessage}>{errors.senha.message}</span>
-                        }
-                        
-                        <input type="password"
+                            {errors.senha &&
+                                <span className={styles.errorMessage}>{errors.senha.message}</span>
+                            }</div>
+                        <div className={styles.cadaInput}><input type="password"
                             placeholder="Confirmar senha"
                             {...register('confirmarSenha')}
                         />
-                        {errors.confirmarSenha && 
-                        <span className={styles.errorMessage}>{errors.confirmarSenha.message}</span>
-                        }
+                            {errors.confirmarSenha &&
+                                <span className={styles.errorMessage}>{errors.confirmarSenha.message}</span>
+                            }</div>
                     </div>
-                    
+
                     <button type='submit' disabled={isSubmitting} className={styles.btnRegistrar}>{isSubmitting ? 'REGISTRANDO...' : 'REGISTRAR'}</button>
-                    {errors.root && 
-                    <span className={styles.errorMessage}>{errors.root.message}</span>
+                    {errors.root &&
+                        <span className={styles.errorMessage}>{errors.root.message}</span>
                     }
                 </form>
 
