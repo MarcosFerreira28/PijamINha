@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
-import coracao from "../../Assets/Coracao.png";
+import coracao from "../../Assets/coracao.svg";
 import desconto from "../../Assets/Desconto.png";
-import favoritadoimg from "../../Assets/Favoritado.png";
+import favoritadoimg from "../../Assets/favoritado.svg";
 import type { CardPijama } from "../../Types/Pijama";
 import { useState } from "react";
 import Favoritar from "../../Functions/Favoritar";
@@ -53,7 +53,9 @@ export default function Card({name, price, image, favorite, on_sale, sale_percen
                             )
                         )}
                         {on_sale ? (
-                            <h2 style={menor ? {fontSize: "24px"} : {}}>R$ {(price - (price * sale_percent / 100)).toFixed(2).replace(".", ",")}</h2>
+                            <h2 style={menor ? {fontSize: "24px"} : {}}>
+                                R$ {(price - (price * (sale_percent ?? 0) / 100)).toFixed(2).replace(".", ",")}
+                            </h2>
                         ) : (
                             <h2>R$ {price.toFixed(2).replace(".", ",")}</h2>
                         )}
