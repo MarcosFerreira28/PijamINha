@@ -12,15 +12,15 @@ export default function Header2(){
         <header className={style.header}>
                 <div className={style.links}>
                     <Link to='/carrinho' className={`${style.car} ${location.pathname === "/carrinho" ? style.ativo : ""}`}><img src={location.pathname === "/carrinho" ? compras : comprasC}alt="carrinho-vermelho" />Carrinho</Link>
-                    <Link to='/fav' className={`${style.link} ${location.pathname === "/fav" ? style.ativo : ""}`}>
-                        <img src={location.pathname === "/fav" ? favorito : favoritoC} alt="carrinho-vermelho" />
+                    <Link to='/favoritos' className={`${style.link} ${location.pathname === "/favoritos" ? style.ativo : ""}`}>
+                        <img src={location.pathname === "/favoritos" ? favorito : favoritoC} alt="carrinho-vermelho" />
                         Favorito
                     </Link>
                 </div>
             </header>
             <nav>
                 <Link to="/carrinho"></Link>
-                <Link to="/fav"></Link>
+                <Link to="/favoritos"></Link>
             </nav>
         </>
     )

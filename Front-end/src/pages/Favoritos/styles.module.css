@@ -1,0 +1,11 @@
+.swiper-slide-next {
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+.favoritosContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
