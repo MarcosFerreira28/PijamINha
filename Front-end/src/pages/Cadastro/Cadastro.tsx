@@ -7,7 +7,13 @@ const userSchema = z.object({
     nome: z.string().regex(/^\D+$/, {
         message: '* Não pode ter números'
     }),
-    usuario: z.string().refine(value => value.trim().length > 0, { message: '* Não pode ter espaços' }),
+    usuario: z.string()
+    .nonempty('* O usuário não pode ser vazio')
+    .refine(value => value.trim().length > 0, { message: '* Não pode ter espaços' })
+    .regex(/^[a-zA-Z0-9]+$/, {
+        message: '* Não pode ter acentos'
+    }),
+
     email: z.string().nonempty('* O E-mail não pode ser vazio').refine(value => z.string().email().safeParse(value).success, {
         message: '* O e-mail não é válido'
     }),
