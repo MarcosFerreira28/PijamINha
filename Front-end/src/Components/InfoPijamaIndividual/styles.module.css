@@ -1,0 +1,73 @@
+
+
+.tituloContainer h1 {
+    font-family: Numans;
+    font-weight: 400;
+    font-size: 48px;
+    letter-spacing: 4%;
+    color: var(--azul-400);
+}
+
+.tituloContainer p {
+    font-family: Numans;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 4%;
+    color: var(--azul-200);
+}
+
+.priceContainer h1 {
+    font-family: Nunito Sans;
+    font-weight: 700;
+    font-size: 64px;
+    color: black;
+}
+
+.priceContainer p {
+    font-family: Nunito Sans;
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--cinza-400);
+}
+
+.tamanhoContainer h2 {
+    font-family: Nunito;
+    font-weight: 300;
+    font-style: Italic;
+    font-size: 24px;
+    color: black;
+}
+
+.tamanhoContainer .tamanhos {
+    display: flex;
+    flex-direction: row;
+    gap: 13px;
+}
+
+.tamanhos .tamanho{
+    width: 50px;
+    height: 51.5px;
+    border: none;
+    border-radius: 1.47px;
+    background-color: var(--azul-200);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Numans;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+}
+
+.tamanhoSelecionado {
+    background-color: var(--vermelho-400);
+}
+
+
+.tamanho:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}

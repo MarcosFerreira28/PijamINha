@@ -3,8 +3,8 @@ import styles from './styles.module.css';
 
 import menos from '../../Assets/Diminuir.png';
 import mais from '../../Assets/Aumentar.png';
-import coracao from '../../Assets/Coração.png';
-import favoritado from '../../Assets/Favoritado.png';
+import coracao from '../../Assets/coracao.svg';
+import favoritado from '../../Assets/favoritado.svg';
 
 export default function InfoPijamaIndividual() {
     const produto = {
@@ -31,6 +31,12 @@ export default function InfoPijamaIndividual() {
         }
     };
 
+    
+    const [tamanhoSelecionado, setTamanhoSelecionado] = useState<string | null>(null);
+
+    const tamanhos = ['PP', 'P', 'M', 'G', 'GG'];
+
+
     return (
         <div>
             <div className={styles.tituloContainer}>
@@ -43,17 +49,21 @@ export default function InfoPijamaIndividual() {
                     <h1>R$ 99,90</h1>
                     <p>6x de <strong>R$ 13,45</strong></p>
                 </div>
-                <p>Ou por <strong>R$67,06</strong>no PIX</p>
+                <p>Ou por <strong style={{fontStyle: 'italic'}}>R$67,06</strong> no PIX</p>
             </div>
 
             <div className={styles.tamanhoContainer}>
                 <h2>Tamanhos:</h2>
-                <div>
-                    <button className={styles.tamanho}><p>PP</p></button>
-                    <button className={styles.tamanho}><p>P</p></button>
-                    <button className={styles.tamanho}><p>M</p></button>
-                    <button className={styles.tamanho}><p>G</p></button>
-                    <button className={styles.tamanho}><p>GG</p></button>
+                <div className={styles.tamanhos}>
+                    {tamanhos.map((tamanho) => (
+                        <button
+                            key={tamanho}
+                            className={`${tamanhoSelecionado === tamanho ? styles.tamanhoSelecionado : styles.tamanho}`}
+                            onClick={() => setTamanhoSelecionado(tamanho)}
+                        >
+                            {tamanho}
+                        </button>
+                    ))}
                 </div>
                 <p>Ainda temos <strong>8</strong> peças do tamanho escolhido em nosso estoque!</p>
             </div>
