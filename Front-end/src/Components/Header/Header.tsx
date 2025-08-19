@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 export default function Header() {
     return (
         <header className={styles.header}>
-            <img src={logo} alt="logo" className={styles.loboimg}/>
+            <Link to="/"><img src={logo} alt="logo" className={styles.loboimg}/></Link>
 
             <nav className={styles.nav}>
                 <p>PIJAMAS</p>
@@ -20,9 +20,9 @@ export default function Header() {
             <div className={styles.icons}>
                 <div>
                     <Link to="/carrinho"><img src={carrinho} alt="carrinho" /></Link>
-                    <img src={favorito} alt="favorito" />
+                    <Link to="/favoritos"><img src={favorito} alt="favorito" /></Link>
                 </div>
-                <img src={user} alt="login" />
+                <Link to="/login"><img src={user} alt="login" /></Link>
             </div>
         </header>
     )
