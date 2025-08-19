@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form"
 import styles from "./styles.module.css"
 import z from "zod"
-import cpf from 'cpf'
 import { zodResolver } from "@hookform/resolvers/zod"
 
 const userSchema = z.object({
@@ -22,13 +21,20 @@ const userSchema = z.object({
 type User = z.infer<typeof userSchema>
 
 export default function Cadastro() {
-    const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<User>({
+    const { register, handleSubmit, formState: { errors, isSubmitting }, setError } = useForm<User>({
         resolver: zodResolver(userSchema)
     })
 
-    function createUser(data: User) {
-        console.log(data)
-        reset()
+    async function createUser(data: User) {
+        try {
+            await new Promise(resolve => setTimeout(resolve, 2000))
+            console.log(data)
+            throw new Error('Erro ao criar usuário')
+        } catch {
+            setError('root', {
+                message: "Error ao criar usuário"
+            })
+        }
     }
 
 
@@ -67,8 +73,8 @@ export default function Cadastro() {
                         {errors.confirmarSenha && <span>{errors.confirmarSenha.message}</span>}
                     </div>
                 </form>
-                <button className={styles.btnRegistrar}>REGISTRAR</button>
-
+                <button disabled={isSubmitting} className={styles.btnRegistrar}>{isSubmitting ? 'REGISTRANDO...' : 'REGISTRAR'}</button>
+                {errors.root && <span>{errors.root.message}</span>}
             </div>
         </div>
     )
