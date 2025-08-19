@@ -1,23 +1,17 @@
-import { PrismaClient, PajamaSize, Prisma, SizeType } from "@prisma/client";
+import { Prisma, SizeType } from "@prisma/client";
 import { PajamaSizeRepository } from "../pajamaSize-repository";
+import { prisma } from "@/lib/prisma";
 
 export class PrismaPajamaSizeRepository implements PajamaSizeRepository {
-    private prisma: PrismaClient;
-
-    constructor(prisma: PrismaClient) {
-        this.prisma = prisma;
-    }
-
-
-    async create(data: Prisma.PajamaSizeCreateInput): Promise<PajamaSize> {
-        const pajamaSize = await this.prisma.pajamaSize.create({
+    async create(data: Prisma.PajamaSizeCreateInput) {
+        const pajamaSize = await prisma.pajamaSize.create({
             data,
         });
         return pajamaSize;
     }
 
-    async update(id: number, data: Prisma.PajamaSizeUpdateInput): Promise<PajamaSize> {
-        const pajamaSize = await this.prisma.pajamaSize.update({
+    async update(id: number, data: Prisma.PajamaSizeUpdateInput) {
+        const pajamaSize = await prisma.pajamaSize.update({
             where: {
                 id,
             },
@@ -26,8 +20,8 @@ export class PrismaPajamaSizeRepository implements PajamaSizeRepository {
         return pajamaSize;
     }
 
-    async findByPajamaIdAndSize(pajamaId: number, size: SizeType): Promise<PajamaSize | null> {
-        const pajamaSize = await this.prisma.pajamaSize.findFirst({
+    async findByPajamaIdAndSize(pajamaId: number, size: SizeType) {
+        const pajamaSize = await prisma.pajamaSize.findFirst({
             where: {
                 pajamaId,
                 size,
@@ -36,3 +30,4 @@ export class PrismaPajamaSizeRepository implements PajamaSizeRepository {
         return pajamaSize;
     }
 }
+
