@@ -2,8 +2,9 @@ import { useForm } from "react-hook-form"
 import styles from "./styles.module.css"
 import z from "zod"
 import cpf from 'cpf'
+import { zodResolver } from "@hookform/resolvers/zod"
 
-const useSchema = z.object({
+const userSchema = z.object({
     nome: z.string().regex(/^[^/d]+$/ , {
         message: 'Não pode ter números'
     }),
@@ -18,13 +19,18 @@ const useSchema = z.object({
     })
 })
 
-export default function Cadastro() {
-    const { register, handleSubmit, reset } = useForm()
+type User = z.infer<typeof userSchema>
 
-    function createUser(data) {
+export default function Cadastro() {
+    const { register, handleSubmit, reset } = useForm<User>({
+        resolver: zodResolver(userSchema)
+    })
+
+    function createUser(data: User) {
         console.log(data)
         reset()
     }
+
 
     return (
         <div className={styles.mainCadastro}>
