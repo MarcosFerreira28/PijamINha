@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma';
-import { Prisma } from '@prisma/client';
+import { Prisma, User } from '@prisma/client';
 import { UsersRepository } from '../users-repository';
 
 export class PrismaUsersRepository implements UsersRepository {
@@ -22,4 +22,19 @@ export class PrismaUsersRepository implements UsersRepository {
     const user = await prisma.user.findUnique({ where: { id } });
     return user;
   }
+
+  async update(id: number, data: Prisma.UserUpdateInput): Promise<User> {
+    const user = await prisma.user.update({
+      where: { id },
+      data,
+    });
+    return user;
+  }
+
+  async delete(id: number): Promise<void> {
+    await prisma.user.delete({
+      where: { id },
+    });
+  }
+
 }

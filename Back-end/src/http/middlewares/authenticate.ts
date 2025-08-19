@@ -1,21 +1,9 @@
-import { env } from "@/env"
-import { FastifyReply, FastifyRequest } from "fastify"
-import { verify } from "jsonwebtoken"
+import { FastifyReply, FastifyRequest } from 'fastify';
 
-interface Payload {
-  userId: number
-}
-
-export async function authenticateMiddleware(request: FastifyRequest, reply: FastifyReply) {
-    const authHeader = request.headers.authorization
-    if (!authHeader) {
-        return reply.status(401).send({ message: 'Está faltando o token de autenticação' })
+export async function verifyJwt(request: FastifyRequest, reply: FastifyReply) {
+    try {
+        await request.jwtVerify();
+    } catch (err) {
+        return reply.status(401).send({ message: 'Não autorizado.' });
     }
-    const [, token] = authHeader.split(' ')
-    if (!token) {
-        return reply.status(401).send({ message: 'Token de autenticação inválido' })
-    }
-    const { userId } = verify(token, env.JWT_SECRET) as Payload
-    request.userId = userId 
-    
 }
