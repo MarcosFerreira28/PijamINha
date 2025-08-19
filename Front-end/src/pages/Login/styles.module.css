@@ -1,0 +1,13 @@
+.mainLogin{
+    max-width: 100%;
+    height: auto;
+    background-image: url("../../assets/FundoVermelho.png");
+    background-repeat: repeat;
+    background-size: 120%;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+}
+.loginCard{
+    
+}
