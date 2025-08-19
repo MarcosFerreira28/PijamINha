@@ -24,9 +24,17 @@ export default function Card({name, price, image, favorite, on_sale, sale_percen
             <div className={styles.images}>
 
                 {favorited ? (
-                    <img src={favoritadoimg} alt="coracao" className={styles.coracao} onClick={() => handleFavorite()}/>
+                    <img src={favoritadoimg} alt="coracao" className={styles.coracao} 
+                    onClick={e => {
+                        e.preventDefault();
+                        handleFavorite();
+                    }}/>
                 ) : (
-                    <img src={coracao} alt="coracao" className={styles.coracao} onClick={() => handleFavorite()}/>
+                    <img src={coracao} alt="coracao" className={styles.coracao} 
+                    onClick={e => {
+                        e.preventDefault();
+                        handleFavorite();
+                    }}/>
                 )}
 
                 {on_sale && (<img src={desconto} className={styles.desconto}/>)}
