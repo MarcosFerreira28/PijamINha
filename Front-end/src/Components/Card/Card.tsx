@@ -34,7 +34,7 @@ export default function Card({name, price, image, favorite, on_sale, sale_percen
             </div>
 
             <div className={styles.info}>
-                <h1 style={menor ? {fontSize: "12px"} : {}}>{name}</h1>
+                <h1 style={menor ? {fontSize: "13px"} : {}}>{name}</h1>
                 <div style={{display: "flex", flexDirection: "column", alignItems: "center", gap: "12px"}}>
                     <div className={styles.preco}>
                         {on_sale && (

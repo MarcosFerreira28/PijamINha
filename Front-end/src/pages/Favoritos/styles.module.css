@@ -1,11 +1,32 @@
-.swiper-slide-next {
-    opacity: 0.5;
-    transition: opacity 0.3s;
-}
 .favoritosContainer {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 40px;
-    margin-bottom: 100px;
+    padding-top: 40px;
+    padding-bottom: 100px;
+
+    background-image: url("../../assets/fundoAzulDiagonal.png");
+    background-position: center;
+}
+
+
+.carouselWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 90vw;
+}
+
+
+.fadeRight {
+    position: absolute;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.fadeRight {
+    right: 0;
+    background: linear-gradient(to left, #f0f4ff, transparent);
 }
