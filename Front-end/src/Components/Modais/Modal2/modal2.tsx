@@ -2,9 +2,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import style from "./modal2.module.css";
-import Modal3 from "../Modal3/modal3";
+import seta from "../../../assets/expand.png";
 import { useState } from "react";
-import seta from "../../../assets/expand.png"
+import Modal3 from "../Modal3/modal3";
 
 const schema = z
     .object({
@@ -47,14 +47,14 @@ const schema = z
 
     const onSubmit = (data: FormData) => {
         console.log("Dados de pagamento:", data);
-        setAbrirModal3(true); 
+        setAbrirModal3(true); // <- abre Modal3
     };
+
     const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
         if (e.target === e.currentTarget) {
         onClose();
         }
     };
-
 
     return (
         <div className={style.modalTotal} onClick={handleOverlayClick}>
@@ -68,14 +68,15 @@ const schema = z
                 <option value="cartao">Cartão</option>
             </select>
             {errors.formaPagamento && <p>{errors.formaPagamento.message}</p>}
+
             {formaPagamento === "cartao" && (
                 <>
                 <select {...register("parcelamento")}>
                     <option value="">Selecione o parcelamento</option>
                     <option value="1">À vista</option>
-                    <option value="1">2x sem juros</option>
+                    <option value="2">2x sem juros</option>
                     <option value="3">3x sem juros</option>
-                    <option value="3">4x sem juros</option>
+                    <option value="4">4x sem juros</option>
                     <option value="5">5x sem juros</option>
                 </select>
 
@@ -90,19 +91,19 @@ const schema = z
 
             <div className={style.botoes}>
                 <button type="button" onClick={onClose} className={style.voltar}>
-                    <img src={seta} alt="seta"></img>
-                    <p>VOLTAR</p>
+                <img src={seta} alt="seta" />
+                <p>VOLTAR</p>
                 </button>
                 <button type="submit" className={style.enviar}>
-                    <p>ENVIAR</p>
+                <p>ENVIAR</p>
                 </button>
             </div>
             </form>
         </div>
 
-        {abrirModal3 && (
-            <Modal3 onClose={() => setAbrirModal3(false)} />
-        )}
+        {abrirModal3 && <Modal3 onClose={() => setAbrirModal3(false)} />}
         </div>
     );
 }
+
+

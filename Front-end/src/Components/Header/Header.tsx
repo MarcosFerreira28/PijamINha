@@ -3,6 +3,7 @@ import carrinho from "../../assets/Carrinho.png"
 import favorito from "../../assets/Favorito.png"
 import user from "../../assets/User.png"
 import styles from "./styles.module.css"
+import { Link } from "react-router-dom"
 
 export default function Header() {
     return (
@@ -18,7 +19,7 @@ export default function Header() {
 
             <div className={styles.icons}>
                 <div>
-                    <img src={carrinho} alt="carrinho" />
+                    <Link to="/carrinho"><img src={carrinho} alt="carrinho" /></Link>
                     <img src={favorito} alt="favorito" />
                 </div>
                 <img src={user} alt="login" />
