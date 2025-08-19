@@ -1,6 +1,6 @@
 import Header2 from "../../Components/Header-2";
-import setaesquerda from "../../Assets/setaesquerda.png";
-import setadireita from "../../Assets/setadireita.png";
+import setaesquerda from "../../Assets/setaesquerda.svg";
+import setadireita from "../../Assets/setadireita.svg";
 
 import '../../../node_modules/swiper/swiper.css'
 import '../../../node_modules/swiper/modules/pagination.min.css'
@@ -44,7 +44,7 @@ export default function Favoritos() {
                         spaceBetween={24}
                         navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
                         onSwiper={setSwiperInstance}
-                        loop={false}
+                        loop={true}
                         className={styles.swiper}
                     >
                         <SwiperSlide>
@@ -79,7 +79,7 @@ export default function Favoritos() {
                     <div className={styles.fadeRight}></div>
                 </div>
 
-                <img src={setadireita} alt="Próximo" ref={nextRef} />
+                <img src={setadireita} alt="Próximo" ref={nextRef} className={styles.setas} />
             </div>
         </>
     )

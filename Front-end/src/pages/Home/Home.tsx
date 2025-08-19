@@ -15,8 +15,8 @@ import PromocaoValentines from '../../Assets/PromocaoValentines.png';
 import PromocaoGrupo from '../../Assets/PromocaoGrupo.png';
 import Card from '../../Components/Card/Card';
 import Feedback from '../../Components/FeedbackCard/FeedbackCard.tsx';
-import setaesquerda from '../../Assets/setaesquerda.png';
-import setadireita from '../../Assets/setadireita.png';
+import setaesquerda from '../../Assets/setaesquerda.svg';
+import setadireita from '../../Assets/setadireita.svg';
 
 import { useRef, useEffect, useState } from 'react';
 import type { FeedbackType } from '../../Types/Feedback.ts';
@@ -33,6 +33,8 @@ export default function Home() {
         { name: 'marcola', rating: 5, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
         { name: 'sof da Silva', rating: 4.8, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
         { name: 'que isso da Silva', rating: 4.1, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
+        { name: 'Zeus', rating: 4.1, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
+        { name: 'Pedro pedra', rating: 4.1, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
     ];
 
     const feedbacksAgrupados = agruparFeedbacks(feedbacks);
