@@ -4,7 +4,7 @@ import z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 
 const userSchema = z.object({
-    nome: z.string().regex(/^[^/d]+$/, {
+    nome: z.string().regex(/^\D+$/, {
         message: 'Não pode ter números'
     }),
     usuario: z.string().refine(value => value.trim().length > 0, { message: 'Não pode ter espaços' }),
@@ -12,11 +12,13 @@ const userSchema = z.object({
         message: 'O e-mail não é válido'
     }),
     senha: z.string().nonempty('Senha não pode ser vazia').min(6, 'Deve ter no mínimo 6 caracteres').refine(value => value.trim().length > 0, { message: 'Não pode ter espaços' }),
-    confirmarSenha: z.string().nonempty('A confirmação de senha não pode ser vazia').refine(data => data.senha === data.confirmarSenha, {
-        message: 'As senhas não coincidem',
-        path: ['confimarSenha']
+    confirmarSenha: z.string().nonempty('A confirmação de senha não pode ser vazia')
     })
-})
+    .refine((data) => data.senha === data.confirmarSenha, {
+        message: 'As senhas não coincidem',
+        path: ['confirmarSenha']
+});
+
 
 type User = z.infer<typeof userSchema>
 
