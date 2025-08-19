@@ -1,0 +1,97 @@
+
+.mainCadastro{
+    max-width: 100%;
+    height: auto;
+    background-image: url("../../assets/FundoVermelho.png");
+    background-repeat: repeat;
+    background-size: 120%;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+}
+
+.cardCadastro{
+    width: 521px;
+    min-height: 624px;
+    background-color: rgba(116, 1, 11, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 95px 0 71px 0;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px 0 hsla(0, 0%, 0%, 0.5);
+}
+.cardCadastro h1{
+    font-family: 'Numans';
+    color: white;
+    font-weight: 400;
+    font-size: 48px;
+    padding-top: 41px;
+    padding-bottom: 51px;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    border-radius: 2px;
+}
+.inputs input{
+    width: 335.65px;
+    height: 44px;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Roboto';
+    color: hsla(0, 0%, 0%, 0.5);
+}
+.inputs input::placeholder{
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Roboto';
+    color: hsla(0, 0%, 0%, 0.5);
+}
+.btnRegistrar{
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    background-color: hsla(355, 76%, 36%, 1);
+    box-shadow: 0 5px 6px 0 hsla(0, 0%, 0%, 0.25);
+    color: white;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    font-size: 24px; 
+    border: none;  
+    cursor: pointer; 
+    padding: 7.5px 8px;
+
+    &:hover{
+        background-color: rgba(162, 22, 34, 0.705);
+    }
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4.75rem;
+}
+
+/*aqui tem a estilizacao das mensagens de span dos inputs*/
+.errorMessage{
+    color: white;
+    font-size: 14px;
+}
+/*.cadaInput engloba o input com o span*/
+.cadaInput{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+.btnEspan{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .625rem;
+    margin-bottom: 72px;
+}
