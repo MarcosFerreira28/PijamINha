@@ -3,11 +3,12 @@ import carrinho from "../../assets/Carrinho.png"
 import favorito from "../../assets/Favorito.png"
 import user from "../../assets/User.png"
 import styles from "./styles.module.css"
+import { Link } from "react-router-dom"
 
 export default function Header() {
     return (
         <header className={styles.header}>
-            <img src={logo} alt="logo" className={styles.loboimg}/>
+            <Link to="/"><img src={logo} alt="logo" className={styles.loboimg}/></Link>
 
             <nav className={styles.nav}>
                 <p>PIJAMAS</p>
@@ -18,10 +19,10 @@ export default function Header() {
 
             <div className={styles.icons}>
                 <div>
-                    <img src={carrinho} alt="carrinho" />
-                    <img src={favorito} alt="favorito" />
+                    <Link to="/carrinho"><img src={carrinho} alt="carrinho" /></Link>
+                    <Link to="/favoritos"><img src={favorito} alt="favorito" /></Link>
                 </div>
-                <img src={user} alt="login" />
+                <Link to="/login"><img src={user} alt="login" /></Link>
             </div>
         </header>
     )

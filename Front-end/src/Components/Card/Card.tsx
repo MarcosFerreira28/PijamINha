@@ -24,9 +24,17 @@ export default function Card({name, price, image, favorite, on_sale, sale_percen
             <div className={styles.images}>
 
                 {favorited ? (
-                    <img src={favoritadoimg} alt="coracao" className={styles.coracao} onClick={() => handleFavorite()}/>
+                    <img src={favoritadoimg} alt="coracao" className={styles.coracao} 
+                    onClick={e => {
+                        e.preventDefault();
+                        handleFavorite();
+                    }}/>
                 ) : (
-                    <img src={coracao} alt="coracao" className={styles.coracao} onClick={() => handleFavorite()}/>
+                    <img src={coracao} alt="coracao" className={styles.coracao} 
+                    onClick={e => {
+                        e.preventDefault();
+                        handleFavorite();
+                    }}/>
                 )}
 
                 {on_sale && (<img src={desconto} className={styles.desconto}/>)}
@@ -34,7 +42,7 @@ export default function Card({name, price, image, favorite, on_sale, sale_percen
             </div>
 
             <div className={styles.info}>
-                <h1 style={menor ? {fontSize: "12px"} : {}}>{name}</h1>
+                <h1 style={menor ? {fontSize: "13px"} : {}}>{name}</h1>
                 <div style={{display: "flex", flexDirection: "column", alignItems: "center", gap: "12px"}}>
                     <div className={styles.preco}>
                         {on_sale && (
