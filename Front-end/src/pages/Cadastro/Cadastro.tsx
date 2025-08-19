@@ -85,11 +85,11 @@ export default function Cadastro() {
                                 <span className={styles.errorMessage}>{errors.confirmarSenha.message}</span>
                             }</div>
                     </div>
+                    <div className={styles.btnEspan}><button type='submit' disabled={isSubmitting} className={styles.btnRegistrar}>{isSubmitting ? 'REGISTRANDO...' : 'REGISTRAR'}</button>
+                        {errors.root &&
+                            <span className={styles.errorMessage}>{errors.root.message}</span>
+                        }</div>
 
-                    <button type='submit' disabled={isSubmitting} className={styles.btnRegistrar}>{isSubmitting ? 'REGISTRANDO...' : 'REGISTRAR'}</button>
-                    {errors.root &&
-                        <span className={styles.errorMessage}>{errors.root.message}</span>
-                    }
                 </form>
 
             </div>
