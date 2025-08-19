@@ -12,7 +12,7 @@
 
 .cardCadastro{
     width: 521px;
-    height: 624px;
+    min-height: 624px;
     background-color: rgba(116, 1, 11, 1);
     display: flex;
     flex-direction: column;
@@ -28,11 +28,11 @@
     font-weight: 400;
     font-size: 48px;
     padding-top: 41px;
+    padding-bottom: 51px;
 }
 .inputs{
     display: flex;
     flex-direction: column;
-    gap: 16px;
     border-radius: 2px;
 }
 .inputs input{
@@ -75,8 +75,15 @@
     align-items: center;
     gap: 4.75rem;
 }
+
+/*aqui tem a estilizacao das mensagens de span dos inputs*/
 .errorMessage{
     color: white;
     font-size: 14px;
-    bottom: -20px;
+}
+/*.cadaInput engloba o input com o span*/
+.cadaInput{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
 }

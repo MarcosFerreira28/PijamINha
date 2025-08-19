@@ -5,17 +5,17 @@ import { zodResolver } from "@hookform/resolvers/zod"
 
 const userSchema = z.object({
     nome: z.string().regex(/^\D+$/, {
-        message: 'Não pode ter números'
+        message: '* Não pode ter números'
     }),
-    usuario: z.string().refine(value => value.trim().length > 0, { message: 'Não pode ter espaços' }),
-    email: z.string().nonempty('O E-mail não pode ser vazio').refine(value => z.string().email().safeParse(value).success, {
-        message: 'O e-mail não é válido'
+    usuario: z.string().refine(value => value.trim().length > 0, { message: '* Não pode ter espaços' }),
+    email: z.string().nonempty('* O E-mail não pode ser vazio').refine(value => z.string().email().safeParse(value).success, {
+        message: '* O e-mail não é válido'
     }),
-    senha: z.string().nonempty('Senha não pode ser vazia').min(6, 'Deve ter no mínimo 6 caracteres').refine(value => value.trim().length > 0, { message: 'Não pode ter espaços' }),
-    confirmarSenha: z.string().nonempty('A confirmação de senha não pode ser vazia')
+    senha: z.string().nonempty('* Senha não pode ser vazia').min(6, '* Deve ter no mínimo 6 caracteres').refine(value => value.trim().length > 0, { message: '* Não pode ter espaços' }),
+    confirmarSenha: z.string().nonempty('* A confirmação de senha não pode ser vazia')
 })
     .refine((data) => data.senha === data.confirmarSenha, {
-        message: 'As senhas não coincidem',
+        message: '* As senhas não coincidem',
         path: ['confirmarSenha']
     });
 
@@ -31,10 +31,10 @@ export default function Cadastro() {
         try {
             await new Promise(resolve => setTimeout(resolve, 2000))
             console.log(data)
-            throw new Error('Erro ao criar usuário')
+            throw new Error('* Erro ao criar usuário')
         } catch {
             setError('root', {
-                message: "Error ao criar usuário"
+                message: "* Erro ao criar usuário"
             })
         }
     }
