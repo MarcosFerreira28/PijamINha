@@ -1,5 +1,5 @@
 import styles from "./styles.module.css"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
@@ -36,6 +36,7 @@ type User = z.infer<typeof userSchema>
 
 export default function Login() {
     const [mostrarSenha, setMostrarSenha] = useState(false);
+    const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors, isSubmitting }, setError } = useForm<User>({
         resolver: zodResolver(userSchema)
     })
@@ -44,6 +45,7 @@ export default function Login() {
         try {
             await new Promise(resolve => setTimeout(resolve, 1500))
             console.log(data)
+            navigate('/home');
             throw new Error('* Erro ao iniciar sessão: usuário não encontrado')
         } catch {
             setError('root', {
