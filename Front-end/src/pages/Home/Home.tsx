@@ -14,7 +14,7 @@ import PromocaoNatal from '../../Assets/PromocaoNatal.png';
 import PromocaoValentines from '../../Assets/PromocaoValentines.png';
 import PromocaoGrupo from '../../Assets/PromocaoGrupo.png';
 import Card from '../../Components/Card/Card';
-import Feedback from '../../Components/FeedbackCard/FeedbackCard.tsx';
+import FeedbackCard from '../../Components/FeedbackCard/FeedbackCard.tsx';
 import setaesquerda from '../../Assets/setaesquerda.svg';
 import setadireita from '../../Assets/setadireita.svg';
 
@@ -141,7 +141,7 @@ export default function Home() {
                                 <SwiperSlide key={idx}>
                                     <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', padding: '0 20px 20px 20px' }}>
                                         {grupo.map((feedbackCard, i) => (
-                                            <Feedback key={i} {...feedbackCard} />
+                                            <FeedbackCard key={i} {...feedbackCard} />
                                         ))}
                                     </div>
                                 </SwiperSlide>
