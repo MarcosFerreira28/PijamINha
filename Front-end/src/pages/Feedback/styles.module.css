@@ -17,4 +17,32 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
+
+.tituloEtexto{
+    width: 318px;
+    height: 134px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    justify-content: space-between;
+    padding-bottom: 30px;
+}
+
+.tituloEtexto h1{
+    font-family: 'Numans';
+    font-weight: 400;
+    font-size: 48px;
+}
+.texto{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto Serif';
+    font-size: 21px;
+    font-weight: 500;
+}
+
