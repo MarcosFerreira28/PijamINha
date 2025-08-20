@@ -24,10 +24,7 @@ export default function Feedback() {
                             placeholder="Descrição Detalhada"
                             className={styles.descricao}
                         />
-                    </div>
-                    <div className={styles.avaliacao}>
-
-                    </div>
+                    </div> 
                     <div className={styles.enviarContainer}>
                         <button className={styles.btnEnviar}>ENVIAR</button>
                     </div>
