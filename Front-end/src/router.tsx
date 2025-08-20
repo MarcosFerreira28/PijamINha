@@ -8,6 +8,7 @@ import Pijaminhas from "./pages/Pijaminhas/Pijaminhas";
 import Individual from "./pages/Individual/Individual";
 import Cadastro from "./pages/Cadastro/Cadastro";
 import Login from "./pages/Login/Login";
+import Feedback from "./pages/Feedback/Feedback";
 
 
 
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path: "/login",
                 element: <Login />
+            },
+            {
+                path: "/feedback",
+                element: <Feedback />
             },
             {
                 path:"/carrinho",
