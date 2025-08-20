@@ -9,7 +9,7 @@ export type Pijama = {
     gender: string | number;
     favorite: boolean;
     on_sale: boolean;
-    sale_percent: number;
+    sale_percent?: number;
     menor: boolean;
     //Verificar se as outras colunas da tabela deveriam estar nesse tipo
     // eu acredito que não

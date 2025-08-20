@@ -1,0 +1,198 @@
+.mainLogin {
+    max-width: 100%;
+    height: auto;
+    background-image: url("../../assets/FundoVermelho.png");
+    background-repeat: repeat;
+    background-size: 120%;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.loginCard {
+    width: 488px;
+    min-height: 600px;
+    background-color: rgba(116, 1, 11, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 95px 0 71px 0;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px 0 hsla(0, 0%, 0%, 0.5);
+    padding-bottom: 44px;
+}
+
+.tituloEdesc {
+    width: 390px;
+    height: 133px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 31px;
+    align-items: center;
+    color: white;
+    padding-top: 53px;
+    padding-bottom: 32px;
+    letter-spacing: 4%;
+}
+
+.tituloEdesc h1 {
+    font-family: 'Numans';
+    font-weight: 400;
+    font-size: 48px;
+}
+
+.desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto Serif';
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.desc span {
+    font-weight: 900;
+}
+
+.inputsEbotoes {
+    width: 390px;
+    height: 321px;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputs {
+    width: 390px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5625rem;
+}
+
+.emailInput input,
+.senhaInput input {
+    width: 370px;
+    height: 44px;
+    font-size: 20px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px 0 hsla(0, 0%, 0%, 0.25);
+    padding-left: 20px;
+    color: hsla(0, 0%, 0%, 0.47);
+    letter-spacing: 2px;
+}
+.senhaInput input{
+    padding-right: 40px;
+}
+
+.emailInput input::placeholder,
+.senhaInput input::placeholder {
+    font-size: 20px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    color: hsla(0, 0%, 0%, 0.47);
+}
+.emailInput{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 7px;
+}
+.senhaInput {
+    width: 390px;
+    height: 44px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    padding-bottom: 7px;
+}
+
+.senhaInput button {
+    border: none;
+    position: absolute;
+    background-color: transparent;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.btnEsqueciSenha {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Roboto';
+    flex-direction: row;
+    text-decoration: underline;
+    letter-spacing: 1px;
+    color: hsla(355, 72%, 74%, 1);
+    padding-bottom: 22px;
+}
+
+.botaoEbarra {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.8125rem;
+    padding-bottom: 48px;
+}
+
+.btnEntrar {
+    width: 390px;
+    height: 44px;
+    border: none;
+    border-radius: 10px;
+    background-color: hsla(355, 76%, 36%, 1);
+    box-shadow: 0 5px 6px 0 hsla(0, 0%, 0%, 0.25);
+    color: white;
+    font-size: 24px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    letter-spacing: 1px;
+
+    &:hover {
+        background-color: rgba(162, 22, 34, 0.704);
+    }
+}
+
+.barraBranca {
+    width: 390px;
+    height: 0;
+    border: 1.5px solid white;
+}
+
+.btnCadastro {
+    width: 220px;
+    height: 44px;
+    background-color: hsla(355, 76%, 36%, 1);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 24px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    box-shadow: 0 5px 6px 0 hsla(0, 0%, 0%, 0.25);
+}
+
+.cadastroContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+span{
+    color: white;
+}
+.errorMessageEmail{
+    padding-top: 7px;
+}

@@ -1,6 +1,6 @@
 import Header2 from "../../Components/Header-2";
-import setaesquerda from "../../Assets/setaesquerda.png";
-import setadireita from "../../Assets/setadireita.png";
+import setaesquerda from "../../Assets/setaesquerda.svg";
+import setadireita from "../../Assets/setadireita.svg";
 
 import '../../../node_modules/swiper/swiper.css'
 import '../../../node_modules/swiper/modules/pagination.min.css'
@@ -44,42 +44,42 @@ export default function Favoritos() {
                         spaceBetween={24}
                         navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
                         onSwiper={setSwiperInstance}
-                        loop={false}
+                        loop={true}
                         className={styles.swiper}
                     >
                         <SwiperSlide>
-                            <Link to="/cardInfo" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama feminino longo - estampa poá daksdajs ndna jsndjs najn dsjan jdn ajn" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
+                            <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama feminino longo - estampa poá daksdajs ndna jsndjs najn dsjan jdn ajn" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Link to="/cardInfo" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama curto - estampa poá" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
+                            <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama curto - estampa poá" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Link to="/cardInfo" style={{cursor: "pointer", textDecoration: "none"}}><Card name="nem pijama isso é" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
+                            <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="nem pijama isso é" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Link to="/cardInfo" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama extra" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
+                            <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama extra" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Link to="/cardInfo" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama extra" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
+                            <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama extra" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Link to="/cardInfo" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama extra" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
+                            <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama extra" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Link to="/cardInfo" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama extra" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
+                            <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama extra" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Link to="/cardInfo" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama extra" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
+                            <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama extra" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Link to="/cardInfo" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama extra" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
+                            <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama extra" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={false} sale_percent={10} menor={true} /></Link>
                         </SwiperSlide>
                     </Swiper>
 
                     <div className={styles.fadeRight}></div>
                 </div>
 
-                <img src={setadireita} alt="Próximo" ref={nextRef} />
+                <img src={setadireita} alt="Próximo" ref={nextRef} className={styles.setas} />
             </div>
         </>
     )

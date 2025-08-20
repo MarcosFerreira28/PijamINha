@@ -1,0 +1,209 @@
+.container {
+    height: 139vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tituloContainer{
+    width: 37.5vw;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+
+}
+
+.tituloContainer h1 {
+    height: 28vh;
+    overflow: hidden;
+    font-family: Numans;
+    font-weight: 400;
+    font-size: 48px;
+    letter-spacing: 4%;
+    color: var(--azul-400);
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.tituloContainer p {
+    font-family: Numans;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 4%;
+    color: var(--azul-200);
+}
+
+.priceContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+}
+
+.priceContainer h1 {
+    font-family: Nunito Sans;
+    font-weight: 700;
+    font-size: 64px;
+    color: black;
+}
+
+.priceContainer p {
+    font-family: Nunito Sans;
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--cinza-400);
+}
+
+.tamanhoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+}
+
+.tamanhoContainer h2 {
+    font-family: Nunito;
+    font-weight: 300;
+    font-style: Italic;
+    font-size: 24px;
+    color: black;
+}
+
+.tamanhoContainer .tamanhos {
+    display: flex;
+    flex-direction: row;
+    gap: 13px;
+}
+
+.tamanhos .tamanho{
+    width: 3.7vw;
+    height: 8.5vh;
+    border: none;
+    border-radius: 1.47px;
+    background-color: var(--azul-200);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Numans;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+}
+
+.tamanhoSelecionado {
+    width: 3.7vw;
+    height: 8.5vh;
+    border: none;
+    border-radius: 1.47px;
+    background-color: var(--azul-0);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Numans;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+}
+
+.tamanho:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.tamanhoContainer p {
+    width: 239px;
+    height: 36px;
+    font-family: Nunito;
+    font-weight: 300;
+    font-style: Light;
+    font-size: 14px;
+    color: black;
+}
+
+.quantidadeContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.quantidadeContainer h2 {
+    font-family: Nunito;
+    font-weight: 300;
+    font-style: Italic;
+    font-size: 24px;
+}
+
+.botaoTotal {
+    display: flex;
+    align-items: center;
+    border: 1px solid #565656;
+    overflow: hidden;
+    width: fit-content;
+    background-color: #F5F8FF;
+
+    height: 8.5vh;
+}
+
+.botao {
+    padding: 10px 15px;
+    border: none;
+    background: #F5F8FF;
+    cursor: pointer;
+}
+
+.botao:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.valor {
+    font-family: "Nunito", sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 100%;
+
+    padding: 0 3.2vw 0 3.2vw;
+}
+
+.botoesContainer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.botoesContainer button {
+    width: 34.5vw;
+    height: 16vh;
+    border-radius: 4px;
+    background-color: var(--azul-100);
+    border: none;
+
+    font-family: Nunito Sans;
+    font-weight: 700;
+    font-size: 1.7vw;
+    line-height: 100%;
+    color: white;
+}
+
+.botoesContainer img {
+    height: 16vh;
+}
+
+.botoesContainer .coracao {
+    width: auto;
+    height: 16vh;
+    cursor: pointer;
+}
+
+.coracao:hover{
+    transform: scale(1.10);
+    transition: 0.5s ease-in-out;
+}
