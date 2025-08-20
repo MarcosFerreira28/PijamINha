@@ -104,7 +104,7 @@ export default function InfoPijamaIndividual() {
             </div>
 
             <div className={styles.botoesContainer}>
-                <button>ADICIONAR AO CARRINHO</button>
+                <button style={{cursor: "pointer"}}>ADICIONAR AO CARRINHO</button>
                 {favorited ? (
                     <img src={coracaofavoritado} alt="coracao" className={styles.coracao} 
                     onClick={e => {

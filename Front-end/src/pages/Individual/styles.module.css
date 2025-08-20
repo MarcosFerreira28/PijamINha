@@ -15,6 +15,7 @@
 .imagemPijama{
     width: 40vw;
     height: 139vh;
+    box-shadow: 16px 16px 16px 0px #00000040;
 }
 
 .imagensContainer {

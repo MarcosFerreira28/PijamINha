@@ -1,5 +1,6 @@
 import InfoPijamaIndividual from "../../Components/InfoPijamaIndividual/InfoPijamaIndividual";
 import styles from "./styles.module.css";
+import SobrePijama from "../../Components/SobrePijama/SobrePijama";
 
 import masculino from '../../Assets/Masculino.svg';
 import feminino from '../../Assets/Feminino.svg';
@@ -47,7 +48,7 @@ export default function Individual() {
                 )}
             </div>
 
-            {/* <SobrePijama /> */}
+            <SobrePijama description="Este é um pijama confortável e estiloso, perfeito para noites de descanso." />
         </div>
     )
 }
