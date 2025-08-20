@@ -49,3 +49,55 @@
 .desc span{
     font-weight: 900;
 }
+.inputsEbotoes{
+    width: 390px;
+    height: 321px;
+    display: flex;
+    flex-direction: column;
+}
+.inputs{
+    width: 390px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5625rem;
+}
+.emailInput input,
+.senhaInput input{
+    width: 370px;
+    height: 44px;
+    font-size: 20px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 4px 4px 0 hsla(0, 0%, 0%, 0.25);
+    padding-left: 20px;
+    color: hsla(0, 0%, 0%, 0.47);
+    letter-spacing: 2px;
+}
+.emailInput input::placeholder,
+.senhaInput input::placeholder{
+    font-size: 20px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    color: hsla(0, 0%, 0%, 0.47);
+}
+.senhaInput {
+    width: 390px;
+    height: 44px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.senhaInput button{
+    border: none;
+    position: absolute;
+    background-color: transparent;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
