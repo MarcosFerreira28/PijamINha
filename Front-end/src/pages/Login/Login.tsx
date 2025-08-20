@@ -37,11 +37,13 @@ export default function Login() {
                     </div>
                     <button className={styles.btnEsqueciSenha}>Esqueci minha senha</button>
                     <div className={styles.botaoEbarra}>
-                        <button className={styles.btnEntrar}>Entrar</button>
+                        <button className={styles.btnEntrar}>ENTRAR</button>
                         <div className={styles.barraBranca}></div>
                     </div>
+                    <div className={styles.cadastroContainer}>
+                        <Link to='/cadastro' className={styles.btnCadastro}>CADASTRE-SE</Link>
+                    </div>
 
-                    <Link to='/cadastro'>Cadastre-se</Link>
                 </form>
 
             </div>
