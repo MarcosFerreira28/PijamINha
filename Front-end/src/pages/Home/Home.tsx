@@ -112,17 +112,12 @@ export default function Home() {
                 <div className={styles.cardContainer}>
                     <h1 className={styles.titulo}>Nossas últimas promoções!</h1>
                     <div className={styles.cards}>
-                        {pijamas.filter(p => p.on_sale).slice(0,3).map((pijama, index) => (
+                        {pijamas.filter(p => p.onSale).slice(0,3).map((pijama, index) => (
                             <Link to={`/individual/${pijama.id}`} key={index} style={{cursor: "pointer", textDecoration: "none"}}>
-                                <Card name={pijama.name} price={pijama.price} image={pijama.image} favorite={pijama.favorite} on_sale={pijama.on_sale} sale_percent={pijama.sale_percent} menor={false}/>
+                                <Card name={pijama.name} price={pijama.price} image={pijama.image} favorite={pijama.favorite} onSale={pijama.onSale} salePercent={pijama.salePercent} menor={false}/>
                             </Link>
                         ))}
-
-                        {/* <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama feminino longo - estampa poá daksdajs ndna jsndjs najn dsjan jdn ajn" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={false} /></Link>
-                        <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama feminino longo - estampa poá daksdajs ndna jsndjs najn dsjan jdn ajn" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={false} /></Link>
-                        <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama feminino longo - estampa poá daksdajs ndna jsndjs najn dsjan jdn ajn" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={false} /></Link> */}
                     </div>
-                    {/* precisa do id no caminho do link talvez*/}
                 </div>
 
                 <div className={styles.feedbacks}>
