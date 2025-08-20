@@ -132,7 +132,7 @@
                 "qtd": 1
             }
         ],
-            "favorite": false,
+            "favorite": true,
             "on_sale": true,
             "sale_percent": 12
         }
