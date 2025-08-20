@@ -46,18 +46,17 @@ export default function Card({name, price, image, favorite, on_sale, sale_percen
                 <div style={{display: "flex", flexDirection: "column", alignItems: "center", gap: "12px"}}>
                     <div className={styles.preco}>
                         {on_sale && (
-                            menor ? null : (
-                                <p className={styles.precoOriginal}>
-                                    R$ {price.toFixed(2).replace(".", ",")}
-                                </p>
-                            )
+                            <p className={styles.precoOriginal} style={{fontSize: "12px"}}>
+                                R$ {price.toFixed(2).replace(".", ",")}
+                            </p>
                         )}
+
                         {on_sale ? (
                             <h2 style={menor ? {fontSize: "24px"} : {}}>
                                 R$ {(price - (price * (sale_percent ?? 0) / 100)).toFixed(2).replace(".", ",")}
                             </h2>
                         ) : (
-                            <h2>R$ {price.toFixed(2).replace(".", ",")}</h2>
+                            <h2 style={menor ? {fontSize: "24px"} : {}}>R$ {price.toFixed(2).replace(".", ",")}</h2>
                         )}
                     </div>
 
