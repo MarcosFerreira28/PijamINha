@@ -112,7 +112,7 @@
 
 .feedbacksSwiper {
     width: 100%;
-    max-width: 90vw;
+    max-width: 87vw;
 }
 
 .feedbacksTitulo {
@@ -125,8 +125,6 @@
 }
 
 .feedbacks .setas {
-    /* padding: 0 10px 0 0; */
-    width: 4.8vw;
     height: 11vh;
     cursor: pointer;
 }

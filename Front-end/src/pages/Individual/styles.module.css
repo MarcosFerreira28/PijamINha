@@ -1,0 +1,31 @@
+.container {
+    background-image: url("../../assets/fundoAzul.png");
+    background-position: center;
+    background-size: 100%;
+}
+
+.infoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+    gap: 84px;
+}
+
+.imagemPijama{
+    width: 40vw;
+    height: 139vh;
+    box-shadow: 16px 16px 16px 0px #00000040;
+}
+
+.imagensContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 113px;
+    padding-bottom: 49px;
+}
+
+.imagensContainer img {
+    height: 21vh;
+}
