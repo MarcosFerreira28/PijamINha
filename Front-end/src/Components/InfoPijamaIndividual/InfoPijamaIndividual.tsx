@@ -38,14 +38,14 @@ export default function InfoPijamaIndividual() {
 
 
     return (
-        <div>
+        <div className={styles.container}>
             <div className={styles.tituloContainer}>
-                <h1>Titulo do pijama</h1>
+                <h1>Titulo do pijama um pouco mairo para poder testar o tamanho</h1>
                 <p>Ref: #id</p>
             </div>
 
             <div className={styles.priceContainer}>
-                <div>
+                <div style={{width: '39.9vw', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline'}}>
                     <h1>R$ 99,90</h1>
                     <p>6x de <strong>R$ 13,45</strong></p>
                 </div>
@@ -65,30 +65,32 @@ export default function InfoPijamaIndividual() {
                         </button>
                     ))}
                 </div>
-                <p>Ainda temos <strong>8</strong> peças do tamanho escolhido em nosso estoque!</p>
+                <p>Ainda temos <strong style={{fontWeight: "800", fontStyle: "italic"}}>8</strong> peças do tamanho escolhido em nosso estoque!</p>
             </div>
 
             <div className={styles.quantidadeContainer}>
                 <h2>Quantidade:</h2>
-                <button
-                    onClick={() => diminuir()}
-                    className={styles.botao}
-                    disabled={qtdSelecionada <= 1}
-                >
-                    <img src={menos} alt="-" />
-                </button>
-                <span className={styles.valor}>{qtdSelecionada}</span>
-                <button
-                    onClick={() => aumentar()}
-                    className={styles.botao}
-                    disabled={qtdSelecionada >= produto.estoque}
-                >
-                    <img src={mais} alt="+" />
-                </button>
+                <div className={styles.botaoTotal}>
+                    <button
+                        onClick={() => diminuir()}
+                        className={styles.botao}
+                        disabled={qtdSelecionada <= 1}
+                    >
+                        <img src={menos} alt="-" />
+                    </button>
+                    <span className={styles.valor}>{qtdSelecionada}</span>
+                    <button
+                        onClick={() => aumentar()}
+                        className={styles.botao}
+                        disabled={qtdSelecionada >= produto.estoque}
+                    >
+                        <img src={mais} alt="+" />
+                    </button>
+                </div>
             </div>
 
             <div className={styles.botoesContainer}>
-                <button>Adicionar ao carrinho</button>
+                <button>ADICIONAR AO CARRINHO</button>
                 <img src={coracao} alt="" />
             </div>
         </div>
