@@ -3,6 +3,7 @@ import RootLayout from "./RootLayout";
 import Home from "./pages/Home/Home";
 import Carrinho from "./pages/Carrinho/Carrinho";
 import Favoritos from "./pages/Favoritos/Favoritos";
+import Pijaminhas from "./pages/Pijaminhas/Pijaminhas";
 
 
 const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
             {
                 path:"/favoritos",
                 element:<Favoritos/>
+            },
+            {
+                path: "/pijaminhas",
+                element:<Pijaminhas/>
             }
         ]
     }
