@@ -20,12 +20,12 @@ export default function InfoPijamaIndividual() {
     const [tamanhoSelecionado, setTamanhoSelecionado] = useState<string | null>(null);
     
     useEffect(() => {
-        if (!tamanhoSelecionado && pijama.sizes.length > 0) {
-            setTamanhoSelecionado(pijama.sizes[0].size);
+        if (!tamanhoSelecionado && pijama.pajamaSize.length > 0) {
+            setTamanhoSelecionado(pijama.pajamaSize[0].size);
         }
-    }, [pijama.sizes, tamanhoSelecionado]);
+    }, [pijama.pajamaSize, tamanhoSelecionado]);
     
-    const quantidadeEstoque = tamanhoSelecionado ? pijama.sizes.find(t => t.size === tamanhoSelecionado)?.stock_quantity ?? 0 : 0
+    const quantidadeEstoque = tamanhoSelecionado ? pijama.pajamaSize.find(t => t.size === tamanhoSelecionado)?.stockQuantity ?? 0 : 0
 
     useEffect(() => {
         if (qtdSelecionada > quantidadeEstoque) {
@@ -76,7 +76,7 @@ export default function InfoPijamaIndividual() {
             <div className={styles.tamanhoContainer}>
                 <h2>Tamanhos:</h2>
                 <div className={styles.tamanhos}>
-                    {pijama.sizes.map((tamanho) => (
+                    {pijama.pajamaSize.map((tamanho) => (
                         <button
                             key={tamanho.size}
                             className={`${tamanhoSelecionado === tamanho.size ? styles.tamanhoSelecionado : styles.tamanho}`}
