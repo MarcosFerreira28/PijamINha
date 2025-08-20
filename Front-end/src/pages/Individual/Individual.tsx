@@ -11,11 +11,15 @@ import verao from '../../Assets/Verão.svg';
 import adulto from '../../Assets/Adulto.svg';
 import infantil from '../../Assets/Infantil.svg';
 import ambos from '../../Assets/Ambos.svg';
+import { useLoaderData } from "react-router-dom";
+import type { Pijama } from "../../Types/Pijama";
 
 export default function Individual() {
-    const season = "inverno";
-    const gender = "Feminino";
-    const type = "Adulto";
+    const info = useLoaderData() as Pijama;
+
+    const season = info.season;
+    const gender = info.gender;
+    const type = info.type;
 
     return (
         <div className={styles.container}>

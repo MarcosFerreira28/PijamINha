@@ -8,6 +8,7 @@ import Pijaminhas from "./pages/Pijaminhas/Pijaminhas";
 import Individual from "./pages/Individual/Individual";
 import Cadastro from "./pages/Cadastro/Cadastro";
 import Login from "./pages/Login/Login";
+import InfoLoader from "./Functions/InfoLoader";
 
 
 
@@ -38,13 +39,13 @@ const router = createBrowserRouter([
                 element:<Favoritos/>
             },
             {
-                path: "/pijaminhas",
-                element:<Pijaminhas/>
+                path:"/individual/:pijamaId",
+                element:<Individual/>,
+                loader: InfoLoader
             },
             {
-                path:"/individual",
-                element:<Individual/>
-
+                path: "/pijaminhas",
+                element:<Pijaminhas/>
             }
         ]
     }

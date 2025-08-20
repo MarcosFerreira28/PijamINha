@@ -17,7 +17,8 @@
     font-size: 2.9vw;
     text-align: center;
     margin-top: 6vh;
-    margin-bottom: 1vh
+    margin-bottom: 1vh;
+    color: black;
 }
 
 .feedbackContainer img {
@@ -45,6 +46,7 @@
     font-size: 1.1vw;
     text-align: center;
     vertical-align: bottom;
+    color: black;
 
     display: -webkit-box;
     -webkit-line-clamp: 7;

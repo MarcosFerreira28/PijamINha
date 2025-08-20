@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './styles.module.css';
 
 import menos from '../../Assets/Diminuir.png';
@@ -7,39 +7,45 @@ import coracao from '../../Assets/Favorito-cinza.png';
 import coracaofavoritado from '../../Assets/Favoritado.png';
 import Desfavoritar from '../../Functions/Desfavoritar';
 import Favoritar from '../../Functions/Favoritar';
+import { useLoaderData } from 'react-router-dom';
+import type { Pijama } from '../../Types/Pijama';
+import useCartStore from '../../store/CartStore';
+
 
 export default function InfoPijamaIndividual() {
-    const produto = {
-        id: 1,
-        nome: "PIJAMA FEMENINO LONGO - ESTAMPA POÁ",
-        ref: "#123456",
-        tamanho: "M",
-        preco: 78.9,
-        img: "https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg",
-        estoque: 8,
-        favorite: true
-    }
+    const pijama = useLoaderData() as Pijama;
 
     const [qtdSelecionada, setQtdSelecionada] = useState(1);
+
+    const [tamanhoSelecionado, setTamanhoSelecionado] = useState<string | null>(null);
+    
+    useEffect(() => {
+        if (!tamanhoSelecionado && pijama.sizes.length > 0) {
+            setTamanhoSelecionado(pijama.sizes[0].size);
+        }
+    }, [pijama.sizes, tamanhoSelecionado]);
+    
+    const quantidadeEstoque = tamanhoSelecionado ? pijama.sizes.find(t => t.size === tamanhoSelecionado)?.stock_quantity ?? 0 : 0
+
+    useEffect(() => {
+        if (qtdSelecionada > quantidadeEstoque) {
+            setQtdSelecionada(quantidadeEstoque);
+        }
+    }, [tamanhoSelecionado, quantidadeEstoque]);
+
 
     const diminuir = () => {
         if (qtdSelecionada > 1) {
             setQtdSelecionada(qtdSelecionada - 1);
         }
     };
-
     const aumentar = () => {
-        if (qtdSelecionada < produto.estoque) {
+        if (qtdSelecionada < quantidadeEstoque) {
             setQtdSelecionada(qtdSelecionada + 1);
         }
     };
 
-    
-    const [tamanhoSelecionado, setTamanhoSelecionado] = useState<string | null>(null);
-
-    const tamanhos = ['PP', 'P', 'M', 'G', 'GG'];
-
-    const [favorited, setFavorited] = useState(produto.favorite);
+    const [favorited, setFavorited] = useState(pijama.favorite);
     
     function handleFavorite() {
         setFavorited(!favorited);
@@ -50,36 +56,37 @@ export default function InfoPijamaIndividual() {
         }
     }
 
+    const addToCart = useCartStore((state) => state.addToCart);
 
     return (
         <div className={styles.container}>
             <div className={styles.tituloContainer}>
-                <h1>Titulo do pijama um pouco mairo para poder testar o tamanho</h1>
-                <p>Ref: #id</p>
+                <h1>{pijama.name}</h1>
+                <p>Ref: #{pijama.id}</p>
             </div>
 
             <div className={styles.priceContainer}>
                 <div style={{width: '39.9vw', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline'}}>
-                    <h1>R$ 99,90</h1>
-                    <p>6x de <strong>R$ 13,45</strong></p>
+                    <h1>R$ {pijama.price.toFixed(2)}</h1>
+                    <p>6x de <strong>R$ {(pijama.price / 6).toFixed(2)}</strong></p>
                 </div>
-                <p>Ou por <strong style={{fontStyle: 'italic'}}>R$67,06</strong> no PIX</p>
+                <p>Ou por <strong style={{fontStyle: 'italic'}}>R${(pijama.price * 15 / 100).toFixed(2)}</strong> no PIX</p>
             </div>
 
             <div className={styles.tamanhoContainer}>
                 <h2>Tamanhos:</h2>
                 <div className={styles.tamanhos}>
-                    {tamanhos.map((tamanho) => (
+                    {pijama.sizes.map((tamanho) => (
                         <button
-                            key={tamanho}
-                            className={`${tamanhoSelecionado === tamanho ? styles.tamanhoSelecionado : styles.tamanho}`}
-                            onClick={() => setTamanhoSelecionado(tamanho)}
+                            key={tamanho.size}
+                            className={`${tamanhoSelecionado === tamanho.size ? styles.tamanhoSelecionado : styles.tamanho}`}
+                            onClick={() => (setTamanhoSelecionado(tamanho.size))}
                         >
-                            {tamanho}
+                            {tamanho.size}
                         </button>
                     ))}
                 </div>
-                <p>Ainda temos <strong style={{fontWeight: "800", fontStyle: "italic"}}>8</strong> peças do tamanho escolhido em nosso estoque!</p>
+                <p>Ainda temos <strong style={{fontWeight: "800", fontStyle: "italic"}}>{quantidadeEstoque}</strong> peças do tamanho escolhido em nosso estoque!</p>
             </div>
 
             <div className={styles.quantidadeContainer}>
@@ -96,7 +103,7 @@ export default function InfoPijamaIndividual() {
                     <button
                         onClick={() => aumentar()}
                         className={styles.botao}
-                        disabled={qtdSelecionada >= produto.estoque}
+                        disabled={qtdSelecionada >= quantidadeEstoque}
                     >
                         <img src={mais} alt="+" />
                     </button>
@@ -104,7 +111,13 @@ export default function InfoPijamaIndividual() {
             </div>
 
             <div className={styles.botoesContainer}>
-                <button style={{cursor: "pointer"}}>ADICIONAR AO CARRINHO</button>
+                <button style={{cursor: "pointer"}} onClick={() => {
+                    addToCart(pijama);
+                    alert("Pijama adicionado ao carrinho!")
+                }}>
+                    ADICIONAR AO CARRINHO
+                </button>
+
                 {favorited ? (
                     <img src={coracaofavoritado} alt="coracao" className={styles.coracao} 
                     onClick={e => {
