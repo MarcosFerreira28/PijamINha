@@ -49,7 +49,7 @@ export default function Login() {
             const isLoginSuccessful = true;
 
             if (isLoginSuccessful) {
-                navigate('/home');
+                navigate('/');
             } else {
                 setError('root', {
                     message: "* Erro ao iniciar sessão: usuário ou senha incorretos"
