@@ -78,7 +78,7 @@ export default function Login() {
                                     {...register('usuarioOuEmail')}
                                 />
                                 {errors.usuarioOuEmail &&
-                                    <span className={styles.errorMessage}>{errors.usuarioOuEmail.message}</span>
+                                    <span className={styles.errorMessageEmail}>{errors.usuarioOuEmail.message}</span>
                                 }
                             </div>
                         </div>
