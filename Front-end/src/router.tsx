@@ -3,6 +3,7 @@ import RootLayout from "./RootLayout";
 import Home from "./pages/Home/Home";
 import Carrinho from "./pages/Carrinho/Carrinho";
 import Favoritos from "./pages/Favoritos/Favoritos";
+import Individual from "./pages/Individual/Individual";
 import Cadastro from "./pages/Cadastro/Cadastro";
 
 
@@ -13,7 +14,7 @@ const router = createBrowserRouter([
         element: <RootLayout />,
         children: [
             {
-                path: "/home",
+                path: "/",
                 element: <Home />
             },
             {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
             {
                 path:"/favoritos",
                 element:<Favoritos/>
+            },
+            {
+                path:"/individual",
+                element:<Individual/>
             }
         ]
     }
