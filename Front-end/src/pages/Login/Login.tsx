@@ -45,9 +45,9 @@ export default function Login() {
         try {
             await new Promise(resolve => setTimeout(resolve, 1500));
             console.log(data);
-    
+            
             const isLoginSuccessful = true;
-    
+
             if (isLoginSuccessful) {
                 navigate('/home');
             } else {
