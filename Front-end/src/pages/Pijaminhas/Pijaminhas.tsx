@@ -4,8 +4,8 @@ import styles from './styles.module.css';
 import { Link, useSearchParams } from 'react-router-dom';
 import { filtrarProdutos } from '../../Functions/filtrarProdutos';
 import { paginacaoProdutos } from '../../Functions/paginacaoProdutos';
-import setaesquerda from '../../Assets/setaesquerda.png';
-import setadireita from '../../Assets/setadireita.png';
+import setaesquerda from '../../assets/setaesquerda.svg';
+import setadireita from '../../Assets/setadireita.svg';
 import pijamaPoa from '../../assets/FUNDOCARDTESTE.png';
 import lupa from '../../assets/lupa.png';
 
