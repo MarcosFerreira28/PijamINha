@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
-import coracao from "../../Assets/coracao.svg";
+import coracao from "../../Assets/Favorito-cinza.png";
 import desconto from "../../Assets/Desconto.png";
-import favoritadoimg from "../../Assets/favoritado.svg";
+import favoritadoimg from "../../Assets/Favoritado.png";
 import type { CardPijama } from "../../Types/Pijama";
 import { useState } from "react";
 import Favoritar from "../../Functions/Favoritar";

@@ -3,8 +3,10 @@ import styles from './styles.module.css';
 
 import menos from '../../Assets/Diminuir.png';
 import mais from '../../Assets/Aumentar.png';
-import coracao from '../../Assets/coracao.svg';
-import favoritado from '../../Assets/favoritado.svg';
+import coracao from '../../Assets/Favorito-cinza.png';
+import coracaofavoritado from '../../Assets/Favoritado.png';
+import Desfavoritar from '../../Functions/Desfavoritar';
+import Favoritar from '../../Functions/Favoritar';
 
 export default function InfoPijamaIndividual() {
     const produto = {
@@ -15,6 +17,7 @@ export default function InfoPijamaIndividual() {
         preco: 78.9,
         img: "https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg",
         estoque: 8,
+        favorite: true
     }
 
     const [qtdSelecionada, setQtdSelecionada] = useState(1);
@@ -35,6 +38,17 @@ export default function InfoPijamaIndividual() {
     const [tamanhoSelecionado, setTamanhoSelecionado] = useState<string | null>(null);
 
     const tamanhos = ['PP', 'P', 'M', 'G', 'GG'];
+
+    const [favorited, setFavorited] = useState(produto.favorite);
+    
+    function handleFavorite() {
+        setFavorited(!favorited);
+        if (favorited) {
+            Favoritar();//passar a informação necessária aqui
+        } else {
+            Desfavoritar();//passar a informação necessária aqui
+        }
+    }
 
 
     return (
@@ -91,7 +105,19 @@ export default function InfoPijamaIndividual() {
 
             <div className={styles.botoesContainer}>
                 <button>ADICIONAR AO CARRINHO</button>
-                <img src={coracao} alt="" />
+                {favorited ? (
+                    <img src={coracaofavoritado} alt="coracao" className={styles.coracao} 
+                    onClick={e => {
+                        e.preventDefault();
+                        handleFavorite();
+                    }}/>
+                ) : (
+                    <img src={coracao} alt="coracao" className={styles.coracao} 
+                    onClick={e => {
+                        e.preventDefault();
+                        handleFavorite();
+                    }}/>
+                )}
             </div>
         </div>
     )

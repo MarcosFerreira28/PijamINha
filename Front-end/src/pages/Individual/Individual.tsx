@@ -47,7 +47,7 @@ export default function Individual() {
                 )}
             </div>
 
-            <SobrePijama />
+            {/* <SobrePijama /> */}
         </div>
     )
 }

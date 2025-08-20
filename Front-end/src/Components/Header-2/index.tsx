@@ -2,7 +2,7 @@ import compras from "../../assets/Compras.png"
 import comprasC from"../../assets/Compras-cinza.png"
 import { Link } from "react-router-dom";
 import favoritoC from "../../assets/Favorito-cinza.png"
-import favorito from "../../assets/favoritado.svg"
+import favorito from "../../assets/Favoritado.png"
 import style from"./style.module.css";
 
 
