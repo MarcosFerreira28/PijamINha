@@ -1,0 +1,140 @@
+{
+    "pijamas": [
+        {
+            "id": 1,
+            "name": "Pijama de Inverno",
+            "description": "Um pijama quentinho para o inverno.",
+            "image": "https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg",
+            "price": 79.90,
+            "season": "inverno",
+            "type" : "adulto",
+            "gender": "masculino",
+            "sizes": [{
+                "size" : "PP",
+                "qtd": 14
+            },
+            {
+                "size" : "P",
+                "qtd": 10
+            },
+            {
+                "size" : "M",
+                "qtd": 2
+            },
+            {
+                "size" : "G",
+                "qtd": 23
+            },
+            {
+                "size" : "GG",
+                "qtd": 4
+            }
+        ],
+            "favorite": false,
+            "on_sale": true,
+            "sale_percent": 10
+        },
+        {
+            "id": 2,
+            "name": "Pijama de VERÃO",
+            "description": "Um pijama quentinho para o verão.",
+            "image": "https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg",
+            "price": 27.90,
+            "season": "verão",
+            "type" : "infantil",
+            "gender": "feminino",
+            "sizes": [{
+                "size" : "PP",
+                "qtd": 14
+            },
+            {
+                "size" : "P",
+                "qtd": 9
+            },
+            {
+                "size" : "M",
+                "qtd": 2
+            },
+            {
+                "size" : "G",
+                "qtd": 21
+            },
+            {
+                "size" : "GG",
+                "qtd": 3
+            }
+        ],
+            "favorite": true,
+            "on_sale": false,
+            "sale_percent": 0
+        },
+        {
+            "id": 3,
+            "name": "Pijama estilosoo",
+            "description": "Um pijama quentinho para o inverno com grande estilo incomparável.",
+            "image": "https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg",
+            "price": 190.90,
+            "season": "inverno",
+            "type" : "ambos",
+            "gender": "unissex",
+            "sizes": [{
+                "size" : "PP",
+                "qtd": 2
+            },
+            {
+                "size" : "P",
+                "qtd": 10
+            },
+            {
+                "size" : "M",
+                "qtd": 84
+            },
+            {
+                "size" : "G",
+                "qtd": 8
+            },
+            {
+                "size" : "GG",
+                "qtd": 1
+            }
+        ],
+            "favorite": false,
+            "on_sale": true,
+            "sale_percent": 5
+        },
+        {
+            "id": 4,
+            "name": "Pijama normal da bola",
+            "description": "Um pijama normal da bola.",
+            "image": "https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg",
+            "price": 100.90,
+            "season": "verão",
+            "type" : "adulto",
+            "gender": "família",
+            "sizes": [{
+                "size" : "PP",
+                "qtd": 2
+            },
+            {
+                "size" : "P",
+                "qtd": 10
+            },
+            {
+                "size" : "M",
+                "qtd": 84
+            },
+            {
+                "size" : "G",
+                "qtd": 8
+            },
+            {
+                "size" : "GG",
+                "qtd": 1
+            }
+        ],
+            "favorite": false,
+            "on_sale": true,
+            "sale_percent": 12
+        }
+    ]
+}
