@@ -6,22 +6,27 @@ import { z } from "zod"
 import { useState } from "react"
 
 const userSchema = z.object({
-    usuarioOuEmail: z.string().nonempty('* O Usuário ou E-mail não pode ser vazio')
-        .refine(value => !value.includes(' '), {
-            message: '* Não pode ter espaços'
-        })
-        .regex(/^[a-zA-Z0-9]+$/, {
-            message: '* Não pode ter acentos'
-        })
+    usuarioOuEmail: z.string()
+        .nonempty('* O Usuário ou E-mail não pode ser vazio')
         .refine(value => {
             const isEmail = z.string().email().safeParse(value).success;
             if (isEmail) {
                 return true;
             }
 
+            const hasSpaces = value.includes(' ');
+            if (hasSpaces) {
+                return false;
+            }
+
+            const hasAccentsOrSpecialChars = !/^[a-zA-Z0-9]+$/.test(value);
+            if (hasAccentsOrSpecialChars) {
+                return false;
+            }
+
             return true;
         }, {
-            message: '* Deve ser um e-mail válido'
+            message: '* Sem espaços ou acentos'
         }),
     senha: z.string().nonempty('* Senha não pode ser vazia').min(6, '* Deve ter no mínimo 6 caracteres').refine(value => value.trim().length > 0, { message: '* Não pode ter espaços' })
 })
