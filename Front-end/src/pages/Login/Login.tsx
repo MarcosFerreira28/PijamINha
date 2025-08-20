@@ -35,9 +35,12 @@ export default function Login() {
                             </button>
                         </div>
                     </div>
+                    <button className={styles.btnEsqueciSenha}>Esqueci minha senha</button>
+                    <div className={styles.botaoEbarra}>
+                        <button className={styles.btnEntrar}>Entrar</button>
+                        <div className={styles.barraBranca}></div>
+                    </div>
 
-                    <button className={styles.btnEsqueciSenha}>Esqueci a minha senha</button>
-                    <div className={styles.barraBranca}></div>
                     <Link to='/cadastro'>Cadastre-se</Link>
                 </form>
 

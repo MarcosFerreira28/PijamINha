@@ -89,6 +89,7 @@
     flex-direction: row;
     align-items: center;
     position: relative;
+    padding-bottom: 7px;
 }
 
 .senhaInput button{
@@ -101,3 +102,17 @@
     top: 50%;
     transform: translateY(-50%);
 }
+.btnEsqueciSenha {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Roboto';
+    flex-direction: row;
+    text-decoration: underline;
+    letter-spacing: 1px;
+    color: hsla(355, 72%, 74%, 1);
+    padding-bottom: 22px;
+}
+
