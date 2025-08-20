@@ -5,6 +5,7 @@ import Carrinho from "./pages/Carrinho/Carrinho";
 import Favoritos from "./pages/Favoritos/Favoritos";
 import Individual from "./pages/Individual/Individual";
 import Cadastro from "./pages/Cadastro/Cadastro";
+import Login from "./pages/Login/Login";
 
 
 const router = createBrowserRouter([
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
             {
                 path: "/cadastro",
                 element: <Cadastro />
+            },
+            {
+                path: "/login",
+                element: <Login />
             },
             {
                 path:"/carrinho",
