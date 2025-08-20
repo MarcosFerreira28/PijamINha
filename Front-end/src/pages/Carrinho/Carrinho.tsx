@@ -108,7 +108,6 @@ export default function Carrinho() {
                                     <div className={style.comDesc}>
                                         <p
                                             className={style.precoAntigo}
-                                            style={{ textDecoration: "line-through" }}
                                         >
                                             <b>R$ {(produto.preco * produto.quantidade).toFixed(2)}</b>
                                         </p>

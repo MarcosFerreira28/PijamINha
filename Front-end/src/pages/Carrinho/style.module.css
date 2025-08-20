@@ -209,6 +209,7 @@
 .precoAntigo{
     color: var(--vermelho-200);
     font-weight: 400;
+    text-decoration: line-through;
 }
 .comDesc{
     display: flex;
