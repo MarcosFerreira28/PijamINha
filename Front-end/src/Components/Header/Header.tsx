@@ -11,10 +11,10 @@ export default function Header() {
             <Link to="/"><img src={logo} alt="logo" className={styles.loboimg}/></Link>
 
             <nav className={styles.nav}>
-                <p>PIJAMAS</p>
-                <p>FEMININO</p>
-                <p>MASCULINO</p>
-                <p>INFANTIL</p>
+                <Link to="/pijaminhas">PIJAMINHAS</Link>
+                <Link to="/pijaminhas?gender=Feminino">FEMININO</Link>
+                <Link to="/pijaminhas?gender=Masculino">MASCULINO</Link>
+                <Link to="/pijaminhas?type=Infantil">INFANTIL</Link>
             </nav>
 
             <div className={styles.icons}>
