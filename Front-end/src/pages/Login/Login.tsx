@@ -43,14 +43,22 @@ export default function Login() {
 
     async function loginUser(data: User) {
         try {
-            await new Promise(resolve => setTimeout(resolve, 1500))
-            console.log(data)
-            navigate('/home');
-            throw new Error('* Erro ao iniciar sessão: usuário não encontrado')
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            console.log(data);
+    
+            const isLoginSuccessful = true;
+    
+            if (isLoginSuccessful) {
+                navigate('/home');
+            } else {
+                setError('root', {
+                    message: "* Erro ao iniciar sessão: usuário ou senha incorretos"
+                });
+            }
         } catch {
             setError('root', {
                 message: "* Erro ao iniciar sessão: usuário não encontrado"
-            })
+            });
         }
     }
 
