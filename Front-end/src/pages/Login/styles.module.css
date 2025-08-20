@@ -83,6 +83,9 @@
     color: hsla(0, 0%, 0%, 0.47);
     letter-spacing: 2px;
 }
+.senhaInput input{
+    padding-right: 40px;
+}
 
 .emailInput input::placeholder,
 .senhaInput input::placeholder {
