@@ -1,7 +1,6 @@
 import { PajamasRepository } from "@/repositories/pajamas-repository";
 import { BodyType, GenderType, Pajama, SeasonType } from "@prisma/client";
 import { PajamaNotFoundError } from "../errors/pajama-not-found-error";
-import { update } from "@/http/controllers/users/update";
 
 
 interface UpdatePajamaUseCaseRequest {

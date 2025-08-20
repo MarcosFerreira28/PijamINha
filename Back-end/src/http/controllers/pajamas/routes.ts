@@ -1,21 +1,20 @@
 import { FastifyInstance } from "fastify";
 import { createPajama } from "./create-pajamas";
 import { deletePajama } from "./delete-pajamas";
-import { update } from "../users/update";
-import { UpdatePajamaUseCase } from "@/use-cases/pajamas/updatePajama-use-case";
-import { FavoritesPajamaUseCase } from "@/use-cases/pajamas/favoritePajama-use-case";
 import { listPajamas } from "./list-pajama";
 import { getPajama } from "./get-pajamas";
-
+import { updatePajama } from "./update-pajamas";
+import { favoritePajama } from "./favorite-pajama";
 
 
 
 export async function pajamasRoutes(app: FastifyInstance) {
     
-    app.post('/posts', createPajama)
-    app.delete('/pajamas/pajamaId', deletePajama)
-    app.get('/pajama', listPajamas)
-    app.get('/pajama/pajamaId', getPajama)
-    app.patch('/pajama/pajamaId', updatePajama)
+    app.post('/pajamas', createPajama)
+    app.delete('/pajamas/:pajamaId', deletePajama)
+    app.get('/pajamas', listPajamas)
+    app.get('/pajamas/:id', getPajama)
+    app.patch('/pajamas/:id', updatePajama)
+    app.patch('/pajamas/:id/favorite', favoritePajama)
 }
-    
+
