@@ -9,22 +9,23 @@ import Desfavoritar from '../../Functions/Desfavoritar';
 import Favoritar from '../../Functions/Favoritar';
 import { useLoaderData } from 'react-router-dom';
 import type { Pijama } from '../../Types/Pijama';
+import useCartStore from '../../store/CartStore';
 
 
 export default function InfoPijamaIndividual() {
-    const produto = useLoaderData() as Pijama;
+    const pijama = useLoaderData() as Pijama;
 
     const [qtdSelecionada, setQtdSelecionada] = useState(1);
 
     const [tamanhoSelecionado, setTamanhoSelecionado] = useState<string | null>(null);
     
     useEffect(() => {
-        if (!tamanhoSelecionado && produto.sizes.length > 0) {
-            setTamanhoSelecionado(produto.sizes[0].size);
+        if (!tamanhoSelecionado && pijama.sizes.length > 0) {
+            setTamanhoSelecionado(pijama.sizes[0].size);
         }
-    }, [produto.sizes, tamanhoSelecionado]);
+    }, [pijama.sizes, tamanhoSelecionado]);
     
-    const quantidadeEstoque = tamanhoSelecionado ? produto.sizes.find(t => t.size === tamanhoSelecionado)?.stock_quantity ?? 0 : 0
+    const quantidadeEstoque = tamanhoSelecionado ? pijama.sizes.find(t => t.size === tamanhoSelecionado)?.stock_quantity ?? 0 : 0
 
     useEffect(() => {
         if (qtdSelecionada > quantidadeEstoque) {
@@ -44,7 +45,7 @@ export default function InfoPijamaIndividual() {
         }
     };
 
-    const [favorited, setFavorited] = useState(produto.favorite);
+    const [favorited, setFavorited] = useState(pijama.favorite);
     
     function handleFavorite() {
         setFavorited(!favorited);
@@ -55,25 +56,27 @@ export default function InfoPijamaIndividual() {
         }
     }
 
+    const addToCart = useCartStore((state) => state.addToCart);
+
     return (
         <div className={styles.container}>
             <div className={styles.tituloContainer}>
-                <h1>{produto.name}</h1>
-                <p>Ref: #{produto.id}</p>
+                <h1>{pijama.name}</h1>
+                <p>Ref: #{pijama.id}</p>
             </div>
 
             <div className={styles.priceContainer}>
                 <div style={{width: '39.9vw', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline'}}>
-                    <h1>R$ {produto.price.toFixed(2)}</h1>
-                    <p>6x de <strong>R$ {(produto.price / 6).toFixed(2)}</strong></p>
+                    <h1>R$ {pijama.price.toFixed(2)}</h1>
+                    <p>6x de <strong>R$ {(pijama.price / 6).toFixed(2)}</strong></p>
                 </div>
-                <p>Ou por <strong style={{fontStyle: 'italic'}}>R${(produto.price * 15 / 100).toFixed(2)}</strong> no PIX</p>
+                <p>Ou por <strong style={{fontStyle: 'italic'}}>R${(pijama.price * 15 / 100).toFixed(2)}</strong> no PIX</p>
             </div>
 
             <div className={styles.tamanhoContainer}>
                 <h2>Tamanhos:</h2>
                 <div className={styles.tamanhos}>
-                    {produto.sizes.map((tamanho) => (
+                    {pijama.sizes.map((tamanho) => (
                         <button
                             key={tamanho.size}
                             className={`${tamanhoSelecionado === tamanho.size ? styles.tamanhoSelecionado : styles.tamanho}`}
@@ -108,7 +111,13 @@ export default function InfoPijamaIndividual() {
             </div>
 
             <div className={styles.botoesContainer}>
-                <button style={{cursor: "pointer"}}>ADICIONAR AO CARRINHO</button>
+                <button style={{cursor: "pointer"}} onClick={() => {
+                    addToCart(pijama);
+                    alert("Pijama adicionado ao carrinho!")
+                }}>
+                    ADICIONAR AO CARRINHO
+                </button>
+
                 {favorited ? (
                     <img src={coracaofavoritado} alt="coracao" className={styles.coracao} 
                     onClick={e => {

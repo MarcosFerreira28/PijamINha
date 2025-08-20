@@ -8,7 +8,9 @@ const useCartStore = create<CartStore>((set) => (
     {
         availablePijamas: pijamas.data,
         cart: [],
-        addToCart: (pijama) => set((state) => ({ cart: [...state.cart, pijama]})),
+
+        addToCart: (pijama) => set((state) => ({ cart: [...state.cart, pijama]})), //ver como adicionar a quantidade
+        
         removeFromCart: (id) => set((state) => {
             const index = state.cart.findIndex((pijama) => pijama.id === id);
             if (index === -1) return { cart: state.cart };
