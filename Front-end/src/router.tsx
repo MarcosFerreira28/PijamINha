@@ -6,6 +6,7 @@ import Favoritos from "./pages/Favoritos/Favoritos";
 import Individual from "./pages/Individual/Individual";
 import Cadastro from "./pages/Cadastro/Cadastro";
 import Login from "./pages/Login/Login";
+import InfoLoader from "./Functions/InfoLoader";
 
 
 const router = createBrowserRouter([
@@ -35,8 +36,9 @@ const router = createBrowserRouter([
                 element:<Favoritos/>
             },
             {
-                path:"/individual",
-                element:<Individual/>
+                path:"/individual/:pijamaId",
+                element:<Individual/>,
+                loader: InfoLoader
             }
         ]
     }

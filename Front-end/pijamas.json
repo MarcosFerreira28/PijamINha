@@ -11,23 +11,23 @@
             "gender": "masculino",
             "sizes": [{
                 "size" : "PP",
-                "qtd": 14
+                "stock_quantity": 14
             },
             {
                 "size" : "P",
-                "qtd": 10
+                "stock_quantity": 10
             },
             {
                 "size" : "M",
-                "qtd": 2
+                "stock_quantity": 2
             },
             {
                 "size" : "G",
-                "qtd": 23
+                "stock_quantity": 23
             },
             {
                 "size" : "GG",
-                "qtd": 4
+                "stock_quantity": 4
             }
         ],
             "favorite": false,
@@ -45,23 +45,23 @@
             "gender": "feminino",
             "sizes": [{
                 "size" : "PP",
-                "qtd": 14
+                "stock_quantity": 14
             },
             {
                 "size" : "P",
-                "qtd": 9
+                "stock_quantity": 9
             },
             {
                 "size" : "M",
-                "qtd": 2
+                "stock_quantity": 2
             },
             {
                 "size" : "G",
-                "qtd": 21
+                "stock_quantity": 21
             },
             {
                 "size" : "GG",
-                "qtd": 3
+                "stock_quantity": 3
             }
         ],
             "favorite": true,
@@ -79,23 +79,23 @@
             "gender": "unissex",
             "sizes": [{
                 "size" : "PP",
-                "qtd": 2
+                "stock_quantity": 2
             },
             {
                 "size" : "P",
-                "qtd": 10
+                "stock_quantity": 10
             },
             {
                 "size" : "M",
-                "qtd": 84
+                "stock_quantity": 84
             },
             {
                 "size" : "G",
-                "qtd": 8
+                "stock_quantity": 8
             },
             {
                 "size" : "GG",
-                "qtd": 1
+                "stock_quantity": 1
             }
         ],
             "favorite": false,
@@ -113,23 +113,23 @@
             "gender": "família",
             "sizes": [{
                 "size" : "PP",
-                "qtd": 2
+                "stock_quantity": 2
             },
             {
                 "size" : "P",
-                "qtd": 10
+                "stock_quantity": 10
             },
             {
                 "size" : "M",
-                "qtd": 84
+                "stock_quantity": 84
             },
             {
                 "size" : "G",
-                "qtd": 8
+                "stock_quantity": 8
             },
             {
                 "size" : "GG",
-                "qtd": 1
+                "stock_quantity": 1
             }
         ],
             "favorite": true,
