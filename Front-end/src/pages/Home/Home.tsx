@@ -31,7 +31,7 @@ export default function Home() {
     const [pijamas, setPijamas] = useState<Pijama[]>([]);
 
     useEffect(() => {
-        axios.get("http://localhost:3001/pijamas")
+        axios.get("http://localhost:3333/pajamas")
         .then(response => setPijamas(response.data))
         .catch(error => console.error("Erro ao buscar pijamas:", error));
     }, [])
