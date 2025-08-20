@@ -2,9 +2,49 @@ import styles from "./styles.module.css"
 import { Link } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import z from "zod"
+import z, { string } from "zod"
+
+const userSchema = z.object({
+    usuarioOuEmail: z.string().nonempty('* O Usuário ou E-mail não pode ser vazio')
+        .refine(value => !value.includes(' '), {
+            message: '* Não pode ter espaços'
+        })
+        .regex(/^[a-zA-Z0-9]+$/, {
+            message: '* Não pode ter acentos'
+        })
+        .refine(value => {
+            const isEmail = z.string().email().safeParse(value).success;
+            if (isEmail) {
+                return true;
+            }
+
+            return true;
+        }, {
+            message: '* Deve ser um e-mail válido'
+        }),
+    senha: z.string().nonempty('* Senha não pode ser vazia').min(6, '* Deve ter no mínimo 6 caracteres').refine(value => value.trim().length > 0, { message: '* Não pode ter espaços' })
+})
+
+
+type User = z.infer<typeof userSchema>
 
 export default function Login() {
+    const { register, handleSubmit, formState: { errors, isSubmitting }, setError } = useForm<User>({
+        resolver: zodResolver(userSchema)
+    })
+
+    async function loginUser(data: User) {
+        try {
+            await new Promise(resolve => setTimeout(resolve, 2000))
+            console.log(data)
+            throw new Error('* Erro ao iniciar sessão')
+        } catch {
+            setError('root', {
+                message: "* Erro ao iniciar sessão"
+            })
+        }
+    }
+
 
     return (
         <div className={styles.mainLogin}>
@@ -20,16 +60,21 @@ export default function Login() {
 
                 </div>
 
-                <form className={styles.inputsEbotoes}>
+                <form onSubmit={handleSubmit(loginUser)} className={styles.inputsEbotoes}>
                     <div className={styles.inputs}>
                         <div className={styles.emailInput}>
                             <input type="text"
                                 placeholder="Usuário ou E-mail"
+                                {...register('usuarioOuEmail')}
                             />
+                            {errors.usuarioOuEmail &&
+                                <span className={styles.errorMessage}>{errors.usuarioOuEmail.message}</span>
+                            }
                         </div>
                         <div className={styles.senhaInput}>
                             <input type="text"
                                 placeholder="Senha"
+                                {...register('senha')}
                             />
                             <button><svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M10.549 13.352C8.159 13.352 6.219 11.412 6.219 9.022C6.219 6.632 8.159 4.692 10.549 4.692C12.939 4.692 14.879 6.632 14.879 9.022C14.879 11.412 12.939 13.352 10.549 13.352ZM10.549 6.192C8.989 6.192 7.719 7.462 7.719 9.022C7.719 10.582 8.989 11.852 10.549 11.852C12.109 11.852 13.379 10.582 13.379 9.022C13.379 7.462 12.109 6.192 10.549 6.192Z" fill="#A31621" />
@@ -37,10 +82,21 @@ export default function Login() {
                             </svg>
                             </button>
                         </div>
+                        {errors.senha &&
+                            <span className={styles.errorMessage}>{errors.senha.message}</span>
+                        }
                     </div>
                     <button className={styles.btnEsqueciSenha}>Esqueci minha senha</button>
                     <div className={styles.botaoEbarra}>
-                        <button className={styles.btnEntrar}>ENTRAR</button>
+                        <button
+                            className={styles.btnEntrar}
+                            disabled={isSubmitting}
+                        >
+                            {isSubmitting ? 'ENTRANDO...' : 'ENTRAR'}
+                        </button>
+                        {errors.senha &&
+                            <span className={styles.errorMessage}>{errors.senha.message}</span>
+                        }
                         <div className={styles.barraBranca}></div>
                     </div>
                     <div className={styles.cadastroContainer}>
