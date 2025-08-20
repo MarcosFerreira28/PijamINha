@@ -29,7 +29,7 @@ export default function Feedback() {
 
                     </div>
                     <div className={styles.enviarContainer}>
-                        <button className={styles.btnEnviar}></button>
+                        <button className={styles.btnEnviar}>ENVIAR</button>
                     </div>
                 </form>
             </div>
