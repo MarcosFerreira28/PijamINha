@@ -3,6 +3,10 @@ import styles from "./styles.module.css"
 import z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
+import ModalCadastro from "../../Components/Modais/ModalCadastro/ModalCadastro"
+import { useState } from "react"
+
 
 const userSchema = z.object({
     nome: z.string().regex(/^\D+$/, {
@@ -30,9 +34,16 @@ const userSchema = z.object({
 type User = z.infer<typeof userSchema>
 
 export default function Cadastro() {
+    const navigate = useNavigate();
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const { register, handleSubmit, formState: { errors, isSubmitting }, setError } = useForm<User>({
         resolver: zodResolver(userSchema)
-    })
+    });
+
+    const handleFecharModalEnavegar = () => {
+        setIsModalOpen(false);
+        navigate('/login');
+    }
 
     async function createUser(data: User) {
         try {
@@ -45,8 +56,8 @@ export default function Cadastro() {
             await axios.post('http://localhost:3333/users', requestData);
 
             console.log('Usuário criado com sucesso!');
-            //fazer o modal para aparecer aqui ao invés do alert
-            alert('Cadastro realizado com sucesso!');
+            
+            setIsModalOpen(true);
 
         } catch (error: any) {
             if (error.response?.status === 409) {
@@ -64,7 +75,7 @@ export default function Cadastro() {
 
     return (
         <div className={styles.mainCadastro}>
-
+            {isModalOpen && <ModalCadastro onCloseModal={handleFecharModalEnavegar} />}
             <div className={styles.cardCadastro}>
                 <h1>Registre-se</h1>
 
