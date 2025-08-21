@@ -1,0 +1,103 @@
+.mainFeedback{
+    max-width: 100%;
+    height: auto;
+    background-image: url("../../assets/FundoVermelho.png");
+    background-repeat: repeat;
+    background-size: 120%;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+}
+.feedbackCard{
+    width: 488px;
+    min-height: 620px;
+    background-color: hsla(355, 98%, 23%, 1);
+    box-shadow: 0 4px 4px 0 hsla(0, 0%, 0%, 0.5);
+    margin: 100px 0 70px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tituloEtexto{
+    width: 318px;
+    height: 134px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    justify-content: space-between;
+    padding-top: 54px;
+    padding-bottom: 30px;
+}
+
+.tituloEtexto h1{
+    font-family: 'Numans';
+    font-weight: 400;
+    font-size: 48px;
+}
+.texto{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto Serif';
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.inputs{
+    width: 390px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 27.54px;
+    padding-bottom: 20.59px;
+}
+.nome{
+    height: 37.87px;
+    font-family: 'Roboto';
+    color: hsla(0, 0%, 0%, 0.5);
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    padding-left: 20px;
+    box-shadow: 0 4px 4px 0 hsla(0, 0%, 0%, 0.25);
+    border: none;
+}   
+
+.descricao{
+    height: 135.99px;
+    font-family: 'Roboto';
+    color: hsla(0, 0%, 0%, 0.5);
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    padding: 13.59px 19px 5px 19px;
+    padding-left: 20px;
+    box-shadow: 0 4px 4px 0 hsla(0, 0%, 0%, 0.25);
+    border: none;
+    resize: none;
+}
+.enviarContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 14.86px 0 39.13px 0;
+}
+.btnEnviar{
+    width: 146px;
+    height: 37.87px;
+    color: white;
+    background-color: hsla(355, 76%, 36%, 1);
+    border: none;
+    font-family: 'Montserrat';
+    font-size: 24px;
+    font-weight: 500;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover{
+        background-color: rgba(162, 22, 34, 0.728);
+    }
+}
