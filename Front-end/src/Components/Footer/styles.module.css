@@ -36,7 +36,7 @@
 .footerContato h1 {
     font-family: Roboto;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 2vw;
     letter-spacing: 4%;
     color: #4E8098;
 }
@@ -44,14 +44,18 @@
 .footerContato p {
     font-family: Roboto;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 1.5vw;
     letter-spacing: 5%;
     color: #274553;
 }
 
+.footerContato img {
+    width: 2.2vw;
+}
+
 
 .copyright {
-    height: 37px;
+    height: 6vh;
     background: #3E677A;
     display: flex;
     align-items: center;
