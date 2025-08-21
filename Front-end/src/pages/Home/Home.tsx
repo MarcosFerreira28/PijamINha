@@ -114,7 +114,7 @@ export default function Home() {
                     <div className={styles.cards}>
                         {pijamas.filter(p => p.onSale).slice(0,3).map((pijama, index) => (
                             <Link to={`/individual/${pijama.id}`} key={index} style={{cursor: "pointer", textDecoration: "none"}}>
-                                <Card name={pijama.name} price={pijama.price} image={pijama.image} favorite={pijama.favorite} onSale={pijama.onSale} salePercent={pijama.salePercent} menor={false}/>
+                                <Card id={pijama.id} name={pijama.name} price={pijama.price} image={pijama.image} favorite={pijama.favorite} onSale={pijama.onSale} salePercent={pijama.salePercent} menor={false}/>
                             </Link>
                         ))}
                     </div>

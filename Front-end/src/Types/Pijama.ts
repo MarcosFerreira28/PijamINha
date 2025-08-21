@@ -16,7 +16,7 @@ export type Pijama = {
     // eu acredito que não
 }
 
-export type CardPijama = Pick<Pijama, 'name' | 'price' | 'image' | 'favorite' | 'onSale' | 'salePercent'> & {
+export type CardPijama = Pick<Pijama, 'id' | 'name' | 'price' | 'image' | 'favorite' | 'onSale' | 'salePercent'> & {
     menor: boolean
 };
 
