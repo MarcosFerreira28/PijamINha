@@ -8,19 +8,21 @@ export type Pijama = {
     season: string;
     type: string;
     gender: string;
-    sizes: Sizes[];
+    pajamaSize: Sizes[];
     favorite: boolean;
-    on_sale: boolean;
-    sale_percent?: number;
+    onSale: boolean;
+    salePercent?: number;
     //Verificar se as outras colunas da tabela deveriam estar nesse tipo
     // eu acredito que não
 }
 
-export type CardPijama = Pick<Pijama, 'name' | 'price' | 'image' | 'favorite' | 'on_sale' | 'sale_percent'> & {
+export type CardPijama = Pick<Pijama, 'id' | 'name' | 'price' | 'image' | 'favorite' | 'onSale' | 'salePercent'> & {
     menor: boolean
 };
 
 type Sizes ={
+    id: number,
     size: string,
-    stock_quantity: number
+    stockQuantity: number,
+    pajamaId: number
 }

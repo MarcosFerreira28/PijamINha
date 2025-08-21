@@ -4,18 +4,18 @@ import desconto from "../../Assets/Desconto.png";
 import favoritadoimg from "../../Assets/Favoritado.png";
 import type { CardPijama } from "../../Types/Pijama";
 import { useState } from "react";
-import Favoritar from "../../Functions/Favoritar";
-import Desfavoritar from "../../Functions/Desfavoritar";
+import handleFavorites from "../../Functions/handleFavorites";
 
-export default function Card({name, price, image, favorite, on_sale, sale_percent, menor}: CardPijama) {
+export default function Card({id, name, price, image, favorite, onSale, salePercent, menor}: CardPijama) {
     const [favorited, setFavorited] = useState(favorite);
 
     function handleFavorite() {
-        setFavorited(!favorited);
-        if (favorited) {
-            Favoritar();//passar a informação necessária aqui
+        if (!favorited) {
+            handleFavorites(id);
+            setFavorited(!favorited);
         } else {
-            Desfavoritar();//passar a informação necessária aqui
+            handleFavorites(id);
+            setFavorited(!favorited);
         }
     }
 
@@ -37,7 +37,7 @@ export default function Card({name, price, image, favorite, on_sale, sale_percen
                     }}/>
                 )}
 
-                {on_sale && (<img src={desconto} className={styles.desconto}/>)}
+                {onSale && (<img src={desconto} className={styles.desconto}/>)}
                 <img src={image} alt="img fundo" className={styles.fundo}/> 
             </div>
 
@@ -45,15 +45,15 @@ export default function Card({name, price, image, favorite, on_sale, sale_percen
                 <h1 style={menor ? {fontSize: "13px"} : {}}>{name}</h1>
                 <div style={{display: "flex", flexDirection: "column", alignItems: "center", gap: "12px"}}>
                     <div className={styles.preco}>
-                        {on_sale && (
-                            <p className={styles.precoOriginal} style={{fontSize: "12px"}}>
+                        {onSale && (
+                            <p className={styles.precoOriginal} style={menor ? {fontSize: "12px"} : {}}>
                                 R$ {price.toFixed(2).replace(".", ",")}
                             </p>
                         )}
 
-                        {on_sale ? (
+                        {onSale ? (
                             <h2 style={menor ? {fontSize: "24px"} : {}}>
-                                R$ {(price - (price * (sale_percent ?? 0) / 100)).toFixed(2).replace(".", ",")}
+                                R$ {(price - (price * (salePercent ?? 0) / 100)).toFixed(2).replace(".", ",")}
                             </h2>
                         ) : (
                             <h2 style={menor ? {fontSize: "24px"} : {}}>R$ {price.toFixed(2).replace(".", ",")}</h2>

@@ -2,7 +2,7 @@ import axios from "axios";
 import { create } from "zustand";
 import type CartStore from "../interfaces/CartStore";
 
-const pijamas = await axios.get("http://localhost:3001/pijamas");
+const pijamas = await axios.get("http://localhost:3333/pajamas");
 
 const useCartStore = create<CartStore>((set) => (
     {

@@ -31,21 +31,20 @@ export default function Home() {
     const [pijamas, setPijamas] = useState<Pijama[]>([]);
 
     useEffect(() => {
-        axios.get("http://localhost:3001/pijamas")
+        axios.get("http://localhost:3333/pajamas")
         .then(response => setPijamas(response.data))
         .catch(error => console.error("Erro ao buscar pijamas:", error));
     }, [])
 
-    const feedbacks: FeedbackType[] = [
-        { name: 'Fulano da Silva', rating: 4, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaa aaaaaaa aaaaaa  aaaaa aaaaaaaaaaaaaaaa aaaa aaaaaaaaaaaa aaaaaaaaaa aaaaaaa aaaaaaaaaaaaaa aaaa qdjhsd wdjqhdfqhhwqn fnnfqwhf hwb dwqh dw dhqfwqdhw  qwhd wh dwhqwhwq dsdgsg gdgsdgs gsfdgg sgdsdgdsgds ' },
-        { name: 'Fjoger', rating: 4.6, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
-        { name: 'cacetinho', rating: 4.2, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
-        { name: 'marcola', rating: 5, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
-        { name: 'sof da Silva', rating: 4.8, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
-        { name: 'que isso da Silva', rating: 4.1, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
-        { name: 'Zeus', rating: 4.1, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
-        { name: 'Pedro pedra', rating: 4.1, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
-    ];
+    const [feedbacks, setFeedbacks] = useState<FeedbackType[]>([]);
+    useEffect(() => {
+        axios.get("http://localhost:3333/feedbacks")
+        .then(response => setFeedbacks(response.data.feedbacks))
+        .catch(error => console.error("Erro ao buscar feedbacks:", error));
+    }, []);
+
+
+    console.log("FEEDBACK AAAA:", feedbacks);
 
     const feedbacksAgrupados = agruparFeedbacks(feedbacks);
 
@@ -55,9 +54,9 @@ export default function Home() {
     const [swiperInstance, setSwiperInstance] = useState<any>(null);
 
     // Atualiza as refs após renderizar para garantir que ambas as setas funcionem
-    //colocando as funções padrão do init do swiper em um useeffect
+    //colocando as funções padrão do init do swiper em um useEffect
     useEffect(() => {
-        if (swiperInstance && prevRef.current && nextRef.current) {
+        if (swiperInstance && prevRef.current && nextRef.current && (swiperInstance.params.navigation.prevEl !== prevRef.current || swiperInstance.params.navigation.nextEl !== nextRef.current)) {
             swiperInstance.params.navigation.prevEl = prevRef.current;
             swiperInstance.params.navigation.nextEl = nextRef.current;
             swiperInstance.navigation.destroy();
@@ -112,17 +111,12 @@ export default function Home() {
                 <div className={styles.cardContainer}>
                     <h1 className={styles.titulo}>Nossas últimas promoções!</h1>
                     <div className={styles.cards}>
-                        {pijamas.filter(p => p.on_sale).slice(0,3).map((pijama, index) => (
+                        {pijamas.filter(p => p.onSale).slice(0,3).map((pijama, index) => (
                             <Link to={`/individual/${pijama.id}`} key={index} style={{cursor: "pointer", textDecoration: "none"}}>
-                                <Card name={pijama.name} price={pijama.price} image={pijama.image} favorite={pijama.favorite} on_sale={pijama.on_sale} sale_percent={pijama.sale_percent} menor={false}/>
+                                <Card id={pijama.id} name={pijama.name} price={pijama.price} image={pijama.image} favorite={pijama.favorite} onSale={pijama.onSale} salePercent={pijama.salePercent} menor={false}/>
                             </Link>
                         ))}
-
-                        {/* <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama feminino longo - estampa poá daksdajs ndna jsndjs najn dsjan jdn ajn" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={false} /></Link>
-                        <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama feminino longo - estampa poá daksdajs ndna jsndjs najn dsjan jdn ajn" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={false} /></Link>
-                        <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama feminino longo - estampa poá daksdajs ndna jsndjs najn dsjan jdn ajn" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={false} /></Link> */}
                     </div>
-                    {/* precisa do id no caminho do link talvez*/}
                 </div>
 
                 <div className={styles.feedbacks}>

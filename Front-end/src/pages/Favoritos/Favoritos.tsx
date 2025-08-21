@@ -11,18 +11,25 @@ import { useEffect, useRef, useState } from "react";
 import Card from "../../Components/Card/Card";
 import { Link } from "react-router-dom";
 import styles from"./styles.module.css";
+import axios from "axios";
+import type { Pijama } from "../../Types/Pijama";
 
 export default function Favoritos() {
-    
     const prevRef = useRef(null);
     const nextRef = useRef(null);
     const [swiperInstance, setSwiperInstance] = useState<any>(null);
 
+    const [pijamas, setPijamas] = useState<Pijama[]>([]);
+
     useEffect(() => {
-        if (swiperInstance && prevRef.current && nextRef.current) {
-            // @ts-ignore
+        axios.get("http://localhost:3333/pajamas")
+        .then(response => setPijamas(response.data))
+        .catch(error => console.error("Erro ao buscar pijamas:", error));
+    }, [])
+    
+    useEffect(() => {
+        if (swiperInstance && prevRef.current && nextRef.current && (swiperInstance.params.navigation.prevEl !== prevRef.current || swiperInstance.params.navigation.nextEl !== nextRef.current)) {
             swiperInstance.params.navigation.prevEl = prevRef.current;
-            // @ts-ignore
             swiperInstance.params.navigation.nextEl = nextRef.current;
             swiperInstance.navigation.destroy();
             swiperInstance.navigation.init();
@@ -44,36 +51,16 @@ export default function Favoritos() {
                         spaceBetween={24}
                         navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
                         onSwiper={setSwiperInstance}
-                        loop={true}
+                        loop={false}
                         className={styles.swiper}
                     >
-                        <SwiperSlide>
-                            <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama feminino longo - estampa poá daksdajs ndna jsndjs najn dsjan jdn ajn" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama curto - estampa poá" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="nem pijama isso é" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama extra" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama extra" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama extra" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama extra" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama extra" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={true} sale_percent={10} menor={true} /></Link>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Link to="/individual" style={{cursor: "pointer", textDecoration: "none"}}><Card name="Pijama extra" price={79.99} image="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" favorite={true} on_sale={false} sale_percent={10} menor={true} /></Link>
-                        </SwiperSlide>
+                        {pijamas.filter(p => p.favorite == true).map((pijama) => (
+                            <SwiperSlide key={pijama.id}>
+                                <Link to={`/individual/${pijama.id}`} style={{cursor: "pointer", textDecoration: "none"}}>
+                                    <Card id={pijama.id} name={pijama.name} price={pijama.price} image={pijama.image} favorite={pijama.favorite} onSale={pijama.onSale} salePercent={pijama.salePercent} menor={true} />
+                                </Link>
+                            </SwiperSlide>
+                        ))}
                     </Swiper>
 
                     <div className={styles.fadeRight}></div>

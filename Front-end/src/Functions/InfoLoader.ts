@@ -9,7 +9,7 @@ export default async function InfoLoader({ params } : LoaderFunctionArgs) {
     }
 
     try {
-        const response = await axios.get(`http://localhost:3001/pijamas/${pijamaId}`);
+        const response = await axios.get(`http://localhost:3333/pajamas/${pijamaId}`);
         const pijama = response.data;
 
         return pijama;
