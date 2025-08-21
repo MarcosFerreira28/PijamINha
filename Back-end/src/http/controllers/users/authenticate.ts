@@ -6,18 +6,18 @@ import { PrismaUsersRepository } from '@/repositories/prisma/prisma-users-reposi
 
 export async function authenticate(request: FastifyRequest, reply: FastifyReply) {
     const authenticateBodySchema = z.object({
-        email: z.string().email(),
+        identifier: z.string(),
         password: z.string().min(6),
     });
 
-    const { email, password } = authenticateBodySchema.parse(request.body);
+    const { identifier, password } = authenticateBodySchema.parse(request.body);
 
     try {
         const usersRepository = new PrismaUsersRepository();
         const authenticateUseCase = new AuthenticateUseCase(usersRepository);
 
         const { user } = await authenticateUseCase.execute({
-            email,
+            identifier,
             password,
         });
         const token = await reply.jwtSign(
