@@ -9,6 +9,7 @@ import { useLoaderData } from 'react-router-dom';
 import type { Pijama } from '../../Types/Pijama';
 import usePijamaStore from '../../store/PijamaStore';
 import type { pijamaDados } from '../../store/PijamaStore';
+import handleFavorites from '../../Functions/handleFavorites';
 
 
 export default function InfoPijamaIndividual() {
@@ -56,6 +57,7 @@ export default function InfoPijamaIndividual() {
 
     const handleAddToCarrinho = () => {
         if (!tamanhoSelecionado) return;
+        if (!qtdSelecionada) return;
         const item : pijamaDados={
                 pijama:pijama,
                 size:tamanhoSelecionado,
