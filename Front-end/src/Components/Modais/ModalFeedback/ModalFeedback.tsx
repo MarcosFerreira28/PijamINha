@@ -1,33 +1,23 @@
-import { useNavigate } from "react-router-dom";
-import style from "./modal3.module.css";
+import style from "./styles.module.css";
 import x from "../../../assets/X.png";
 
-export default function Modal3() {
-    const navigate = useNavigate();
-
-    const handleClose = () => {
-        navigate("/");
-    };
-
+export default function ModalFeedback({ onCloseModal }: any) {
     return (
         <div
-        className={style.modalTotal}
-        onClick={(e) => e.target === e.currentTarget && handleClose()}
+            className={style.modalTotal}
+            onClick={(e) => e.target === e.currentTarget && onCloseModal()}
         >
-        <div className={style.modal}>
-            <div className={style.texto}>
-            <h2>Seu cadastro foi concluido!</h2>
-            <p>Seja Bem Vindo!</p>
+            <div className={style.modal}>
+                <div className={style.texto}>
+                    <h2>Obrigado!</h2>
+                    <p>Seu feedback foi enviado com sucesso.</p>
+                </div>
+                <div className={style.botao}>
+                    <button className={style.fechar} onClick={onCloseModal}>
+                        <img src={x} alt="x" />
+                    </button>
+                </div>
             </div>
-            <div className={style.botao}>
-            <button className={style.fechar} onClick={handleClose}>
-                <img src={x} alt="x" />
-            </button>
-            </div>
-        </div>
         </div>
     );
 }
-
-
-

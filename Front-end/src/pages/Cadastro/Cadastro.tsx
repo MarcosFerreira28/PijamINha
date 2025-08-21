@@ -3,6 +3,9 @@ import styles from "./styles.module.css"
 import z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
+
+
 
 const userSchema = z.object({
     nome: z.string().regex(/^\D+$/, {
@@ -30,6 +33,7 @@ const userSchema = z.object({
 type User = z.infer<typeof userSchema>
 
 export default function Cadastro() {
+    const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors, isSubmitting }, setError } = useForm<User>({
         resolver: zodResolver(userSchema)
     })
@@ -47,6 +51,7 @@ export default function Cadastro() {
             console.log('Usuário criado com sucesso!');
             //fazer o modal para aparecer aqui ao invés do alert
             alert('Cadastro realizado com sucesso!');
+            navigate("/login");
 
         } catch (error: any) {
             if (error.response?.status === 409) {

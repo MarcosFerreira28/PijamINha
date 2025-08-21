@@ -1,7 +1,8 @@
-import Estrelas from "../../Components/Estrelas/Estrelas"
-import styles from "./styles.module.css"
-import { useState } from "react"
+import Estrelas from "../../Components/Estrelas/Estrelas";
+import styles from "./styles.module.css";
+import { useState } from "react";
 import axios from 'axios';
+import ModalFeedback from "../../Components/Modais/ModalFeedback/ModalFeedback"; 
 
 type FeedbackType = {
     name: string;
@@ -15,6 +16,10 @@ export default function Feedback() {
         description: '',
         rating: 0,
     });
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = event.target;
@@ -39,8 +44,7 @@ export default function Feedback() {
             const response = await axios.post('http://localhost:3333/feedbacks', formData);
 
             if (response.status === 201) {
-                //criar o modal ao inves do alert para mostrar que foi enviado com sucesso e remover o alert
-                alert('Feedback enviado com sucesso!');
+                setIsModalOpen(true); 
                 setFormData({
                     name: '',
                     description: '',
@@ -55,6 +59,8 @@ export default function Feedback() {
 
     return (
         <div className={styles.mainFeedback}>
+            {isModalOpen && <ModalFeedback onCloseModal={handleCloseModal} />}
+
             <div className={styles.feedbackCard}>
                 <div className={styles.tituloEtexto}>
                     <h1 className={styles.titulo}>Feedback</h1>
