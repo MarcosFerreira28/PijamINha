@@ -70,7 +70,7 @@ export default function InfoPijamaIndividual() {
                     <h1>R$ {pijama.price.toFixed(2)}</h1>
                     <p>6x de <strong>R$ {(pijama.price / 6).toFixed(2)}</strong></p>
                 </div>
-                <p>Ou por <strong style={{fontStyle: 'italic'}}>R${(pijama.price * 15 / 100).toFixed(2)}</strong> no PIX</p>
+                <p>Ou por <strong style={{fontStyle: 'italic'}}>R${(pijama.price - (pijama.price * 15 / 100)).toFixed(2)}</strong> no PIX</p>
             </div>
 
             <div className={styles.tamanhoContainer}>
