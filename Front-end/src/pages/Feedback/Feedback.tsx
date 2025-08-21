@@ -26,6 +26,11 @@ export default function Feedback() {
                         className={styles.descricao}
                         ></textarea>
                     </div> 
+
+                    
+
+                    <div>
+                    </div>
                     <div className={styles.enviarContainer}>
                         <button className={styles.btnEnviar}>ENVIAR</button>
                     </div>
@@ -34,3 +39,4 @@ export default function Feedback() {
         </div>
     )
 }
+
