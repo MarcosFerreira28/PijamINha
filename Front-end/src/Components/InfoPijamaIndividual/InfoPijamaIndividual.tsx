@@ -34,7 +34,7 @@ export default function InfoPijamaIndividual() {
 
 
     const diminuir = () => {
-        if (qtdSelecionada > 1) {
+        if (qtdSelecionada > 0) {
             setQtdSelecionada(qtdSelecionada - 1);
         }
     };
@@ -95,7 +95,7 @@ export default function InfoPijamaIndividual() {
                     <button
                         onClick={() => diminuir()}
                         className={styles.botao}
-                        disabled={qtdSelecionada <= 1}
+                        disabled={qtdSelecionada <= 0}
                     >
                         <img src={menos} alt="-" />
                     </button>
@@ -111,7 +111,7 @@ export default function InfoPijamaIndividual() {
             </div>
 
             <div className={styles.botoesContainer}>
-                <button style={{cursor: "pointer"}} onClick={() => {
+                <button disabled={qtdSelecionada === 0} onClick={() => {
                     addToCart(pijama);
                     alert("Pijama adicionado ao carrinho!")
                 }}>

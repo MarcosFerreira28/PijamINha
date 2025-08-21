@@ -187,6 +187,7 @@
     border-radius: 4px;
     background-color: var(--azul-100);
     border: none;
+    cursor: pointer;
 
     font-family: Nunito Sans;
     font-weight: 700;
@@ -198,6 +199,11 @@
 
 .botoesContainer button:hover {
     background-color: var(--azul-400);
+}
+
+.botoesContainer button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .botoesContainer img {
