@@ -5,8 +5,6 @@ import menos from '../../Assets/Diminuir.png';
 import mais from '../../Assets/Aumentar.png';
 import coracao from '../../Assets/Favorito-cinza.png';
 import coracaofavoritado from '../../Assets/Favoritado.png';
-import Desfavoritar from '../../Functions/Desfavoritar';
-import Favoritar from '../../Functions/Favoritar';
 import { useLoaderData } from 'react-router-dom';
 import type { Pijama } from '../../Types/Pijama';
 import usePijamaStore from '../../store/PijamaStore';
@@ -45,11 +43,12 @@ export default function InfoPijamaIndividual() {
     const [favorited, setFavorited] = useState(pijama.favorite);
     
     function handleFavorite() {
-        setFavorited(!favorited);
-        if (favorited) {
-            Favoritar(); // passe a informação necessária aqui
+        if (!favorited) {
+            handleFavorites(pijama.id);
+            setFavorited(!favorited);
         } else {
-            Desfavoritar(); // passe a informação necessária aqui
+            handleFavorites(pijama.id);
+            setFavorited(!favorited);
         }
     }
 

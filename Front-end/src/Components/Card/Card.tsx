@@ -4,18 +4,18 @@ import desconto from "../../Assets/Desconto.png";
 import favoritadoimg from "../../Assets/Favoritado.png";
 import type { CardPijama } from "../../Types/Pijama";
 import { useState } from "react";
-import Favoritar from "../../Functions/Favoritar";
-import Desfavoritar from "../../Functions/Desfavoritar";
+import handleFavorites from "../../Functions/handleFavorites";
 
-export default function Card({name, price, image, favorite, onSale, salePercent, menor}: CardPijama) {
+export default function Card({id, name, price, image, favorite, onSale, salePercent, menor}: CardPijama) {
     const [favorited, setFavorited] = useState(favorite);
 
     function handleFavorite() {
-        setFavorited(!favorited);
-        if (favorited) {
-            Favoritar();//passar a informação necessária aqui
+        if (!favorited) {
+            handleFavorites(id);
+            setFavorited(!favorited);
         } else {
-            Desfavoritar();//passar a informação necessária aqui
+            handleFavorites(id);
+            setFavorited(!favorited);
         }
     }
 
