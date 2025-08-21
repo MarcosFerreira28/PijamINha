@@ -33,14 +33,6 @@ export default function InfoPijamaIndividual() {
         }
     }, [tamanhoSelecionado, quantidadeEstoque]);
 
-    const diminuir = () => {
-        if (qtdSelecionada > 0) {
-            setQtdSelecionada(qtdSelecionada - 1);
-        }
-    };
-    const aumentar = () => {
-        if (qtdSelecionada < quantidadeEstoque) setQtdSelecionada(qtdSelecionada + 1);
-    };
 
     const [favorited, setFavorited] = useState(pijama.favorite);
     
@@ -103,7 +95,11 @@ export default function InfoPijamaIndividual() {
                 <h2>Quantidade:</h2>
                 <div className={styles.botaoTotal}>
                     <button
-                        onClick={diminuir}
+                        onClick={() => {
+                            if (qtdSelecionada > 0) {
+                                setQtdSelecionada(qtdSelecionada - 1);
+                            }
+                        }}
                         className={styles.botao}
                         disabled={qtdSelecionada <= 0}
                     >
@@ -111,7 +107,9 @@ export default function InfoPijamaIndividual() {
                     </button>
                     <span className={styles.valor}>{qtdSelecionada}</span>
                     <button
-                        onClick={aumentar}
+                        onClick={() => {
+                            if (qtdSelecionada < quantidadeEstoque) setQtdSelecionada(qtdSelecionada + 1);
+                        }}
                         className={styles.botao}
                         disabled={qtdSelecionada >= quantidadeEstoque}
                     >
