@@ -1,5 +1,4 @@
 .container {
-    /* height: 580px; */
     background-color: var(--azul-300);
     display: flex;
     flex-direction: column;
@@ -19,7 +18,7 @@
 }
 
 .container p {
-    width: 1307px;
+    width: 90vw;
     height: 120px;
     color: white;
 

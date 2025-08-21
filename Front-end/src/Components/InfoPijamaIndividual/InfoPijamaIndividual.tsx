@@ -88,7 +88,7 @@ export default function InfoPijamaIndividual() {
                         </button>
                     ))}
                 </div>
-                <p>Ainda temos <strong style={{fontWeight: "800", fontStyle: "italic"}}>{quantidadeEstoque}</strong> peças do tamanho escolhido em nosso estoque!</p>
+                <p>Temos <strong style={{fontWeight: "800", fontStyle: "italic"}}>{quantidadeEstoque}</strong> peças do tamanho escolhido em nosso estoque!</p>
             </div>
 
             <div className={styles.quantidadeContainer}>
