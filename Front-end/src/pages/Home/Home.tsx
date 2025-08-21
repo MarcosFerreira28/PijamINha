@@ -56,7 +56,7 @@ export default function Home() {
     // Atualiza as refs após renderizar para garantir que ambas as setas funcionem
     //colocando as funções padrão do init do swiper em um useEffect
     useEffect(() => {
-        if (swiperInstance && prevRef.current && nextRef.current) {
+        if (swiperInstance && prevRef.current && nextRef.current && (swiperInstance.params.navigation.prevEl !== prevRef.current || swiperInstance.params.navigation.nextEl !== nextRef.current)) {
             swiperInstance.params.navigation.prevEl = prevRef.current;
             swiperInstance.params.navigation.nextEl = nextRef.current;
             swiperInstance.navigation.destroy();

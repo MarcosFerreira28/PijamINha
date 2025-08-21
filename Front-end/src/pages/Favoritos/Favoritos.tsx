@@ -28,10 +28,8 @@ export default function Favoritos() {
     }, [])
     
     useEffect(() => {
-        if (swiperInstance && prevRef.current && nextRef.current) {
-            // @ts-ignore
+        if (swiperInstance && prevRef.current && nextRef.current && (swiperInstance.params.navigation.prevEl !== prevRef.current || swiperInstance.params.navigation.nextEl !== nextRef.current)) {
             swiperInstance.params.navigation.prevEl = prevRef.current;
-            // @ts-ignore
             swiperInstance.params.navigation.nextEl = nextRef.current;
             swiperInstance.navigation.destroy();
             swiperInstance.navigation.init();
