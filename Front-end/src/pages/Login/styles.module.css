@@ -20,7 +20,6 @@
     margin: 95px 0 71px 0;
     border-radius: 2px;
     box-shadow: 0 4px 4px 0 hsla(0, 0%, 0%, 0.5);
-    padding-bottom: 44px;
 }
 
 .tituloEdesc {
@@ -59,9 +58,9 @@
 
 .inputsEbotoes {
     width: 390px;
-    height: 321px;
     display: flex;
     flex-direction: column;
+    margin-bottom: 61px;
 }
 
 .inputs {
@@ -142,6 +141,7 @@
     justify-content: center;
     gap: 1.8125rem;
     padding-bottom: 48px;
+    min-height: 100px;
 }
 
 .btnEntrar {
@@ -183,6 +183,9 @@
     font-family: 'Montserrat';
     font-weight: 500;
     box-shadow: 0 5px 6px 0 hsla(0, 0%, 0%, 0.25);
+    &:hover{
+        background-color: rgba(162, 22, 34, 0.679);
+    }
 }
 
 .cadastroContainer{
@@ -195,4 +198,7 @@ span{
 }
 .errorMessageEmail{
     padding-top: 7px;
+}
+.errorMessage{
+    margin-top: 5px;
 }

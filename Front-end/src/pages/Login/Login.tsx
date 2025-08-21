@@ -44,15 +44,12 @@ export default function Login() {
 
     async function loginUser(data: User) {
         try {
-            // Verifica se a entrada é um e-mail
             const isEmail = z.string().email().safeParse(data.usuarioOuEmail).success;
 
-            // Cria o corpo da requisição com a propriedade correta
             const requestBody = isEmail
                 ? { identifier: data.usuarioOuEmail, password: data.senha }
                 : { identifier: data.usuarioOuEmail, password: data.senha };
             
-            // Faz a requisição para a API com o corpo de requisição correto
             const response = await axios.post('http://localhost:3333/sessions', requestBody);
 
             if (response.status === 200) {
