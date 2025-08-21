@@ -78,3 +78,24 @@
     box-shadow: 0 4px 4px 0 hsla(0, 0%, 0%, 0.25);
     border: none;
 }
+.enviarContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 14.86px 0 39.13px 0;
+}
+.btnEnviar{
+    width: 146px;
+    height: 37.87px;
+    color: white;
+    background-color: hsla(355, 76%, 36%, 1);
+    border: none;
+    font-family: 'Montserrat';
+    font-size: 24px;
+    font-weight: 500;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover{
+        background-color: rgba(162, 22, 34, 0.728);
+    }
+}
