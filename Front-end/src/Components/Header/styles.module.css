@@ -23,11 +23,12 @@
     justify-content: space-between;
 }
 
-.nav p {
+.nav a {
     font-family: Nunito Sans;
     font-weight: 600;
     font-size: 1.8vw;
     color: #FCF7F8;
+    text-decoration: none;
 }
 
 .icons {

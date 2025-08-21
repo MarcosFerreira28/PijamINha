@@ -111,6 +111,7 @@
     font-size: 20px;
     text-align: center;
     color: white;
+    transition: 0.3s ease;
 }
 
 .tamanho:hover {
@@ -169,6 +170,7 @@
     font-weight: 500;
     font-size: 24px;
     line-height: 100%;
+    color: black;
 
     padding: 0 3.2vw 0 3.2vw;
 }
@@ -191,6 +193,11 @@
     font-size: 1.7vw;
     line-height: 100%;
     color: white;
+    transition: background-color 0.3s ease;
+}
+
+.botoesContainer button:hover {
+    background-color: var(--azul-400);
 }
 
 .botoesContainer img {
@@ -204,6 +211,6 @@
 }
 
 .coracao:hover{
-    transform: scale(1.10);
+    transform: scale(1.05);
     transition: 0.5s ease-in-out;
 }

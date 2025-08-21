@@ -3,9 +3,13 @@ import RootLayout from "./RootLayout";
 import Home from "./pages/Home/Home";
 import Carrinho from "./pages/Carrinho/Carrinho";
 import Favoritos from "./pages/Favoritos/Favoritos";
+
+import Pijaminhas from "./pages/Pijaminhas/Pijaminhas";
 import Individual from "./pages/Individual/Individual";
 import Cadastro from "./pages/Cadastro/Cadastro";
 import Login from "./pages/Login/Login";
+import InfoLoader from "./Functions/InfoLoader";
+
 
 
 const router = createBrowserRouter([
@@ -35,8 +39,13 @@ const router = createBrowserRouter([
                 element:<Favoritos/>
             },
             {
-                path:"/individual",
-                element:<Individual/>
+                path:"/individual/:pijamaId",
+                element:<Individual/>,
+                loader: InfoLoader
+            },
+            {
+                path: "/pijaminhas",
+                element:<Pijaminhas/>
             }
         ]
     }
