@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { useState } from "react"
+import axios from 'axios';
 
 const userSchema = z.object({
     usuarioOuEmail: z.string()
@@ -43,22 +44,28 @@ export default function Login() {
 
     async function loginUser(data: User) {
         try {
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            console.log(data);
-            
-            const isLoginSuccessful = true;
+            const isEmail = z.string().email().safeParse(data.usuarioOuEmail).success;
 
-            if (isLoginSuccessful) {
+            const requestBody = isEmail
+                ? { identifier: data.usuarioOuEmail, password: data.senha }
+                : { identifier: data.usuarioOuEmail, password: data.senha };
+            
+            const response = await axios.post('http://localhost:3333/sessions', requestBody);
+
+            if (response.status === 200) {
                 navigate('/');
-            } else {
+            }
+
+        } catch (error: any) {
+            if (error.response?.status === 401 || error.response?.status === 404) {
                 setError('root', {
                     message: "* Erro ao iniciar sessão: usuário ou senha incorretos"
                 });
+            } else {
+                setError('root', {
+                    message: "* Erro de conexão. Tente novamente."
+                });
             }
-        } catch {
-            setError('root', {
-                message: "* Erro ao iniciar sessão: usuário não encontrado"
-            });
         }
     }
 
@@ -101,10 +108,7 @@ export default function Login() {
                                 <button
                                     type="button"
                                     onClick={() => setMostrarSenha(!mostrarSenha)}
-                                ><svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M10.549 13.352C8.159 13.352 6.219 11.412 6.219 9.022C6.219 6.632 8.159 4.692 10.549 4.692C12.939 4.692 14.879 6.632 14.879 9.022C14.879 11.412 12.939 13.352 10.549 13.352ZM10.549 6.192C8.989 6.192 7.719 7.462 7.719 9.022C7.719 10.582 8.989 11.852 10.549 11.852C12.109 11.852 13.379 10.582 13.379 9.022C13.379 7.462 12.109 6.192 10.549 6.192Z" fill="#A31621" />
-                                        <path d="M10.545 18.04C6.785 18.04 3.235 15.84 0.795 12.02C-0.265 10.37 -0.265 7.68 0.795 6.02C3.245 2.2 6.795 0 10.545 0C14.295 0 17.845 2.2 20.285 6.02C21.345 7.67 21.345 10.36 20.285 12.02C17.845 15.84 14.295 18.04 10.545 18.04ZM10.545 1.5C7.315 1.5 4.225 3.44 2.065 6.83C1.315 8 1.315 10.04 2.065 11.21C4.225 14.6 7.315 16.54 10.545 16.54C13.775 16.54 16.865 14.6 19.025 11.21C19.775 10.04 19.775 8 19.025 6.83C16.865 3.44 13.775 1.5 10.545 1.5Z" fill="#A31621" />
-                                    </svg>
+                                >
                                 </button>
                             </div>
                             {errors.senha &&
