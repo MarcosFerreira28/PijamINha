@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useEffect } from "react";
 
 
 export default function handleFavorites(pajamaId: number) {
@@ -11,7 +10,6 @@ export default function handleFavorites(pajamaId: number) {
     .catch(error => {
         console.error("Erro ao favoritar pijama:", error);
     });
-
 
     return;
 }

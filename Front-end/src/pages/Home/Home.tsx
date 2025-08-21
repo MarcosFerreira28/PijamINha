@@ -36,16 +36,15 @@ export default function Home() {
         .catch(error => console.error("Erro ao buscar pijamas:", error));
     }, [])
 
-    const feedbacks: FeedbackType[] = [
-        { name: 'Fulano da Silva', rating: 4, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaa aaaaaaa aaaaaa  aaaaa aaaaaaaaaaaaaaaa aaaa aaaaaaaaaaaa aaaaaaaaaa aaaaaaa aaaaaaaaaaaaaa aaaa qdjhsd wdjqhdfqhhwqn fnnfqwhf hwb dwqh dw dhqfwqdhw  qwhd wh dwhqwhwq dsdgsg gdgsdgs gsfdgg sgdsdgdsgds ' },
-        { name: 'Fjoger', rating: 4.6, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
-        { name: 'cacetinho', rating: 4.2, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
-        { name: 'marcola', rating: 5, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
-        { name: 'sof da Silva', rating: 4.8, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
-        { name: 'que isso da Silva', rating: 4.1, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
-        { name: 'Zeus', rating: 4.1, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
-        { name: 'Pedro pedra', rating: 4.1, description: 'Adorei o pijama, muito confortável! eu gosto dele demais ele é tao legal e incrivel voce deveria compra-lo agora mesmo caralho aaa ' },
-    ];
+    const [feedbacks, setFeedbacks] = useState<FeedbackType[]>([]);
+    useEffect(() => {
+        axios.get("http://localhost:3333/feedbacks")
+        .then(response => setFeedbacks(response.data.feedbacks))
+        .catch(error => console.error("Erro ao buscar feedbacks:", error));
+    }, []);
+
+
+    console.log("FEEDBACK AAAA:", feedbacks);
 
     const feedbacksAgrupados = agruparFeedbacks(feedbacks);
 
@@ -55,7 +54,7 @@ export default function Home() {
     const [swiperInstance, setSwiperInstance] = useState<any>(null);
 
     // Atualiza as refs após renderizar para garantir que ambas as setas funcionem
-    //colocando as funções padrão do init do swiper em um useeffect
+    //colocando as funções padrão do init do swiper em um useEffect
     useEffect(() => {
         if (swiperInstance && prevRef.current && nextRef.current) {
             swiperInstance.params.navigation.prevEl = prevRef.current;
