@@ -1,3 +1,4 @@
+import Estrelas from "../../Components/Estrelas/Estrelas"
 import styles from "./styles.module.css"
 
 export default function Feedback() {
@@ -27,7 +28,7 @@ export default function Feedback() {
                         ></textarea>
                     </div> 
 
-                    
+                        <Estrelas />
 
                     <div>
                     </div>
