@@ -130,7 +130,7 @@
 }
 
 .feedbackButton {
-    width: 52vw;
+    min-width: 52vw;
     height: 15.5vh;
     margin-bottom: 6vh;
 
