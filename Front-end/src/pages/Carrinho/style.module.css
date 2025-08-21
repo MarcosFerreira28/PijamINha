@@ -85,6 +85,7 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    padding: 2.5rem 0 0 0;
 }
 
 .quant label {
@@ -105,6 +106,7 @@
     overflow: hidden;
     width: fit-content;
     background-color: #F5F8FF;
+    color: black;
 
 
 }
@@ -119,6 +121,7 @@
     display: flex;
 
 }
+
 .botao:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -130,6 +133,11 @@
     font-weight: 500;
     font-size: 24px;
     line-height: 100%;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1vw;
 }
 
 .Vtotal {
@@ -190,32 +198,48 @@
     box-shadow: 0px 5px 6px 0px #00000040;
     color: white;
     border: none;
+    cursor: pointer;
 
 }
 
 .detalhes {
     width: 171px;
-    font-family: Nunito Sans;
+    font-family: 'Nunito Sans';
     font-weight: 400;
-    font-style: Regular;
     font-size: 13px;
     line-height: 100%;
-    gap: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    display: inline;
 }
-.precoAntigo{
+
+.negrito {
+    color: black;
+    font-weight: bold;
+}
+
+.precoAntigo {
     color: var(--vermelho-200);
     font-weight: 400;
 }
-.comDesc{
+
+.comDesc {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 1.5rem 0 0 0;
 }
-.semDesc{
+
+.semDesc {
     padding: 2rem 0 0 0;
+}
+
+.x {
+    width: 64px;
+    height: 64px;
+    background: transparent;
+    border: none;
+    padding: 1rem 0 0 0;
+    cursor: pointer;
 }
