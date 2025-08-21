@@ -33,32 +33,27 @@ export default function Cadastro() {
     const { register, handleSubmit, formState: { errors, isSubmitting }, setError } = useForm<User>({
         resolver: zodResolver(userSchema)
     })
-    
+
     async function createUser(data: User) {
         try {
-            // Mapeia os dados do formulário para o formato esperado pelo back-end
             const requestData = {
                 name: data.nome,
                 username: data.usuario,
                 email: data.email,
                 password: data.senha,
             };
-
-            // Faz a requisição POST para a sua API
             await axios.post('http://localhost:3333/users', requestData);
 
             console.log('Usuário criado com sucesso!');
+            //fazer o modal para aparecer aqui ao invés do alert
             alert('Cadastro realizado com sucesso!');
 
         } catch (error: any) {
-            // Verifica o status do erro
             if (error.response?.status === 409) {
-                // Se o status for 409, exibe a mensagem de usuário já existente
                 setError('root', {
                     message: "* E-mail ou nome de usuário já cadastrado."
                 });
             } else {
-                // Para qualquer outro erro, exibe uma mensagem genérica
                 setError('root', {
                     message: "* Erro ao criar usuário. Tente novamente."
                 });
@@ -117,7 +112,7 @@ export default function Cadastro() {
                             type='submit'
                             disabled={isSubmitting}
                             className={styles.btnRegistrar}
-                            >{isSubmitting ? 'REGISTRANDO...' : 'REGISTRAR'}
+                        >{isSubmitting ? 'REGISTRANDO...' : 'REGISTRAR'}
 
                         </button>
                         {errors.root &&
