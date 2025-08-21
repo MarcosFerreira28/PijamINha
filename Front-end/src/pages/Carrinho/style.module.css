@@ -198,6 +198,7 @@
     box-shadow: 0px 5px 6px 0px #00000040;
     color: white;
     border: none;
+    cursor: pointer;
 
 }
 
@@ -240,4 +241,5 @@
     background: transparent;
     border: none;
     padding: 1rem 0 0 0;
+    cursor: pointer;
 }
