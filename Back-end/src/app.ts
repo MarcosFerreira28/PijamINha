@@ -4,6 +4,9 @@ import cors from '@fastify/cors'
 import { env } from './env'
 import fastifyJwt from '@fastify/jwt'
 import { usersRoutes } from './http/controllers/users/routes'
+import { feedbacksRoutes } from './http/controllers/feedbacks/routes'
+import { pajamasRoutes } from './http/controllers/pajamas/routes'
+import { pajamaSizeRoutes } from './http/controllers/pajamasSize/routes'
 
 export const app = fastify()
 
@@ -17,6 +20,11 @@ app.register(fastifyJwt, {
 })
 
 app.register(usersRoutes)
+
+app.register(feedbacksRoutes)
+app.register(pajamasRoutes)
+
+app.register(pajamaSizeRoutes)
 
 
 app.setErrorHandler((error, request, reply) => {

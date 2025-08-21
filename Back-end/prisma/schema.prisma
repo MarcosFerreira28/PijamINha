@@ -71,7 +71,7 @@ model Pajama {
   onSale      Boolean @default(true)
   salePercent Float?
 
-  pajamaSize PajamaSize[] @relation()
+  pajamaSize PajamaSize[] @relation
   salePajama SalePajama[] @relation()
 
   @@map("pajamas")
