@@ -1,12 +1,14 @@
 import Estrelas from "../../Components/Estrelas/Estrelas"
 import styles from "./styles.module.css"
 import { useState } from "react"
+import axios from 'axios';
 
 type FeedbackType = {
     name: string;
     description: string;
     rating: number;
 }
+
 export default function Feedback() {
     const [formData, setFormData] = useState<FeedbackType>({
         name: '',
@@ -30,10 +32,25 @@ export default function Feedback() {
         console.log("Avaliação:", newRating);
     };
 
-    const handleSubmit = (event: React.FormEvent) => {
+    const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-        console.log("Dados:", formData);
 
+        try {
+            const response = await axios.post('http://localhost:3333/feedbacks', formData);
+
+            if (response.status === 201) {
+                //criar o modal ao inves do alert para mostrar que foi enviado com sucesso e remover o alert
+                alert('Feedback enviado com sucesso!');
+                setFormData({
+                    name: '',
+                    description: '',
+                    rating: 0,
+                });
+            }
+        } catch (error) {
+            alert('Erro ao enviar o feedback. Tente novamente.');
+            console.error(error);
+        }
     };
 
     return (
@@ -59,7 +76,7 @@ export default function Feedback() {
                         <textarea
                             name="description"
                             id=""
-                            placeholder="Descição Detalhada"
+                            placeholder="Descrição Detalhada"
                             className={styles.descricao}
                             value={formData.description}
                             onChange={handleInputChange}
