@@ -19,11 +19,12 @@ export default function Feedback() {
                             placeholder="Nome Completo"
                             className={styles.nome}
                         />
-                        <input
-                            type="text"
-                            placeholder="Descrição Detalhada"
-                            className={styles.descricao}
-                        />
+                        <textarea 
+                        name="" 
+                        id="" 
+                        placeholder="Descição Detalhada"
+                        className={styles.descricao}
+                        ></textarea>
                     </div> 
                     <div className={styles.enviarContainer}>
                         <button className={styles.btnEnviar}>ENVIAR</button>
