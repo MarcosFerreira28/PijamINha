@@ -1,0 +1,38 @@
+.estrelasContainer {
+  width: 357px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  padding-left: 15px;
+}
+
+.estrelaIndividual {
+  position: relative;
+  width: 86.36px; 
+  height: 86.36px;
+}
+
+.estrelaIcone {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.estelaMetade,
+.estrelaCheia {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  cursor: pointer;
+  z-index: 2;
+}
+.estelaMetade {
+  width: 50%;
+  left: 0;
+  z-index: 2; 
+}
+.estrelaCheia {
+  width: 100%;
+  left: 0;
+  z-index: 1;
+}
