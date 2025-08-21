@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import styles from './styles.module.css';
-
 import menos from '../../Assets/Diminuir.png';
 import mais from '../../Assets/Aumentar.png';
 import coracao from '../../Assets/Favorito-cinza.png';
@@ -8,8 +7,8 @@ import coracaofavoritado from '../../Assets/Favoritado.png';
 import { useLoaderData } from 'react-router-dom';
 import type { Pijama } from '../../Types/Pijama';
 import usePijamaStore from '../../store/PijamaStore';
-import type { pijamaDados } from '../../store/PijamaStore';
 import handleFavorites from '../../Functions/handleFavorites';
+import type { pijamaDados } from '../../interfaces/PijamaDados';
 
 
 export default function InfoPijamaIndividual() {

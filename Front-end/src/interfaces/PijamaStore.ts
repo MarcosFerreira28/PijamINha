@@ -1,8 +1,9 @@
-import type { Pijama } from "../Types/Pijama";
+import type { pijamaDados } from "./PijamaDados";
 
-export default interface PijamaStore {
-    availablePijamas: Pijama[];
-    cart: Pijama[];
-    addToCart: (pijama: Pijama) => void;
-    removeFromCart: (id: number) => void;
+export interface PijamaStore {
+    pijama: pijamaDados[];
+    addToPijama: (p: pijamaDados) => void;
+    removeFromPijama: (id: number, size: string | null) => void;
+    aumentarQuantity: (id: number, size: string | null) => void;
+    diminuirQuantity: (id: number, size: string | null) => void;
 }

@@ -1,19 +1,6 @@
 import { create } from "zustand";
-import type { Pijama } from "../Types/Pijama.ts";
+import type { PijamaStore } from "../interfaces/PijamaStore.ts";
 
-export interface pijamaDados {
-    pijama: Pijama,
-    size: string,
-    quantity: number
-}
-
-export interface PijamaStore {
-    pijama: pijamaDados[];
-    addToPijama: (p: pijamaDados) => void;
-    removeFromPijama: (id: number, size: string | null) => void;
-    aumentarQuantity: (id: number, size: string | null) => void;
-    diminuirQuantity: (id: number, size: string | null) => void;
-}
 
 const usePijamaStore = create<PijamaStore>((set) => ({
     pijama: [],
