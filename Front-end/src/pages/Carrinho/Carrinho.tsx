@@ -1,155 +1,131 @@
 import Header2 from "../../Components/Header-2";
 import style from "./style.module.css";
-import { useState } from "react";
 import menos from "../../assets/Diminuir.png";
 import mais from "../../assets/Aumentar.png";
 import Modal1 from "../../Components/Modais/Modal1/modal1";
+import { useState } from "react";
+import usePijamaStore from "../../store/PijamaStore"; 
 
 export default function Carrinho() {
-    const [produtos, setProdutos] = useState([
-        {
-            id: 1,
-            nome: "PIJAMA FEMENINO LONGO - ESTAMPA POÁ",
-            ref: "#123456",
-            tamanho: "M",
-            preco: 78.9,
-            desc: 0.15,
-            quantidade: 1,
-            img: "https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg",
-            limit: 12,
-        },
-        {
-            id: 2,
-            nome: "PIJAMA FEMENINO LONGO - ESTAMPA POÁ",
-            ref: "#654321",
-            tamanho: "GG",
-            preco: 78.9,
-            desc: 0,
-            quantidade: 1,
-            img: "https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg",
-            limit: 10,
-        },
-    ]);
+    const produtos = usePijamaStore((s) => s.pijama); 
+    const addToPijama = usePijamaStore((s) => s.addToPijama);
+    const removeFromPijama = usePijamaStore((s) => s.removeFromPijama);
 
-    const diminuir = (id: number) => {
-        setProdutos((prev) =>
-            prev.map((p) =>
-                p.id === id && p.quantidade > 1
-                    ? { ...p, quantidade: p.quantidade - 1 }
-                    : p
-            )
-        );
+    const diminuir = (id: number, size: string) => {
+        const produto = produtos.find((p) => p.pijama.id === id && p.size === size);
+        if (produto && produto.quantity > 1) {
+        addToPijama({ ...produto, quantity: -1 }); 
+        removeFromPijama(id, size); 
+        }
     };
 
-    const aumentar = (id: number) => {
-        setProdutos((prev) =>
-            prev.map((p) =>
-                p.id === id && p.quantidade < p.limit
-                    ? { ...p, quantidade: p.quantidade + 1 }
-                    : p
-            )
-        );
+    const aumentar = (id: number, size: string) => {
+        const produto = produtos.find((p) => p.pijama.id === id && p.size === size);
+        const sizetemp = produto?.pijama.pajamaSize.find((p)=> p.size==size)
+        if(!produto || !sizetemp) return
+        if (produto && produto.quantity < sizetemp.stockQuantity) {
+        addToPijama({ ...produto, quantity: 1 }); 
+        }
     };
 
-    // Agora o total considera desconto
-    const totalGeral = produtos.reduce(
-        (acc, item) =>
-            acc + (item.preco * (1 - item.desc)) * item.quantidade,
-        0
-    );
+    const totalGeral = produtos.reduce((acc, item) => {
+        const precoFinal = item.pijama.onSale
+        ? item.pijama.price * (1 - (item.pijama.salePercent ?? 0)/ 100)
+        : item.pijama.price;
+        return acc + precoFinal * item.quantity;
+    }, 0);
 
     const [abrirModal, setAbrirModal] = useState(false);
 
     return (
         <>
-            <Header2 />
-            <main className={style.total}>
-                {produtos.map((produto) => (
-                    <div className={style.card} key={produto.id}>
-                        <div className={style.card1}>
-                            <div className={style.imgT}>
-                                <img src={produto.img} alt="" className={style.img} />
-                            </div>
-                            <div className={style.elementos}>
-                                <div>
-                                    <p className={style.nome}>{produto.nome}</p>
-                                    <p className={style.id}>Ref:{produto.ref}</p>
-                                </div>
-                                <div className={style.elementoBaixo}>
-                                    <p>{produto.tamanho}</p>
-                                </div>
-                            </div>
-                        </div>
+        <Header2 />
+        <main className={style.total}>
+            {produtos.map((produto) => {
+            const precoUnitario = produto.pijama.onSale
+                ? produto.pijama.price * (1 - (produto.pijama.salePercent ?? 0) / 100)
+                : produto.pijama.price;
 
-                        <div className={style.preco}>
-                            <div className={style.quant}>
-                                <label>Quantidade:</label>
-                                <div className={style.botaototal}>
-                                    <button
-                                        onClick={() => diminuir(produto.id)}
-                                        className={style.botao}
-                                        disabled={produto.quantidade <= 1}
-                                    >
-                                        <img src={menos} alt="-" />
-                                    </button>
-                                    <span className={style.valor}>{produto.quantidade}</span>
-                                    <button
-                                        onClick={() => aumentar(produto.id)}
-                                        className={style.botao}
-                                        disabled={produto.quantidade >= produto.limit}
-                                    >
-                                        <img src={mais} alt="+" />
-                                    </button>
-                                </div>
-                            </div>
-                            <div className={style.detalhes}>
-                                {produto.desc > 0 ? (
-                                    <>
-                                    <div className={style.comDesc}>
-                                        <p
-                                            className={style.precoAntigo}
-                                            style={{ textDecoration: "line-through" }}
-                                        >
-                                            <b>R$ {(produto.preco * produto.quantidade).toFixed(2)}</b>
-                                        </p>
-                                        <p className={style.Vtotal}>
-                                            R${" "}
-                                            {(
-                                                (produto.preco * (1 - produto.desc)) *
-                                                produto.quantidade
-                                            ).toFixed(2)}
-                                        </p>
-                                    </div>
-                                    </>
-                                ) : (
-                                    <div className={style.semDesc}>
-                                        <p className={style.Vtotal}>
-                                            R$ {(produto.preco * produto.quantidade).toFixed(2)}
-                                        </p>
-                                    </div>
-                                )}
-                                </div>
-                        </div>
+            return (
+                <div className={style.card} key={`${produto.pijama.id}-${produto.size}`}>
+                <div className={style.card1}>
+                    <div className={style.imgT}>
+                    <img src={produto.pijama.image} alt={produto.pijama.name} className={style.img} />
                     </div>
-                ))}
-
-                {/* Total geral já com desconto */}
-                <div className={style.totalGeral}>
-                    <p>Total</p>
-                    <p className={style.totalValor}>R$ {totalGeral.toFixed(2)}</p>
+                    <div className={style.elementos}>
+                    <div>
+                        <p className={style.nome}>{produto.pijama.name}</p>
+                        <p className={style.id}>Ref: #{produto.pijama.id}</p>
+                    </div>
+                    <div className={style.elementoBaixo}>
+                        <p>Tamanho: {produto.size}</p>
+                    </div>
+                    </div>
                 </div>
 
-                <div className={style.comprarTudo}>
-                    <button
-                        onClick={() => setAbrirModal(true)}
-                        className={style.BcomprarTudo}
-                    >
-                        Compre Tudo
-                    </button>
+                <div className={style.preco}>
+                    <div className={style.quant}>
+                    <label>Quantidade:</label>
+                    <div className={style.botaototal}>
+                        <button
+                        onClick={() => diminuir(produto.pijama.id, produto.size)}
+                        className={style.botao}
+                        disabled={produto.quantity <= 1}
+                        >
+                        <img src={menos} alt="-" />
+                        </button>
+                        <span className={style.valor}>{produto.quantity}</span>
+                        <button
+                        onClick={() => aumentar(produto.pijama.id, produto.size)}
+                        className={style.botao}
+                        disabled={ produto.quantity >=  (produto?.pijama.pajamaSize.find((p)=> p.size==produto.size)?.stockQuantity ?? 0)}
+                        >
+                        <img src={mais} alt="+" />
+                        </button>
+                    </div>
+                    </div>
+                    <div className={style.detalhes}>
+                    {produto.pijama.onSale ? (
+                        <div className={style.comDesc}>
+                        <p
+                            className={style.precoAntigo}
+                            style={{ textDecoration: "line-through" }}
+                        >
+                            <b>R$ {(produto.pijama.price * produto.quantity).toFixed(2)}</b>
+                        </p>
+                        <p className={style.Vtotal}>
+                            R$ {(precoUnitario * produto.quantity).toFixed(2)}
+                        </p>
+                        </div>
+                    ) : (
+                        <div className={style.semDesc}>
+                        <p className={style.Vtotal}>
+                            R$ {(produto.pijama.price * produto.quantity).toFixed(2)}
+                        </p>
+                        </div>
+                    )}
+                    </div>
                 </div>
-            </main>
+                </div>
+            );
+            })}
 
-            {abrirModal && <Modal1 onClose={() => setAbrirModal(false)} />}
+            <div className={style.totalGeral}>
+            <p>Total</p>
+            <p className={style.totalValor}>R$ {totalGeral.toFixed(2)}</p>
+            </div>
+
+            <div className={style.comprarTudo}>
+            <button
+                onClick={() => setAbrirModal(true)}
+                className={style.BcomprarTudo}
+            >
+                Compre Tudo
+            </button>
+            </div>
+        </main>
+
+        {abrirModal && <Modal1 onClose={() => setAbrirModal(false)} />}
         </>
     );
 }

@@ -9,14 +9,14 @@ import Desfavoritar from '../../Functions/Desfavoritar';
 import Favoritar from '../../Functions/Favoritar';
 import { useLoaderData } from 'react-router-dom';
 import type { Pijama } from '../../Types/Pijama';
-import useCartStore from '../../store/CartStore';
+import usePijamaStore from '../../store/PijamaStore';
+import type { pijamaDados } from '../../store/PijamaStore';
 
 
 export default function InfoPijamaIndividual() {
     const pijama = useLoaderData() as Pijama;
 
     const [qtdSelecionada, setQtdSelecionada] = useState(1);
-
     const [tamanhoSelecionado, setTamanhoSelecionado] = useState<string | null>(null);
     
     useEffect(() => {
@@ -25,7 +25,9 @@ export default function InfoPijamaIndividual() {
         }
     }, [pijama.pajamaSize, tamanhoSelecionado]);
     
-    const quantidadeEstoque = tamanhoSelecionado ? pijama.pajamaSize.find(t => t.size === tamanhoSelecionado)?.stockQuantity ?? 0 : 0
+    const quantidadeEstoque = tamanhoSelecionado 
+        ? pijama.pajamaSize.find(t => t.size === tamanhoSelecionado)?.stockQuantity ?? 0 
+        : 0;
 
     useEffect(() => {
         if (qtdSelecionada > quantidadeEstoque) {
@@ -33,16 +35,11 @@ export default function InfoPijamaIndividual() {
         }
     }, [tamanhoSelecionado, quantidadeEstoque]);
 
-
     const diminuir = () => {
-        if (qtdSelecionada > 1) {
-            setQtdSelecionada(qtdSelecionada - 1);
-        }
+        if (qtdSelecionada > 1) setQtdSelecionada(qtdSelecionada - 1);
     };
     const aumentar = () => {
-        if (qtdSelecionada < quantidadeEstoque) {
-            setQtdSelecionada(qtdSelecionada + 1);
-        }
+        if (qtdSelecionada < quantidadeEstoque) setQtdSelecionada(qtdSelecionada + 1);
     };
 
     const [favorited, setFavorited] = useState(pijama.favorite);
@@ -50,13 +47,24 @@ export default function InfoPijamaIndividual() {
     function handleFavorite() {
         setFavorited(!favorited);
         if (favorited) {
-            Favoritar();//passar a informação necessária aqui
+            Favoritar(); // passe a informação necessária aqui
         } else {
-            Desfavoritar();//passar a informação necessária aqui
+            Desfavoritar(); // passe a informação necessária aqui
         }
     }
 
-    const addToCart = useCartStore((state) => state.addToCart);
+    const addToPijama = usePijamaStore((s) => s.addToPijama);
+
+    const handleAddToCarrinho = () => {
+        if (!tamanhoSelecionado) return;
+        const item : pijamaDados={
+                pijama:pijama,
+                size:tamanhoSelecionado,
+                quantity:qtdSelecionada
+        }
+        addToPijama(item);
+        alert("Pijama adicionado ao carrinho!");
+    };
 
     return (
         <div className={styles.container}>
@@ -70,7 +78,7 @@ export default function InfoPijamaIndividual() {
                     <h1>R$ {pijama.price.toFixed(2)}</h1>
                     <p>6x de <strong>R$ {(pijama.price / 6).toFixed(2)}</strong></p>
                 </div>
-                <p>Ou por <strong style={{fontStyle: 'italic'}}>R${(pijama.price * 15 / 100).toFixed(2)}</strong> no PIX</p>
+                <p>Ou por <strong style={{fontStyle: 'italic'}}>R$ {(pijama.price * 15 / 100).toFixed(2)}</strong> no PIX</p>
             </div>
 
             <div className={styles.tamanhoContainer}>
@@ -80,7 +88,7 @@ export default function InfoPijamaIndividual() {
                         <button
                             key={tamanho.size}
                             className={`${tamanhoSelecionado === tamanho.size ? styles.tamanhoSelecionado : styles.tamanho}`}
-                            onClick={() => (setTamanhoSelecionado(tamanho.size))}
+                            onClick={() => setTamanhoSelecionado(tamanho.size)}
                         >
                             {tamanho.size}
                         </button>
@@ -93,7 +101,7 @@ export default function InfoPijamaIndividual() {
                 <h2>Quantidade:</h2>
                 <div className={styles.botaoTotal}>
                     <button
-                        onClick={() => diminuir()}
+                        onClick={diminuir}
                         className={styles.botao}
                         disabled={qtdSelecionada <= 1}
                     >
@@ -101,7 +109,7 @@ export default function InfoPijamaIndividual() {
                     </button>
                     <span className={styles.valor}>{qtdSelecionada}</span>
                     <button
-                        onClick={() => aumentar()}
+                        onClick={aumentar}
                         className={styles.botao}
                         disabled={qtdSelecionada >= quantidadeEstoque}
                     >
@@ -111,27 +119,18 @@ export default function InfoPijamaIndividual() {
             </div>
 
             <div className={styles.botoesContainer}>
-                <button style={{cursor: "pointer"}} onClick={() => {
-                    addToCart(pijama);
-                    alert("Pijama adicionado ao carrinho!")
-                }}>
+                <button style={{cursor: "pointer"}} onClick={handleAddToCarrinho}>
                     ADICIONAR AO CARRINHO
                 </button>
 
                 {favorited ? (
                     <img src={coracaofavoritado} alt="coracao" className={styles.coracao} 
-                    onClick={e => {
-                        e.preventDefault();
-                        handleFavorite();
-                    }}/>
+                        onClick={e => { e.preventDefault(); handleFavorite(); }}/>
                 ) : (
                     <img src={coracao} alt="coracao" className={styles.coracao} 
-                    onClick={e => {
-                        e.preventDefault();
-                        handleFavorite();
-                    }}/>
+                        onClick={e => { e.preventDefault(); handleFavorite(); }}/>
                 )}
             </div>
         </div>
-    )
+    );
 }

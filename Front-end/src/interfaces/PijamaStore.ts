@@ -1,6 +1,6 @@
 import type { Pijama } from "../Types/Pijama";
 
-export default interface CartStore {
+export default interface PijamaStore {
     availablePijamas: Pijama[];
     cart: Pijama[];
     addToCart: (pijama: Pijama) => void;
