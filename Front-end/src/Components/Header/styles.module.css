@@ -28,26 +28,33 @@
     font-size: 1.8vw;
     color: #FCF7F8;
     text-decoration: none;
+    display: flex;
+    align-items: center;
 }
 
 .icons {
     width: 11.7vw;
     height: 9.3vh;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    gap: 2.25rem;
 }
-
-.icons img {
-    width: 4.1vw;
+.carrinho{
+    width: 33px;
+    height: 33px;
+}
+.coracao{
+    width: 27px;
+    height: 27px;
 }
 
 .icons div {
-    width: 5vw;
-    height: 5.5vh;
+    width: 68px;
+    height: 33px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: .5rem;
 }
 
 .icons div img {
