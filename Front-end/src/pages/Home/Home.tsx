@@ -5,6 +5,7 @@ import '../../../node_modules/swiper/modules/pagination.min.css'
 import '../../../node_modules/swiper/modules/navigation.min.css'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
+import type SwiperCore from 'swiper';
 
 import loboHome from '../../Assets/LoboHome.png';
 import pijamaMulher from '../../Assets/PijamaMulher.png';
@@ -18,11 +19,10 @@ import FeedbackCard from '../../Components/FeedbackCard/FeedbackCard.tsx';
 import setaesquerda from '../../Assets/setaesquerda.svg';
 import setadireita from '../../Assets/setadireita.svg';
 
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import type { FeedbackType } from '../../Types/Feedback.ts';
 import { Link } from 'react-router-dom';
-import agruparFeedbacks from '../../Functions/AgruparFeedbacks.ts';
 import type { Pijama } from '../../Types/Pijama.ts';
 
 
@@ -37,6 +37,7 @@ export default function Home() {
     }, [])
 
     const [feedbacks, setFeedbacks] = useState<FeedbackType[]>([]);
+
     useEffect(() => {
         axios.get("http://localhost:3333/feedbacks")
         .then(response => setFeedbacks(response.data.feedbacks))
@@ -44,27 +45,7 @@ export default function Home() {
     }, []);
 
 
-    console.log("FEEDBACK AAAA:", feedbacks);
-
-    const feedbacksAgrupados = agruparFeedbacks(feedbacks);
-
-    // refs para navegação do carrossel
-    const prevRef = useRef(null);
-    const nextRef = useRef(null);
-    const [swiperInstance, setSwiperInstance] = useState<any>(null);
-
-    // Atualiza as refs após renderizar para garantir que ambas as setas funcionem
-    //colocando as funções padrão do init do swiper em um useEffect
-    useEffect(() => {
-        if (swiperInstance && prevRef.current && nextRef.current && (swiperInstance.params.navigation.prevEl !== prevRef.current || swiperInstance.params.navigation.nextEl !== nextRef.current)) {
-            swiperInstance.params.navigation.prevEl = prevRef.current;
-            swiperInstance.params.navigation.nextEl = nextRef.current;
-            swiperInstance.navigation.destroy();
-            swiperInstance.navigation.init();
-            swiperInstance.navigation.update();
-        }
-    }, [swiperInstance, prevRef, nextRef]);
-
+    const swiperRef = useRef<SwiperCore | null>(null)
 
     return (
         <div className={styles.home}>
@@ -121,27 +102,32 @@ export default function Home() {
 
                 <div className={styles.feedbacks}>
                     <h1 className={styles.feedbacksTitulo}>Feedbacks</h1>
-                    <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-                        <img src={setaesquerda} alt="Anterior" ref={prevRef} className={styles.setas} />
-                        <Swiper
-                            modules={[Navigation]}
-                            slidesPerView={1}
-                            navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
-                            onSwiper={setSwiperInstance}
-                            loop
-                            className={styles.feedbacksSwiper}
-                        >
-                            {feedbacksAgrupados.map((grupo, idx) => (
-                                <SwiperSlide key={idx}>
-                                    <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', padding: '0 20px 20px 20px' }}>
-                                        {grupo.map((feedbackCard, i) => (
-                                            <FeedbackCard key={i} {...feedbackCard} />
-                                        ))}
-                                    </div>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-                        <img src={setadireita} alt="Próximo" ref={nextRef} className={styles.setas} />
+                    <div style={{ display: 'flex', gap: '12px', alignItems: 'center'}}>
+                        {feedbacks.length > 0 ? (
+                            <div className={styles.containerFeedbackSwiper}>
+                                <img src={setaesquerda} alt="Anterior" className={styles.setas} onClick={() => {
+                                                                                                    swiperRef.current?.slidePrev()
+                                                                                                }}/>
+                                <Swiper
+                                    slidesPerView={3}
+                                    loop
+                                    onSwiper={(swiper) => (swiperRef.current = swiper)}
+                                    className={styles.feedbacksSwiper}
+                                >
+                                    {feedbacks.map((grupo, idx) => (
+                                        <SwiperSlide key={idx}>
+                                            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', padding: '0 20px 20px 20px' }}>
+                                                <FeedbackCard key={idx} {...grupo} />
+                                            </div>
+                                        </SwiperSlide>
+                                    ))}
+                                </Swiper>
+
+                                <img src={setadireita} alt="Anterior" className={styles.setas} onClick={() => {
+                                                                                                    swiperRef.current?.slideNext()
+                                                                                                }}/>
+                            </div>
+                        ) : null}
                     </div>
                 </div>
 
