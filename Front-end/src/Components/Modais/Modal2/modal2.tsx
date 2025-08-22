@@ -8,8 +8,7 @@ import Modal3 from "../Modal3/modal3";
 import type { Address } from "../../../interfaces/Address";
 import type { SalePajama } from "../../../interfaces/SalePajama";
 import type { Sale } from "../../../interfaces/Sale";
-import axios from "axios";
-
+import { api } from "../../../interceptator/interceptor";
 
 const schema = z
     .object({
@@ -38,13 +37,13 @@ interface Modal2Props {
     buyerName: string;
     cpf: string;
     salePajamas: SalePajama[];
-    totalPrice: number;
+    totalGeral: number;
 }
 
-export default function Modal2({ onClose, adress, buyerName, cpf, salePajamas, totalPrice }: Modal2Props) {
+export default function Modal2({ onClose, adress, buyerName, cpf, salePajamas, totalGeral }: Modal2Props) {
     const [abrirModal3, setAbrirModal3] = useState(false);
     const [saleData, setSaleData] = useState<Sale | null>(null);
-    const [sucesso,setSucesso]= useState(false);
+    const [sucesso, setSucesso] = useState(false);
 
     const {
         register,
@@ -57,19 +56,34 @@ export default function Modal2({ onClose, adress, buyerName, cpf, salePajamas, t
 
     const formaPagamento = watch("formaPagamento");
 
-    const onSubmit = (data: FormData) => {
+    const handleRequest = async (data: Sale) => {
+        try {
+            const response = await api.post('/sales', data);
+
+            if (response.status === 201) {
+                setSucesso(true);
+            }
+        } catch (error) {
+            alert("Erro ao enviar o feedback. Tente novamente.");
+            console.error(error);
+        }
+    };
+
+    const onSubmit = async (data: FormData) => {
         console.log("Dados de pagamento:", data);
-        
+
         const paymentMethodMap = {
-            'pix': 'PIX' as const,
-            'boleto': 'MONEY' as const,
-            'cartao': 'CREDIT_CARD' as const,
+            pix: "PIX" as const,
+            boleto: "MONEY" as const,
+            cartao: "CREDIT_CARD" as const,
         };
+
+        console.log(adress);
 
         const sale: Sale = {
             buyerName,
             cpf,
-            price: totalPrice,
+            price: totalGeral,
             paymentMethod: paymentMethodMap[data.formaPagamento as keyof typeof paymentMethodMap],
             installments: data.parcelamento ? parseInt(data.parcelamento) : undefined,
             cardNumber: data.numeroCartao,
@@ -78,28 +92,16 @@ export default function Modal2({ onClose, adress, buyerName, cpf, salePajamas, t
         };
 
         console.log("Objeto Sale criado:", sale);
+        console.log("Endereco:",adress)
         setSaleData(sale);
         setAbrirModal3(true);
+        await handleRequest(sale);
     };
 
     const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
         if (e.target === e.currentTarget) {
             onClose();
         }
-    }
-    
-    const handleRequest = async (data:Sale) => {  
-        try {
-            const response = await axios.post('http://localhost:3333/sales', data);
-
-            if (response.status === 201) {
-                setSucesso(true);
-            }
-        } catch (error) {
-            alert('Erro ao enviar o feedback. Tente novamente.');
-            console.error(error);
-        }      
-
     };
 
     return (
@@ -140,8 +142,7 @@ export default function Modal2({ onClose, adress, buyerName, cpf, salePajamas, t
                             <img src={seta} alt="seta" />
                             <p>VOLTAR</p>
                         </button>
-                        <button type="submit" className={style.enviar}
-                        onClick={()=> handleRequest(saleData!)}>
+                        <button type="submit" className={style.enviar}>
                             <p>ENVIAR</p>
                         </button>
                     </div>
@@ -149,8 +150,8 @@ export default function Modal2({ onClose, adress, buyerName, cpf, salePajamas, t
             </div>
 
             {abrirModal3 && saleData && (
-                <Modal3 
-                    onClose={() => setAbrirModal3(false)} 
+                <Modal3
+                    onClose={() => setAbrirModal3(false)}
                     saleData={saleData}
                     sucesso={sucesso}
                 />
@@ -158,6 +159,3 @@ export default function Modal2({ onClose, adress, buyerName, cpf, salePajamas, t
         </div>
     );
 }
-
-
-

@@ -17,23 +17,6 @@ export default function Modal3({onClose, saleData, sucesso}: Modal3Props) {
         navigate("/");
     }
 
-    const formatPaymentMethod = (method: string) => {
-        const methodMap = {
-            'PIX': 'PIX',
-            'MONEY': 'Boleto',
-            'CREDIT_CARD': 'Cartão de Crédito',
-            'DEBIT_CARD': 'Cartão de Débito'
-        };
-        return methodMap[method as keyof typeof methodMap] || method;
-    };
-
-    const formatPrice = (price: number) => {
-        return new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-        }).format(price);
-    };
-
     return (
         <div
             className={style.modalTotal}
@@ -49,17 +32,6 @@ export default function Modal3({onClose, saleData, sucesso}: Modal3Props) {
                         <>
                             <h2>Sua compra foi concluída!</h2>
                             <p>Obrigado por comprar conosco, {saleData.buyerName}!</p>
-                            
-                            <div className={style.resumoCompra}>
-                                <h3>Resumo da Compra:</h3>
-                                <p><strong>Total:</strong> {formatPrice(saleData.price)}</p>
-                                <p><strong>Forma de Pagamento:</strong> {formatPaymentMethod(saleData.paymentMethod)}</p>
-                                {saleData.installments && saleData.installments > 1 && (
-                                    <p><strong>Parcelamento:</strong> {saleData.installments}x</p>
-                                )}
-                                <p><strong>Itens:</strong> {saleData.salePajamas.length} produto(s)</p>
-                                <p><strong>Entrega em:</strong> {saleData.adress.city} - {saleData.adress.state}</p>
-                            </div>
                         </>
                     ) : (
                         <>

@@ -6,6 +6,8 @@ import Modal1 from "../../Components/Modais/Modal1/modal1";
 import { useState } from "react";
 import usePijamaStore from "../../store/PijamaStore"; 
 import x from "../../assets/X-preto.png"
+import type { SalePajama } from "../../interfaces/SalePajama";
+
 
 export default function Carrinho() {
     const produtos = usePijamaStore((s) => s.pijama); 
@@ -18,6 +20,18 @@ export default function Carrinho() {
             : item.pijama.price;
         return acc + precoFinal * item.quantity;
     }, 0);
+
+    const salePajama: SalePajama[] = produtos.map((produto) => {
+        const precoUnitario = produto.pijama.onSale
+            ? produto.pijama.price * (1 - (produto.pijama.salePercent ?? 0) / 100)
+            : produto.pijama.price;
+        
+        return {
+            pajamaId: produto.pijama.id,
+            quantity: produto.quantity,
+            price: precoUnitario
+        };
+    });
 
     const [abrirModal, setAbrirModal] = useState(false);
 
@@ -118,11 +132,13 @@ export default function Carrinho() {
                 </div>
             </main>
 
-            {abrirModal && <Modal1 onClose={() => setAbrirModal(false)} />}
+            {abrirModal && <Modal1 
+                onClose={() => setAbrirModal(false)} 
+                totalGeral={totalGeral}
+                salePajamas={salePajama}
+            />}
         </>
     );
 }
-
-
 
 //zustand

@@ -13,6 +13,7 @@ import infantil from '../../Assets/Infantil.svg';
 import ambos from '../../Assets/Ambos.svg';
 import { useLoaderData } from "react-router-dom";
 import type { Pijama } from "../../Types/Pijama";
+import { useEffect } from "react";
 
 export default function Individual() {
     const info = useLoaderData() as Pijama;
@@ -20,6 +21,10 @@ export default function Individual() {
     const season = info.season;
     const gender = info.gender;
     const type = info.type;
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <div className={styles.container}>

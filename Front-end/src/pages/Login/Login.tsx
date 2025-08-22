@@ -4,7 +4,9 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { useState } from "react"
-import axios from 'axios';
+import { api } from "../../interceptator/interceptor"
+import { getUserProfile } from "../../Hooks/getProfile"
+import { useAuthStore } from "../../store/AuthStore"
 
 const userSchema = z.object({
     usuarioOuEmail: z.string()
@@ -32,17 +34,18 @@ const userSchema = z.object({
     senha: z.string().nonempty('* Senha não pode ser vazia').min(6, '* Deve ter no mínimo 6 caracteres').refine(value => value.trim().length > 0, { message: '* Não pode ter espaços' })
 })
 
-
-type User = z.infer<typeof userSchema>
+type LoginFormData = z.infer<typeof userSchema>
 
 export default function Login() {
     const [mostrarSenha, setMostrarSenha] = useState(false);
     const navigate = useNavigate();
-    const { register, handleSubmit, formState: { errors, isSubmitting }, setError } = useForm<User>({
+    const setToken = useAuthStore((state) => state.setToken);
+    const setUser = useAuthStore((state) => state.setUser);
+    const { register, handleSubmit, formState: { errors, isSubmitting }, setError } = useForm<LoginFormData>({
         resolver: zodResolver(userSchema)
     })
 
-    async function loginUser(data: User) {
+    async function loginUser(data: LoginFormData) {
         try {
             const isEmail = z.string().email().safeParse(data.usuarioOuEmail).success;
 
@@ -50,9 +53,21 @@ export default function Login() {
                 ? { identifier: data.usuarioOuEmail, password: data.senha }
                 : { identifier: data.usuarioOuEmail, password: data.senha };
             
-            const response = await axios.post('http://localhost:3333/sessions', requestBody);
+            const response = await api.post('/sessions', requestBody);
 
             if (response.status === 200) {
+                const { token } = response.data;
+                console.log(token);
+                setToken(token);
+
+                try {
+                    const userProfile = await getUserProfile();
+                    setUser(userProfile);
+                    console.log('Perfil do usuário:', userProfile);
+                } catch (profileError) {
+                    console.error('Erro ao buscar perfil:', profileError);
+                }
+
                 navigate('/');
             }
 
@@ -68,7 +83,6 @@ export default function Login() {
             }
         }
     }
-
 
     return (
         <div className={styles.mainLogin}>

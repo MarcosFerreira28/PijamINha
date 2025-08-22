@@ -14,7 +14,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
     paymentMethod: z.enum(['MONEY', 'CREDIT_CARD', 'DEBIT_CARD', 'PIX']),
     installments: z.number().default(1),
     cardNumber: z.string().optional(),
-    address: z.object({
+    adress: z.object({
       zipCode: z.string(),
       state: z.string(),
       city: z.string(),
@@ -38,7 +38,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
     paymentMethod,
     installments,
     cardNumber,
-    address,
+    adress,
     salePajamas,
   } = createSaleBodySchema.parse(request.body);
 
@@ -53,7 +53,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
       paymentMethod,
       installments,
       cardNumber,
-      address,
+      adress,
       salePajamas,
     });
 

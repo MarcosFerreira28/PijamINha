@@ -26,7 +26,7 @@ interface CreateSaleUseCaseRequest {
   paymentMethod: PaymentType;
   installments: number;
   cardNumber?: string;
-  address: AddressInput;
+  adress: AddressInput;
   salePajamas: SalePajamaInput[];
 }
 
@@ -44,7 +44,7 @@ export class CreateSaleUseCase {
     paymentMethod,
     installments,
     cardNumber,
-    address,
+    adress,
     salePajamas,
   }: CreateSaleUseCaseRequest): Promise<CreateSaleUseCaseResponse> {
     
@@ -70,7 +70,7 @@ export class CreateSaleUseCase {
         installments,
         cardNumber,
         address: {
-          create: address,
+          create: adress,
         },
         salePajama: {
           create: salePajamas.map((pajama) => ({
