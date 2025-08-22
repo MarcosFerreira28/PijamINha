@@ -105,9 +105,11 @@ export default function Home() {
                     <div style={{ display: 'flex', gap: '12px', alignItems: 'center'}}>
                         {feedbacks.length > 0 ? (
                             <div className={styles.containerFeedbackSwiper}>
+                                {feedbacks.length > 3 ? 
                                 <img src={setaesquerda} alt="Anterior" className={styles.setas} onClick={() => {
                                                                                                     swiperRef.current?.slidePrev()
                                                                                                 }}/>
+                                : null}
                                 <Swiper
                                     slidesPerView={Math.min(3, feedbacks.length)}
                                     loop
@@ -123,9 +125,11 @@ export default function Home() {
                                     ))}
                                 </Swiper>
 
+                                {feedbacks.length > 3 ? 
                                 <img src={setadireita} alt="Anterior" className={styles.setas} onClick={() => {
                                                                                                     swiperRef.current?.slideNext()
                                                                                                 }}/>
+                                : null }
                             </div>
                         ) : null}
                     </div>
