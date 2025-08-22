@@ -1,18 +1,21 @@
 import logo from "../../assets/Logo.svg"
 import user from "../../assets/User.svg"
+import { useAuthStore } from "../../store/AuthStore"
 import styles from "./styles.module.css"
 import { Link } from "react-router-dom"
 
 export default function Header() {
+    const { isAuthenticated, user: loggedUser } = useAuthStore()
+
     return (
         <header className={styles.header}>
             <Link to="/"><img src={logo} alt="logo" className={styles.loboimg} /></Link>
 
             <nav className={styles.nav}>
                 <Link to="/pijaminhas">PIJAMINHAS</Link>
-                <Link to="/pijaminhas?gender=female">FEMININO</Link>
-                <Link to="/pijaminhas?gender=male">MASCULINO</Link>
-                <Link to="/pijaminhas?type=child">INFANTIL</Link>
+                <Link to="/pijaminhas?gender=Feminino">FEMININO</Link>
+                <Link to="/pijaminhas?gender=Masculino">MASCULINO</Link>
+                <Link to="/pijaminhas?type=Infantil">INFANTIL</Link>
             </nav>
 
             <div className={styles.icons}>
@@ -41,9 +44,28 @@ export default function Header() {
                     </svg>
                     </Link>
                 </div>
-                <Link to="/login">
-                    <img src={user} alt="" />
-                </Link>
+                <div className={styles.userSection}>
+                    {isAuthenticated ? (
+                        <div className={styles.userLoggedIn}>
+                             {loggedUser && (
+                                <div className={styles.userInfo}>
+                                    <span className={styles.userName}>{loggedUser.name}</span>
+                                    <span className={styles.userUsername}>{loggedUser.username}</span>
+                                </div>
+                            )}
+                                    <button 
+                                onClick={() => useAuthStore.getState().logout()} 
+                                className={styles.logoutBtn}
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    ) : (
+                        <Link to="/login">
+                            <img src={user} alt="" />
+                        </Link>
+                    )}
+                </div>
             </div>
         </header>
     )

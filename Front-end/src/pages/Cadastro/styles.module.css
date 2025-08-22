@@ -76,12 +76,11 @@
     gap: 4.75rem;
 }
 
-/*aqui tem a estilizacao das mensagens de span dos inputs*/
 .errorMessage{
     color: white;
     font-size: 14px;
 }
-/*.cadaInput engloba o input com o span*/
+
 .cadaInput{
     display: flex;
     flex-direction: column;
@@ -94,4 +93,36 @@
     align-items: center;
     gap: .625rem;
     margin-bottom: 72px;
+}
+
+.senhaInput {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.senhaInput input {
+    padding-right: 40px;
+    width: 100%;
+}
+
+.eyeButton {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    transition: color 0.2s ease;
+}
+
+.eyeButton:hover {
+    color: #333;
+}
+
+.eyeButton:focus {
+    outline: none;
 }
