@@ -141,7 +141,7 @@ async function createPajamas() {
       description: 'Pijama unissex em malha com estampa de folhas em tons de outono',
       image: 'https://images.tcdn.com.br/img/img_prod/970725/blusa_pijama_unissex_manga_longa_estampa_outono_15057_1_a1c62611fb818fa2c12538b99ac29b2c.jpg',
       price: 119.99,
-      season: SeasonType.WINTER,
+      season: SeasonType.AUTUMN,
       type: BodyType.ADULT,
       gender: GenderType.MALE,
       favorite: false,
