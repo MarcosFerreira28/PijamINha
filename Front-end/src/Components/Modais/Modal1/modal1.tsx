@@ -25,10 +25,10 @@ type FormData = z.infer<typeof schema>;
 interface Modal1Props {
     onClose: () => void;
     salePajamas: SalePajama[];
-    totalPrice: number;
+    totalGeral: number;
 }
 
-export default function Modal1({ onClose, salePajamas, totalPrice }: Modal1Props) {
+export default function Modal1({ onClose, salePajamas, totalGeral }: Modal1Props) {
     const [abrirModal2, setAbrirModal2] = useState(false);
     const [addressData, setAddressData] = useState<Address | null>(null);
     const [buyerData, setBuyerData] = useState<{ name: string; cpf: string } | null>(null);
@@ -153,7 +153,7 @@ export default function Modal1({ onClose, salePajamas, totalPrice }: Modal1Props
                     buyerName={buyerData.name}
                     cpf={buyerData.cpf}
                     salePajamas={salePajamas}
-                    totalPrice={totalPrice}
+                    totalGeral={totalGeral}
                 />
             )}
         </div>
