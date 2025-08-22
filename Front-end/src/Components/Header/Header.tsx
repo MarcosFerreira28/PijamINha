@@ -10,9 +10,9 @@ export default function Header() {
 
             <nav className={styles.nav}>
                 <Link to="/pijaminhas">PIJAMINHAS</Link>
-                <Link to="/pijaminhas?gender=Feminino">FEMININO</Link>
-                <Link to="/pijaminhas?gender=Masculino">MASCULINO</Link>
-                <Link to="/pijaminhas?type=Infantil">INFANTIL</Link>
+                <Link to="/pijaminhas?gender=female">FEMININO</Link>
+                <Link to="/pijaminhas?gender=male">MASCULINO</Link>
+                <Link to="/pijaminhas?type=child">INFANTIL</Link>
             </nav>
 
             <div className={styles.icons}>

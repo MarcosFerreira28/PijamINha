@@ -114,9 +114,13 @@
     border-color: #729ba9;
 }
 
-.listagem a > div {
-    width: 100%;
-    max-width: 250px;
+.semPijama {
+    width: 50vw;
+    font-family: Nunito Sans;
+    font-weight: 400;
+    font-size: 30px;
+    text-align: center;
+    color: var(--azul-400);
 }
 
 .listagem a > div p {
