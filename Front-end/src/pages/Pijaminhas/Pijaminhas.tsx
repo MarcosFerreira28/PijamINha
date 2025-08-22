@@ -21,7 +21,6 @@ export default function Pijaminhas() {
         .catch((error => console.error("Erro ao buscar pijamas:", error)))
     }, []);
 
-
     const [produtosExibidos, setProdutosExibidos] = useState(pijamas);
     const [filtroGenero, setFiltroGenero] = useState('Todos');
     const [filtroTipo, setFiltroTipo] = useState('Todos');
@@ -151,14 +150,14 @@ export default function Pijaminhas() {
             </div>
 
             <div className={styles.listagem}>
-                {produtosPaginados.length > 0 ? (
-                    produtosPaginados.map(produto => (
+                {pijamas.length > 0 ? (
+                    pijamas.map(produto => (
                         <Link
                             key={produto.id}
                             to={`/individual/${produto.id}`}
                             style={{ cursor: "pointer", textDecoration: "none" }}
                         >
-                            <Card {...produto} menor={false} />
+                            <Card id={produto.id} name={produto.name} price={produto.price} image={produto.image} favorite={produto.favorite} onSale={produto.onSale} salePercent={produto.salePercent} menor={false} />
                         </Link>
                     ))
                 ) : (
