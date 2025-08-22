@@ -24,7 +24,7 @@ export default function Individual() {
     return (
         <div className={styles.container}>
             <div className={styles.infoContainer}>
-                <img className={styles.imagemPijama} src="https://images.tcdn.com.br/img/img_prod/460977/pijama_macacao_kigurumi_adulto_unissex_stitch_lilo_eamp_stitch_disney_mkp_119771_1_ccb98b402f9860e36ae7c93ee82387c7.jpg" alt="" />
+                <img className={styles.imagemPijama} src={info.image} alt="" />
 
                 <InfoPijamaIndividual />
 
