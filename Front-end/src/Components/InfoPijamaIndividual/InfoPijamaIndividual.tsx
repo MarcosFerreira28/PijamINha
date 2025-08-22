@@ -57,7 +57,6 @@ export default function InfoPijamaIndividual() {
                 quantity:qtdSelecionada
         }
         addToPijama(item);
-        alert("Pijama adicionado ao carrinho!");
     };
 
     return (
