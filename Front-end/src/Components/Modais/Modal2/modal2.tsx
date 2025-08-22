@@ -64,7 +64,7 @@ export default function Modal2({ onClose, adress, buyerName, cpf, salePajamas, t
                 setSucesso(true);
             }
         } catch (error) {
-            alert("Erro ao enviar o feedback. Tente novamente.");
+            alert("Erro ao efetivar compras. Tente novamente.");
             console.error(error);
         }
     };
