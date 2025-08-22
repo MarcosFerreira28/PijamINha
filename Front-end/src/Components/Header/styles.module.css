@@ -60,3 +60,83 @@
 .icons div img {
     width: 2vw;
 }
+
+.userSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.userName {
+    font-size: 12px;
+    font-weight: 500;
+    color: #FCF7F8;
+}
+
+.userUsername {
+    font-size: 10px;
+    color: #FCF7F8;
+    opacity: 0.8;
+}
+
+.userLoggedIn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logoutBtn {
+    background: none;
+    border: 1px solid #FCF7F8;
+    color: #FCF7F8;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logoutBtn:hover {
+    background-color: #FCF7F8;
+    color: #333;
+}
+
+.senhaInput {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.senhaInput input {
+    padding-right: 40px;
+    width: 100%;
+}
+
+.eyeButton {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    transition: color 0.2s ease;
+}
+
+.eyeButton:hover {
+    color: #333;
+}
+
+.eyeButton:focus {
+    outline: none;
+}
