@@ -35,7 +35,7 @@ async function createPajamas() {
       price: 89.99,
       season: SeasonType.SUMMER,
       type: BodyType.ADULT,
-      gender: GenderType.FEMALE,
+      gender: GenderType.FAMILY,
       favorite: false,
       onSale: false,
       salePercent: 40
@@ -59,7 +59,7 @@ async function createPajamas() {
       price: 119.99,
       season: SeasonType.WINTER,
       type: BodyType.ADULT,
-      gender: GenderType.FEMALE,
+      gender: GenderType.UNISSEX,
       favorite: false,
       onSale: true,
       salePercent: 20
@@ -143,7 +143,31 @@ async function createPajamas() {
       price: 119.99,
       season: SeasonType.SUMMER,
       type: BodyType.ADULT,
-      gender: GenderType.MALE,
+      gender: GenderType.UNISSEX,
+      favorite: false,
+      onSale: false,
+      salePercent: 50
+    },
+    {
+      name: 'Manga Longa Preta',
+      description: 'Pijama unissex com manga longa cor preto',
+      image: 'https://cdn.vnda.com.br/wshirt/2022/05/27/12_5_6_647_wshirt_pijamalongo_preto1.jpg?v=1653666711',
+      price: 119.99,
+      season: SeasonType.SUMMER,
+      type: BodyType.ADULT,
+      gender: GenderType.UNISSEX,
+      favorite: false,
+      onSale: false,
+      salePercent: 50
+    },
+    {
+      name: 'Familia Tartaruga',
+      description: 'Pijama de familia com estampa de tartaruga',
+      image: 'https://teuspijamas.cdn.magazord.com.br/img/2022/12/produto/4479/2358a.jpg?ims=fit-in/635x865/filters:fill(white)',
+      price: 119.99,
+      season: SeasonType.SUMMER,
+      type: BodyType.ADULT,
+      gender: GenderType.FAMILY,
       favorite: false,
       onSale: false,
       salePercent: 50

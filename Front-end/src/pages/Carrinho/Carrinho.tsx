@@ -126,7 +126,7 @@ export default function Carrinho() {
                     <button
                         onClick={() => setAbrirModal(true)}
                         className={style.BcomprarTudo}
-                    >
+                    disabled={totalGeral==0}>  
                         Compre Tudo
                     </button>
                 </div>

@@ -33,7 +33,7 @@
 .filtrosContainer select {
     padding: 10px 50px 10px 10px;
     border: none;
-    border-left: 10px solid #4E8098;
+    border-left: 10px solid var(--azul-200);
     border-radius: 5px;
     background-color: #97C3D8;
     font-size: 18px;
