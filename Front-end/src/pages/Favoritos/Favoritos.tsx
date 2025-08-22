@@ -31,7 +31,7 @@ export default function Favoritos() {
             <div className={styles.favoritosContainer}>
                 
                 <img src={setaesquerda} alt="Anterior" className={styles.setas} onClick={() => {
-                                                                    swiperRef.current?.slideNext()
+                                                                    swiperRef.current?.slidePrev()
                                                                 }}/>
                 <div className={styles.carouselWrapper}>
                     <Swiper
@@ -51,7 +51,8 @@ export default function Favoritos() {
                         ))}
                     </Swiper>
 
-                    <div className={styles.fadeRight}></div>
+                    {pijamas.length > 5 ? (<div className={styles.fadeRight}></div>) : null}
+                    
                 </div>
 
                 <img src={setadireita} alt="Anterior" className={styles.setas} onClick={() => {

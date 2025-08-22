@@ -19,6 +19,14 @@
     margin-top: 6vh;
     margin-bottom: 1vh;
     color: black;
+
+    max-height: 10vh;
+    
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .feedbackContainer img {
