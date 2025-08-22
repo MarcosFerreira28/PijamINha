@@ -46,10 +46,12 @@ export default function Pijaminhas() {
             filtroEstacao,
             termoPesquisa
         );
-        
+
         setProdutosExibidos(produtosFiltrados);
         setPaginaAtual(1);
-    }, [filtroGenero, filtroTipo, filtroEstacao, termoPesquisa]);
+    }, [pijamas, filtroGenero, filtroTipo, filtroEstacao, termoPesquisa]);
+    
+    console.log(produtosExibidos)
 
     const { items: produtosPaginados, totalPaginas } = paginacaoProdutos(
         produtosExibidos,
@@ -150,14 +152,14 @@ export default function Pijaminhas() {
             </div>
 
             <div className={styles.listagem}>
-                {pijamas.length > 0 ? (
-                    pijamas.map(produto => (
+                {produtosPaginados.length > 0 ? (
+                    produtosPaginados.map(produto => (
                         <Link
                             key={produto.id}
                             to={`/individual/${produto.id}`}
                             style={{ cursor: "pointer", textDecoration: "none" }}
                         >
-                            <Card id={produto.id} name={produto.name} price={produto.price} image={produto.image} favorite={produto.favorite} onSale={produto.onSale} salePercent={produto.salePercent} menor={false} />
+                            <Card {...produto} menor={false} />
                         </Link>
                     ))
                 ) : (

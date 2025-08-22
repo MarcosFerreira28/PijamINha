@@ -61,7 +61,7 @@
     align-self: center;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
+    gap: 4vw;
     justify-items: center;
     justify-content: center;
     max-width: 1200px;
@@ -115,13 +115,9 @@
     border-color: #729ba9;
 }
 
-/* .listagem a > div {
-    width: 100%;
-    max-width: 250px;
-} */
 
-/* .listagem a > div p {
+.listagem a > div p {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-} */
+}

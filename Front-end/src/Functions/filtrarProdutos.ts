@@ -24,8 +24,5 @@ export function filtrarProdutos(
         );
     }
 
-    console.log("produtos:", products)
-    console.log("filtrados", produtosFiltrados)
-
     return produtosFiltrados;
 }
