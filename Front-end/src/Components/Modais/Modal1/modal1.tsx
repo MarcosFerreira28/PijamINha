@@ -5,6 +5,9 @@ import { z } from "zod";
 import style from "./modal1.module.css";
 import Modal2 from "../Modal2/modal2";
 import x from "../../../assets/X.png"
+import type { SalePajama } from "../../../interfaces/SalePajama";
+import type { Address } from "../../../interfaces/Address";
+
 
 const schema = z.object({
     nome: z.string().min(3, "Nome deve ter no mínimo 3 caracteres"),
@@ -15,16 +18,20 @@ const schema = z.object({
     cidade: z.string().nonempty("Campo obrigatório"),
     numero: z.string().nonempty("Campo obrigatório"),
     bairro: z.string().nonempty("Campo obrigatório"),
-    });
+});
 
-    type FormData = z.infer<typeof schema>;
+type FormData = z.infer<typeof schema>;
 
-    interface Modal1Props {
+interface Modal1Props {
     onClose: () => void;
-    }
+    salePajamas: SalePajama[];
+    totalPrice: number;
+}
 
-    export default function Modal1({ onClose }: Modal1Props) {
+export default function Modal1({ onClose, salePajamas, totalPrice }: Modal1Props) {
     const [abrirModal2, setAbrirModal2] = useState(false);
+    const [addressData, setAddressData] = useState<Address | null>(null);
+    const [buyerData, setBuyerData] = useState<{ name: string; cpf: string } | null>(null);
 
     const {
         register,
@@ -36,13 +43,30 @@ const schema = z.object({
 
     const onSubmit = (data: FormData) => {
         console.log("Dados enviados:", data);
+        
+        const address: Address = {
+            zipCode: data.cep,
+            state: data.uf,
+            city: data.cidade,
+            neighborhood: data.bairro,
+            adress: data.logradouro,
+            number: data.numero,
+        };
+
+        const buyer = {
+            name: data.nome,
+            cpf: data.cpf,
+        };
+
+        setAddressData(address);
+        setBuyerData(buyer);
         setAbrirModal2(true);
     };
+
     const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
         if (e.target === e.currentTarget) {
-        onClose();
-        }
-    };
+            onClose();
+    }};
 
     return (
         <div className={style.modalTotal} onClick={handleOverlayClick}>
@@ -52,78 +76,86 @@ const schema = z.object({
             {!abrirModal2 && (
             <form onSubmit={handleSubmit(onSubmit)} className={style.formulario}>
                 <input
-                type="text"
-                placeholder="Nome completo"
-                {...register("nome")}
-                />
-                {errors.nome && <p>{errors.nome.message}</p>}
-
-                <input type="text" placeholder="CPF" {...register("cpf")} />
-                {errors.cpf && <p>{errors.cpf.message}</p>}
-
-                <input type="text" placeholder="CEP" {...register("cep")} />
-                {errors.cep && <p>{errors.cep.message}</p>}
-
-                <input
-                type="text"
-                placeholder="Logradouro"
-                {...register("logradouro")}
-                />
-                {errors.logradouro && <p>{errors.logradouro.message}</p>}
-
-                <div className={style.linha}>
-                    <div className={style.campo}>
-                        <input
-                        type="text"
-                        placeholder="UF"
-                        {...register("uf")}
-                        className={style.menor}
+                            type="text"
+                            placeholder="Nome completo"
+                            {...register("nome")}
                         />
-                        {errors.uf && <p>{errors.uf.message}</p>}
-                    </div>
-                    <div className={style.campo}>
-                        <input
-                        type="text"
-                        placeholder="Cidade"
-                        {...register("cidade")}
-                        />
-                        {errors.cidade && <p>{errors.cidade.message}</p>}
-                    </div>
-                    </div>
+                        {errors.nome && <p>{errors.nome.message}</p>}
 
-                    <div className={style.linha}>
-                    <div className={style.campo}>
-                        <input
-                        type="text"
-                        placeholder="Número"
-                        {...register("numero")}
-                        className={style.menor}
-                        />
-                        {errors.numero && <p>{errors.numero.message}</p>}
-                    </div>
-                    <div className={style.campo}>
-                        <input
-                        type="text"
-                        placeholder="Bairro"
-                        {...register("bairro")}
-                        />
-                        {errors.bairro && <p>{errors.bairro.message}</p>}
-                    </div>
-                </div>
+                        <input type="text" placeholder="CPF" {...register("cpf")} />
+                        {errors.cpf && <p>{errors.cpf.message}</p>}
 
+                        <input type="text" placeholder="CEP" {...register("cep")} />
+                        {errors.cep && <p>{errors.cep.message}</p>}
 
-                <button type="submit" className={style.enviar}>
-                ENVIAR
+                        <input
+                            type="text"
+                            placeholder="Logradouro"
+                            {...register("logradouro")}
+                        />
+                        {errors.logradouro && <p>{errors.logradouro.message}</p>}
+
+                        <div className={style.linha}>
+                            <div className={style.campo}>
+                                <input
+                                    type="text"
+                                    placeholder="UF"
+                                    {...register("uf")}
+                                    className={style.menor}
+                                />
+                                {errors.uf && <p>{errors.uf.message}</p>}
+                            </div>
+                            <div className={style.campo}>
+                                <input
+                                    type="text"
+                                    placeholder="Cidade"
+                                    {...register("cidade")}
+                                />
+                                {errors.cidade && <p>{errors.cidade.message}</p>}
+                            </div>
+                        </div>
+
+                        <div className={style.linha}>
+                            <div className={style.campo}>
+                                <input
+                                    type="text"
+                                    placeholder="Número"
+                                    {...register("numero")}
+                                    className={style.menor}
+                                />
+                                {errors.numero && <p>{errors.numero.message}</p>}
+                            </div>
+                            <div className={style.campo}>
+                                <input
+                                    type="text"
+                                    placeholder="Bairro"
+                                    {...register("bairro")}
+                                />
+                                {errors.bairro && <p>{errors.bairro.message}</p>}
+                            </div>
+                        </div>
+
+                        <button type="submit" className={style.enviar}>
+                            ENVIAR
+                        </button>
+                    </form>
+                )}
+
+                <button className={style.fechar} onClick={onClose}>
+                    <img src={x} alt="x" />
                 </button>
-            </form>
+            </div>
+
+            {abrirModal2 && addressData && buyerData && (
+                <Modal2 
+                    onClose={() => setAbrirModal2(false)}
+                    adress={addressData}
+                    buyerName={buyerData.name}
+                    cpf={buyerData.cpf}
+                    salePajamas={salePajamas}
+                    totalPrice={totalPrice}
+                />
             )}
-
-            <button className={style.fechar} onClick={onClose}>
-            <img src={x} alt="x" />
-            </button>
         </div>
-
-        {abrirModal2 && <Modal2 onClose={() => setAbrirModal2(false)} />}
-        </div> 
     );
 }
