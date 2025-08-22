@@ -7,7 +7,7 @@ async function createPajamas() {
     {
       name: 'Arctic Comfort',
       description: 'Pijama masculino em soft premium com detalhes em xadrez azul, ideal para noites frias',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/7618163028846795450_0',
+      image: 'https://carrefourbr.vtexassets.com/arquivos/ids/180590878/conjunto-de-pijamas-cuffbow-fluffy-fleece-pijamas-de-inverno-familia.jpg?v=638680958154470000',
       price: 129.99,
       season: SeasonType.WINTER,
       type: BodyType.ADULT,
@@ -19,10 +19,10 @@ async function createPajamas() {
     {
       name: 'Night Forest',
       description: 'Conjunto em flanela estampada com motivos de floresta em tons de verde escuro',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/632983514337349163_0',
+      image: 'https://cdn.awsli.com.br/800x800/1398/1398809/produto/111210422/0ea9d6980f.jpg',
       price: 149.99,
       season: SeasonType.WINTER,
-      type: BodyType.ADULT,
+      type: BodyType.CHILD,
       gender: GenderType.MALE,
       favorite: false,
       onSale: false,
@@ -31,7 +31,7 @@ async function createPajamas() {
     {
       name: 'Summer Breeze',
       description: 'Pijama feminino em malha fresca com estampa floral delicada em tons pastéis',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/11886172474400748795_0',
+      image: 'https://pijamaonline.vteximg.com.br/arquivos/ids/175869-1000-1000/00009492_4extra_pijama-masculino-regata-bcjn-algodao-palmeira.jpg?v=638369666180300000',
       price: 89.99,
       season: SeasonType.SUMMER,
       type: BodyType.ADULT,
@@ -43,7 +43,7 @@ async function createPajamas() {
     {
       name: 'Ocean Dreams',
       description: 'Conjunto short doll em tecido leve com estampa de conchas marinhas',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/15551919343196967956_0',
+      image: 'https://praqnome.cdn.magazord.com.br/img/2023/05/produto/3990/6152-azul-indigo-5.jpeg?ims=650x975',
       price: 79.99,
       season: SeasonType.SUMMER,
       type: BodyType.ADULT,
@@ -55,11 +55,11 @@ async function createPajamas() {
     {
       name: 'Starry Night',
       description: 'Pijama unissex com estampa de estrelas e constelações em fundo azul marinho',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/7583261537723985514_0',
+      image: 'https://praqnome.cdn.magazord.com.br/img/2023/05/produto/3990/6152-azul-indigo-5.jpeg?ims=650x975',
       price: 119.99,
       season: SeasonType.WINTER,
       type: BodyType.ADULT,
-      gender: GenderType.MALE,
+      gender: GenderType.FEMALE,
       favorite: false,
       onSale: true,
       salePercent: 20
@@ -67,7 +67,7 @@ async function createPajamas() {
     {
       name: 'Little Explorer',
       description: 'Pijama infantil com estampa de dinossauros em fundo azul marinho',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/9996912513721111582_0',
+      image: 'https://modamada.com.br/wp-content/uploads/2023/06/pijama-4-1.jpeg',
       price: 69.99,
       season: SeasonType.WINTER,
       type: BodyType.CHILD,
@@ -79,7 +79,7 @@ async function createPajamas() {
     {
       name: 'Sweet Dreams',
       description: 'Conjunto infantil em malha com unicórnios e arco-íris em tons pastel',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/8253416225138991535_0',
+      image: 'https://images.tcdn.com.br/img/img_prod/792409/pijama_infantil_juvenil_feminino_sweet_dreams_c_shorts_pink_1022_1_3de9c7921e92336237d29f06527f7068.jpg',
       price: 59.99,
       season: SeasonType.SUMMER,
       type: BodyType.CHILD,
@@ -91,7 +91,7 @@ async function createPajamas() {
     {
       name: 'Mountain Cabin',
       description: 'Pijama masculino em flanela xadrez vermelho e preto estilo lenhador',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/3676037682189551591_0',
+      image: 'https://m.media-amazon.com/images/S/aplus-media-library-service-media/7d833ccf-6085-40a3-84be-37d282944396.__CR0,0,300,300_PT0_SX300_V1___.png',
       price: 139.99,
       season: SeasonType.WINTER,
       type: BodyType.ADULT,
@@ -103,7 +103,7 @@ async function createPajamas() {
     {
       name: 'Spring Blossom',
       description: 'Conjunto feminino em cetim com estampa de flores de cerejeira',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/10741642136878756709_0',
+      image: 'https://ae01.alicdn.com/kf/S6eab8a5a01e04ca990d5b8d73713db685.jpg_640x640q90.jpg',
       price: 159.99,
       season: SeasonType.SPRING,
       type: BodyType.ADULT,
@@ -115,7 +115,7 @@ async function createPajamas() {
     {
       name: 'Space Explorer',
       description: 'Pijama infantil com estampa de planetas e foguetes em fundo escuro',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/4898211836515878482_0',
+      image: 'https://ph-cdn3.ecosweb.com.br/imagens01/foto/mkp240/pijamas/pijamas-para-meninas/pijama-infantil-manga-longa-foguete_2362075_600_1.jpg',
       price: 79.99,
       season: SeasonType.WINTER,
       type: BodyType.CHILD,
@@ -127,7 +127,7 @@ async function createPajamas() {
     {
       name: 'Tropical Paradise',
       description: 'Short doll feminino com estampa de flamingos e folhagens tropicais',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/9095108247271243553_0',
+      image: 'https://cdn.awsli.com.br/2500x2500/279/279989/produto/211458620/flamingo-kids-iyhu6elr42.jpg',
       price: 89.99,
       season: SeasonType.SUMMER,
       type: BodyType.ADULT,
@@ -139,7 +139,7 @@ async function createPajamas() {
     {
       name: 'Autumn Leaves',
       description: 'Pijama unissex em malha com estampa de folhas em tons de outono',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/13704334155294754496_0',
+      image: 'https://images.tcdn.com.br/img/img_prod/970725/blusa_pijama_unissex_manga_longa_estampa_outono_15057_1_a1c62611fb818fa2c12538b99ac29b2c.jpg',
       price: 119.99,
       season: SeasonType.AUTUMN,
       type: BodyType.ADULT,
@@ -151,7 +151,7 @@ async function createPajamas() {
     {
       name: 'Fairy Tales',
       description: 'Pijama infantil com estampa de fadas e castelos em tons pastéis',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/9925933836149119147_0',
+      image: 'https://oibem.vtexassets.com/arquivos/ids/450840/Pijama_Infantil_Menina_Fadas_B_630.jpg?v=638840576895830000',
       price: 69.99,
       season: SeasonType.SPRING,
       type: BodyType.CHILD,
@@ -163,7 +163,7 @@ async function createPajamas() {
     {
       name: 'Midnight Blue',
       description: 'Conjunto masculino em cetim azul marinho com listras sutis',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/13144594824730347432_0',
+      image: 'https://m.media-amazon.com/images/I/31tNnbaFioL._SY1000_.jpg',
       price: 169.99,
       season: SeasonType.AUTUMN,
       type: BodyType.ADULT,
@@ -175,7 +175,7 @@ async function createPajamas() {
     {
       name: 'Garden Party',
       description: 'Pijama feminino em viscose com estampa de rosas e borboletas',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/11167863785064617148_0',
+      image: 'https://caeju.cdn.magazord.com.br/img/2023/10/produto/5389/pijama-feminino-borboleta-rosa-toy2138-02-1.jpg?ims=fit-in/800x1200',
       price: 129.99,
       season: SeasonType.SPRING,
       type: BodyType.ADULT,
@@ -187,7 +187,7 @@ async function createPajamas() {
     {
       name: 'Cozy Winter',
       description: 'Pijama masculino em plush com detalhes em moletom e acabamento premium',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/16574714972778805096_0',
+      image: 'https://images.tcdn.com.br/img/img_prod/726359/pijama_masc_longo_plush_1375_2_bdc7ae9713fc1327ac6b59e93ad362e3.jpg',
       price: 189.99,
       season: SeasonType.WINTER,
       type: BodyType.ADULT,
@@ -199,7 +199,7 @@ async function createPajamas() {
     {
       name: 'Summer Nights',
       description: 'Short doll feminino em tecido leve com estampa de estrelas cadentes',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/9489178015199916245_0',
+      image: 'https://50461.cdn.simplo7.net/static/50461/sku/pijama-feminino-pijama-curto-short-doll-estrelas--p-1591212618449.jpg',
       price: 99.99,
       season: SeasonType.SUMMER,
       type: BodyType.ADULT,
@@ -211,7 +211,7 @@ async function createPajamas() {
     {
       name: 'Safari Adventure',
       description: 'Pijama infantil com estampa de animais da selva em tons terrosos',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/4743058411450939182_0',
+      image: 'https://theminiforest.vteximg.com.br/arquivos/ids/224226-560-735/30005_pijama-infantil-meia-estacao_the-mini-forest_squirrel_menino-de-pijama.png?v=638612255406630000',
       price: 75.99,
       season: SeasonType.SPRING,
       type: BodyType.CHILD,
@@ -223,7 +223,7 @@ async function createPajamas() {
     {
       name: 'Moonlight Garden',
       description: 'Conjunto feminino em cetim com estampas florais noturnas',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/16213988188748433119_0',
+      image: 'https://izzychic.com.br/cdn/shop/files/S91adb867a34b43279d4350cbe469334b7_1000x.jpg?v=1691527529',
       price: 179.99,
       season: SeasonType.AUTUMN,
       type: BodyType.ADULT,
@@ -235,7 +235,7 @@ async function createPajamas() {
     {
       name: 'Winter Wonderland',
       description: 'Pijama infantil com tema natalino e detalhes em pelúcia',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/2482410733572768537_0',
+      image: 'https://caeju.cdn.magazord.com.br/img/2023/10/produto/5310/pijama-infantil-feminino-doce-de-natal-toy1845-03-1.jpg?ims=fit-in/800x1200',
       price: 89.99,
       season: SeasonType.WINTER,
       type: BodyType.CHILD,
@@ -247,7 +247,7 @@ async function createPajamas() {
     {
       name: 'Ocean Breeze',
       description: 'Pijama masculino em algodão com estampa de ondas em tons de azul',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/14013824645870116505_0',
+      image: 'https://beblast.cdn.magazord.com.br/img/2022/09/produto/1485/pijama-verao-masculino-plus-size-de-algodao.jpg?ims=630x945',
       price: 139.99,
       season: SeasonType.SUMMER,
       type: BodyType.ADULT,
@@ -258,8 +258,8 @@ async function createPajamas() {
     },
     {
       name: 'Enchanted Forest',
-      description: 'Pijama infantil com estampa de fadas e duendes em fundo verde',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/17290865680376364195_0',
+      description: 'Pijama de Natal Dr. Seuss Grinch',
+      image: 'https://m.media-amazon.com/images/I/51VCjhSWuBL._SY350_.jpg',
       price: 79.99,
       season: SeasonType.SPRING,
       type: BodyType.CHILD,
@@ -271,7 +271,7 @@ async function createPajamas() {
     {
       name: 'Mountain Lodge',
       description: 'Conjunto masculino em flanela com estampa xadrez em tons terrosos',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/15760832821893029095_0',
+      image: 'https://images.tcdn.com.br/img/img_prod/726359/pijama_masc_aberto_longo_em_flanela_xadrez_1663_1_56013e07046fbe136342b65708a3a0b5.jpg',
       price: 159.99,
       season: SeasonType.WINTER,
       type: BodyType.ADULT,
@@ -283,7 +283,7 @@ async function createPajamas() {
     {
       name: 'Floral Dreams',
       description: 'Pijama feminino em viscose com delicadas flores em aquarela',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/10566867711012146127_0',
+      image: 'https://images.tcdn.com.br/img/img_prod/726359/pijama_fem_aberto_calca_e_manga_curta_viscose_floral_1623_1_d769f99dbb618cf653dbc91f5f59c488.jpg',
       price: 145.99,
       season: SeasonType.SPRING,
       type: BodyType.ADULT,
@@ -295,7 +295,7 @@ async function createPajamas() {
     {
       name: 'Racing Cars',
       description: 'Pijama infantil com estampas de carros de corrida em fundo azul',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/11491429120178068979_0',
+      image: 'https://torratorra.vtexassets.com/arquivos/ids/2378545/667140000410276.jpg?v=638756601533700000',
       price: 69.99,
       season: SeasonType.AUTUMN,
       type: BodyType.CHILD,
@@ -307,7 +307,7 @@ async function createPajamas() {
     {
       name: 'Nordic Winter',
       description: 'Conjunto masculino em soft com estampa de padrões nórdicos',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/5749372798317902452_0',
+      image: 'https://ateliejoaovieira.com.br/cdn/shop/files/3697b1c607f332ae4a61a5fdae84f69a_8d64a7a1-b90d-4da6-90c4-44ef59b91463_288x.jpg?v=1749144481',
       price: 199.99,
       season: SeasonType.WINTER,
       type: BodyType.ADULT,
@@ -319,7 +319,7 @@ async function createPajamas() {
     {
       name: 'Butterfly Garden',
       description: 'Short doll infantil com estampa de borboletas coloridas',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/1970636413846276759_0',
+      image: 'https://adaptive-images.uooucdn.com.br/tr:w-1100,h-1594,c-at_max,pr-true,q-90/a22426-ogxytnphtt0/pv/d7/0f/3e/28fbd9bee4af1c45c3b5fe7565.jpg',
       price: 79.99,
       season: SeasonType.SUMMER,
       type: BodyType.CHILD,
@@ -331,7 +331,7 @@ async function createPajamas() {
     {
       name: 'Autumn Comfort',
       description: 'Pijama feminino em malha canelada com detalhes em renda',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/2007274616375854313_0',
+      image: 'https://ticialoungewear.com.br/cdn/shop/files/Conj_Joy_5.jpg?v=1724445528',
       price: 169.99,
       season: SeasonType.AUTUMN,
       type: BodyType.ADULT,
@@ -343,7 +343,7 @@ async function createPajamas() {
     {
       name: 'Superhero Dreams',
       description: 'Pijama infantil com estampas de super-heróis em cores vibrantes',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/14428019122265547095_0',
+      image: 'https://ph-cdn3.ecosweb.com.br/imagens01/foto/mkp240/pijamas/pijamas-para-meninos/pijama-manga-curta-infantil-masculi_2361176_301_1.jpg',
       price: 85.99,
       season: SeasonType.SPRING,
       type: BodyType.CHILD,
@@ -355,7 +355,7 @@ async function createPajamas() {
     {
       name: 'Marine Life',
       description: 'Conjunto masculino com estampa de âncoras e elementos náuticos',
-      image: 'http://googleusercontent.com/image_collection/image_retrieval/9154884612757468170_0',
+      image: 'https://pijamaonline.vteximg.com.br/arquivos/ids/161756-551-683/00005723_1still_camisola-gestante-any-any-viscolycra-floral-ancora.jpg?v=636090271679070000',
       price: 149.99,
       season: SeasonType.SUMMER,
       type: BodyType.ADULT,
