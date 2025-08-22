@@ -13,7 +13,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-/*Todos os enum do projeto*/
+/**
+ * Todos os enum do projeto
+ */
 
 enum SeasonType {
   WINTER
@@ -47,7 +49,9 @@ enum PaymentType {
   PIX
 }
 
-/*Todos os modelos do projeto*/
+/**
+ * Todos os modelos do projeto
+ */
 
 model Feedback {
   id          Int    @id @default(autoincrement())
@@ -67,12 +71,12 @@ model Pajama {
   season      SeasonType
   type        BodyType
   gender      GenderType
-  favorite    Boolean @default(false)
-  onSale      Boolean @default(true)
+  favorite    Boolean    @default(false)
+  onSale      Boolean    @default(true)
   salePercent Float?
 
-  pajamaSize PajamaSize[] @relation
-  salePajama SalePajama[] @relation()
+  pajamaSize PajamaSize[]
+  salePajama SalePajama[]
 
   @@map("pajamas")
 }
@@ -97,8 +101,8 @@ model Sale {
   installments  Int         @default(1)
   cardNumber    String?
 
-  salePajama SalePajama[] @relation()
-  address    Address?     @relation()
+  salePajama SalePajama[]
+  address    Address?
 
   @@map("sales")
 }
@@ -111,7 +115,7 @@ model SalePajama {
   pajamaId Int
   pajama   Pajama @relation(fields: [pajamaId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
-  saleId Int  @unique
+  saleId Int
   sale   Sale @relation(fields: [saleId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@unique([pajamaId, saleId])
