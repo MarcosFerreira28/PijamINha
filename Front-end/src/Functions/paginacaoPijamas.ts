@@ -3,7 +3,7 @@ interface PaginatedResult<T> {
     totalPaginas: number;
 }
 
-export function paginacaoProdutos<T>(
+export function paginacaoPijamas<T>(
     items: T[],
     paginaAtual: number,
     cardsPorPagina: number

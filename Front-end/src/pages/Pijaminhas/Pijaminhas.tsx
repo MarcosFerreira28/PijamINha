@@ -2,94 +2,33 @@ import { useState, useEffect } from 'react';
 import Card from '../../Components/Card/Card';
 import styles from './styles.module.css';
 import { Link, useSearchParams } from 'react-router-dom';
-import { filtrarProdutos } from '../../Functions/filtrarProdutos';
-import { paginacaoProdutos } from '../../Functions/paginacaoProdutos';
+import { filtrarPijamas } from '../../Functions/filtrarPijamas.ts';
+import { paginacaoPijamas } from '../../Functions/paginacaoPijamas.ts';
 import setaesquerda from '../../assets/setaesquerda.svg';
 import setadireita from '../../Assets/setadireita.svg';
-import pijamaPoa from '../../assets/FUNDOCARDTESTE.png';
 import lupa from '../../assets/lupa.png';
-
-// criei vários cards aleatórios para testar a paginação e os filtros, dps a gente tira quando integrar com o back
-const todosOsProdutos = [
-    { id: 1, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 2, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 3, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 4, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 5, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 6, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 7, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 8, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 9, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 10, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 11, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 12, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 13, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 14, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 15, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 16, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 17, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 18, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 19, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 20, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 21, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 22, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 23, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 24, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 25, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 26, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 27, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 28, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 29, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 30, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 31, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 32, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 33, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 34, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 35, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 36, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 37, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 38, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 39, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 40, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 41, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 42, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 43, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 44, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 45, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 46, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 47, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 48, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 49, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 50, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 51, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 52, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 53, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 54, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 55, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 56, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 57, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Família', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 58, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 59, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 60, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 61, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Unissex', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 62, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Masculino', type: 'Adulto', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 63, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Infantil', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 64, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Infantil', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 65, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Infantil', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 66, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Masculino', type: 'Infantil', season: 'Inverno', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-    { id: 67, name: "Pijama feminino longo - estampa poá", price: 78.90, image: pijamaPoa, gender: 'Feminino', type: 'Infantil', season: 'Verão', favorite: true, on_sale: true, sale_percent: 10, menor: false },
-];
+import axios from 'axios';
+import type { Pijama } from '../../Types/Pijama.ts';
 
 export default function Pijaminhas() {
     const [searchParams] = useSearchParams();
-
-    const [produtosExibidos, setProdutosExibidos] = useState(todosOsProdutos);
+    const [pijamasApi, setPijamasApi] = useState<Pijama[]>([]);
+    const [pijamasExibidos, setPijamasExibidos] = useState<Pijama[]>([]);
     const [filtroGenero, setFiltroGenero] = useState('Todos');
     const [filtroTipo, setFiltroTipo] = useState('Todos');
     const [filtroEstacao, setFiltroEstacao] = useState('Todos');
     const [termoPesquisa, setTermoPesquisa] = useState('');
     const [paginaAtual, setPaginaAtual] = useState(1);
     const cardsPorPagina = 12;
+
+    useEffect(() => {
+        axios.get("http://localhost:3333/pajamas")
+            .then(response => {
+                setPijamasApi(response.data);
+                setPijamasExibidos(response.data);
+            })
+            .catch(error => console.error("Erro ao buscar pijamas:", error));
+    }, []);
 
     useEffect(() => {
         const generoNaUrl = searchParams.get('gender');
@@ -101,20 +40,20 @@ export default function Pijaminhas() {
     }, [searchParams]);
 
     useEffect(() => {
-        const produtosFiltrados = filtrarProdutos(
-            todosOsProdutos,
+        const pijamasFiltrados = filtrarPijamas(
+            pijamasApi, 
             filtroGenero,
             filtroTipo,
             filtroEstacao,
             termoPesquisa
         );
         
-        setProdutosExibidos(produtosFiltrados);
+        setPijamasExibidos(pijamasFiltrados);
         setPaginaAtual(1);
-    }, [filtroGenero, filtroTipo, filtroEstacao, termoPesquisa]);
+    }, [filtroGenero, filtroTipo, filtroEstacao, termoPesquisa, pijamasApi]);
 
-    const { items: produtosPaginados, totalPaginas } = paginacaoProdutos(
-        produtosExibidos,
+    const { items: pijamasPaginados, totalPaginas } = paginacaoPijamas(
+        pijamasExibidos,
         paginaAtual,
         cardsPorPagina
     );
@@ -190,40 +129,40 @@ export default function Pijaminhas() {
                 </div>
                 <div className={styles.filtroOpcoes}>
                     <select value={filtroGenero} onChange={(e) => setFiltroGenero(e.target.value)}>
-                        <option value="Todos">Gênero: Todos</option>
-                        <option value="Unissex">Unissex</option>
-                        <option value="Masculino">Masculino</option>
-                        <option value="Feminino">Feminino</option>
-                        <option value="Família">Família</option>
+                        <option value="Todos">Gênero:Todos</option>
+                        <option value="unissex">Unissex</option>
+                        <option value="male">Masculino</option>
+                        <option value="female">Feminino</option>
+                        <option value="family">Família</option>
                     </select>
 
                     <select value={filtroTipo} onChange={(e) => setFiltroTipo(e.target.value)}>
                         <option value="Todos">Tipo: Todos</option>
-                        <option value="Adulto">Adulto</option>
-                        <option value="Infantil">Infantil</option>
+                        <option value="adult">Adulto</option>
+                        <option value="child">Infantil</option>
                     </select>
                 
                     <select value={filtroEstacao} onChange={(e) => setFiltroEstacao(e.target.value)}>
                         <option value="Todos">Estação: Todos</option>
-                        <option value="Inverno">Inverno</option>
-                        <option value="Verão">Verão</option>
+                        <option value="winter">Inverno</option>
+                        <option value="summer">Verão</option>
                     </select>
                 </div>
             </div>
 
             <div className={styles.listagem}>
-                {produtosPaginados.length > 0 ? (
-                    produtosPaginados.map(produto => (
-                        <Link
-                            key={produto.id}
-                            to={`/cardInfo/${produto.id}`}
+                {pijamasPaginados.length > 0 ? (
+                    pijamasPaginados.map(pijama => ( 
+                        <Link 
+                            key={pijama.id}
+                            to={`/individual/${pijama.id}`}
                             style={{ cursor: "pointer", textDecoration: "none" }}
                         >
-                            <Card {...produto} />
+                            <Card id={pijama.id} name={pijama.name} price={pijama.price} image={pijama.image} favorite={pijama.favorite} onSale={pijama.onSale} salePercent={pijama.salePercent} menor={false}/>
                         </Link>
                     ))
                 ) : (
-                    <p>Nenhum produto encontrado.</p>
+                    <p className={styles.semPijama}>Nenhum pijama encontrado.</p>
                 )}
             </div>
 
