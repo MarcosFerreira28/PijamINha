@@ -109,7 +109,7 @@ export default function Home() {
                                                                                                     swiperRef.current?.slidePrev()
                                                                                                 }}/>
                                 <Swiper
-                                    slidesPerView={3}
+                                    slidesPerView={Math.min(3, feedbacks.length)}
                                     loop
                                     onSwiper={(swiper) => (swiperRef.current = swiper)}
                                     className={styles.feedbacksSwiper}
