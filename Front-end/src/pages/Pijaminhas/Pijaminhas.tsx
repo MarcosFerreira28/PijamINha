@@ -129,7 +129,7 @@ export default function Pijaminhas() {
                 </div>
                 <div className={styles.filtroOpcoes}>
                     <select value={filtroGenero} onChange={(e) => setFiltroGenero(e.target.value)}>
-                        <option value="Todos">Gênero:Todos</option>
+                        <option value="Todos">Gênero: Todos</option>
                         <option value="unissex">Unissex</option>
                         <option value="male">Masculino</option>
                         <option value="female">Feminino</option>
