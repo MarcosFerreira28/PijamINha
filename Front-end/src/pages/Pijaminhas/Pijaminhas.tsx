@@ -46,7 +46,7 @@ export default function Pijaminhas() {
             filtroEstacao,
             termoPesquisa
         );
-
+        
         setProdutosExibidos(produtosFiltrados);
         setPaginaAtual(1);
     }, [pijamas, filtroGenero, filtroTipo, filtroEstacao, termoPesquisa]);
@@ -132,21 +132,21 @@ export default function Pijaminhas() {
                     <select value={filtroGenero} onChange={(e) => setFiltroGenero(e.target.value)}>
                         <option value="Todos">Gênero: Todos</option>
                         <option value="Unissex">Unissex</option>
-                        <option value="Masculino">Masculino</option>
-                        <option value="Feminino">Feminino</option>
-                        <option value="Família">Família</option>
+                        <option value="Male">Masculino</option>
+                        <option value="Female">Feminino</option>
+                        <option value="Family">Família</option>
                     </select>
 
                     <select value={filtroTipo} onChange={(e) => setFiltroTipo(e.target.value)}>
                         <option value="Todos">Tipo: Todos</option>
-                        <option value="Adulto">Adulto</option>
-                        <option value="Infantil">Infantil</option>
+                        <option value="Adult">Adulto</option>
+                        <option value="Child">Infantil</option>
                     </select>
                 
                     <select value={filtroEstacao} onChange={(e) => setFiltroEstacao(e.target.value)}>
                         <option value="Todos">Estação: Todos</option>
-                        <option value="Inverno">Inverno</option>
-                        <option value="Verão">Verão</option>
+                        <option value="Winter">Inverno</option>
+                        <option value="Summer">Verão</option>
                     </select>
                 </div>
             </div>

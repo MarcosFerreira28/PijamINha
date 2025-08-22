@@ -10,13 +10,13 @@ export function filtrarProdutos(
     let produtosFiltrados = products;
 
     if (filtroGenero !== 'Todos') {
-        produtosFiltrados = produtosFiltrados.filter(p => p.gender === filtroGenero);
+        produtosFiltrados = produtosFiltrados.filter(p => p.gender.toLowerCase() === filtroGenero.toLowerCase());
     }
     if (filtroTipo !== 'Todos') {
-        produtosFiltrados = produtosFiltrados.filter(p => p.type === filtroTipo);
+        produtosFiltrados = produtosFiltrados.filter(p => p.type.toLowerCase() === filtroTipo.toLowerCase());
     }
     if (filtroEstacao !== 'Todos') {
-        produtosFiltrados = produtosFiltrados.filter(p => p.season === filtroEstacao);
+        produtosFiltrados = produtosFiltrados.filter(p => p.season.toLowerCase() === filtroEstacao.toLowerCase());
     }
     if (termoPesquisa) {
         produtosFiltrados = produtosFiltrados.filter(p =>

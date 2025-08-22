@@ -33,21 +33,21 @@ export default function Individual() {
 
 
             <div className={styles.imagensContainer}>
-                {season.toLowerCase() === "inverno" ? <img src={inverno} alt="" /> : (
-                    season.toLowerCase() === "verão" ? <img src={verao} alt="" /> : null
+                {season.toLowerCase() === "winter" ? <img src={inverno} alt="" /> : (
+                    season.toLowerCase() === "summer" ? <img src={verao} alt="" /> : null
                 )}
 
-                {gender.toLowerCase() === "feminino" ? <img src={feminino} alt="" /> : (
-                    gender.toLowerCase() === "masculino" ? <img src={masculino} alt="" /> : (
+                {gender.toLowerCase() === "female" ? <img src={feminino} alt="" /> : (
+                    gender.toLowerCase() === "male" ? <img src={masculino} alt="" /> : (
                         gender.toLowerCase() === "unissex" ? <img src={unissex} alt="" /> : (
-                            gender.toLowerCase() === "família" ? <img src={familia} alt="" /> : null
+                            gender.toLowerCase() === "family" ? <img src={familia} alt="" /> : null
                         )
                     )
                 )}
 
-                {type.toLowerCase() === "adulto" ? <img src={adulto} alt="" /> : (
-                    type.toLowerCase() === "infantil" ? <img src={infantil} alt="" /> : (
-                        type.toLowerCase() === "ambos" ? <img src={ambos} alt="" /> : null
+                {type.toLowerCase() === "adult" ? <img src={adulto} alt="" /> : (
+                    type.toLowerCase() === "child" ? <img src={infantil} alt="" /> : (
+                        type.toLowerCase() === "both" ? <img src={ambos} alt="" /> : null
                     )
                 )}
             </div>
