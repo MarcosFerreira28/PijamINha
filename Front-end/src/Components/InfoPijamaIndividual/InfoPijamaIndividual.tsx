@@ -57,7 +57,6 @@ export default function InfoPijamaIndividual() {
                 quantity:qtdSelecionada
         }
         addToPijama(item);
-        alert("Pijama adicionado ao carrinho!");
     };
 
     return (
@@ -68,8 +67,22 @@ export default function InfoPijamaIndividual() {
             </div>
 
             <div className={styles.priceContainer}>
-                <div style={{width: '39.9vw', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline'}}>
-                    <h1>R$ {pijama.price.toFixed(2)}</h1>
+                <div style={{width: '39.9vw', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end'}}>
+                    <div className={styles.preco}>
+                        {pijama.onSale && (
+                            <p className={styles.precoOriginal}>
+                                R$ {pijama.price.toFixed(2).replace(".", ",")}
+                            </p>
+                        )}
+
+                        {pijama.onSale ? (
+                            <h2>
+                                R$ {(pijama.price - (pijama.price * (pijama.salePercent ?? 0) / 100)).toFixed(2).replace(".", ",")}
+                            </h2>
+                        ) : (
+                            <h2>R$ {pijama.price.toFixed(2).replace(".", ",")}</h2>
+                        )}
+                    </div>
                     <p>6x de <strong>R$ {(pijama.price / 6).toFixed(2)}</strong></p>
                 </div>
                 <p>Ou por <strong style={{fontStyle: 'italic'}}>R${(pijama.price - (pijama.price * 15 / 100)).toFixed(2)}</strong> no PIX</p>

@@ -29,6 +29,7 @@ const usePijamaStore = create<PijamaStore>((set) => ({
                 };
             }
 
+            alert("Pijama adicionado ao carrinho!");
             return { pijama: [...state.pijama, item] };
         }),
 
