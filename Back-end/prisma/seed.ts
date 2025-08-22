@@ -37,7 +37,7 @@ async function createPajamas() {
       type: BodyType.ADULT,
       gender: GenderType.FEMALE,
       favorite: false,
-      onSale: false,
+      onSale: true,
       salePercent: 40
     },
     {
@@ -49,13 +49,13 @@ async function createPajamas() {
       type: BodyType.ADULT,
       gender: GenderType.FEMALE,
       favorite: false,
-      onSale: true,
+      onSale: false,
       salePercent: 15
     },
     {
       name: 'Starry Night',
       description: 'Pijama unissex com estampa de estrelas e constelações em fundo azul marinho',
-      image: 'https://praqnome.cdn.magazord.com.br/img/2023/05/produto/3990/6152-azul-indigo-5.jpeg?ims=650x975',
+      image: 'https://pijamaonline.vteximg.com.br/arquivos/ids/168777-1200-1500/00008065_1still_pijama-feminino-aberto-lua-lua-satine-estrelas.jpg?v=637201487252000000',
       price: 119.99,
       season: SeasonType.WINTER,
       type: BodyType.ADULT,

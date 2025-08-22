@@ -1,24 +1,12 @@
-interface Product {
-    id: number;
-    name: string;
-    price: number;
-    image: string;
-    gender: string;
-    type: string;
-    season: string;
-    favorite: boolean;
-    on_sale: boolean;
-    sale_percent: number;
-    menor: boolean;
-}
+import type { Pijama } from "../Types/Pijama";
 
 export function filtrarProdutos(
-    products: Product[],
+    products: Pijama[],
     filtroGenero: string,
     filtroTipo: string,
     filtroEstacao: string,
     termoPesquisa: string
-): Product[] {
+): Pijama[] {
     let produtosFiltrados = products;
 
     if (filtroGenero !== 'Todos') {

@@ -1,5 +1,4 @@
 export type Pijama = {
-    //talvez inserir o id
     id: number;
     name: string;
     description: string;
@@ -12,8 +11,6 @@ export type Pijama = {
     favorite: boolean;
     onSale: boolean;
     salePercent?: number;
-    //Verificar se as outras colunas da tabela deveriam estar nesse tipo
-    // eu acredito que não
 }
 
 export type CardPijama = Pick<Pijama, 'id' | 'name' | 'price' | 'image' | 'favorite' | 'onSale' | 'salePercent'> & {
