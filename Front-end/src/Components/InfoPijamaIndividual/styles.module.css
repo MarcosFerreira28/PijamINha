@@ -48,6 +48,27 @@
     color: black;
 }
 
+.priceContainer .preco {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.priceContainer h2{
+    font-family: Nunito Sans;
+    font-weight: 700;
+    font-size: 40px;
+    color: var(--azul-400);
+}
+
+.priceContainer .precoOriginal {
+    font-family: Nunito Sans;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--vermelho-200);
+    text-decoration: line-through;
+}
+
 .priceContainer p {
     font-family: Nunito Sans;
     font-weight: 400;

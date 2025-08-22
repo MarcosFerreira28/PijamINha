@@ -20,18 +20,19 @@ datasource db {
 enum SeasonType {
   WINTER
   SUMMER
-  SPRING
-  AUTUMN
 }
 
 enum BodyType {
   ADULT
   CHILD
+  BOTH
 }
 
 enum GenderType {
+  UNISSEX
   MALE
   FEMALE
+  FAMILY
 }
 
 enum SizeType {

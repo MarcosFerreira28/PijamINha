@@ -52,7 +52,7 @@ export default function Individual() {
                 )}
             </div>
 
-            <SobrePijama description="Este é um pijama confortável e estiloso, perfeito para noites de descanso." />
+            <SobrePijama description={info.description} />
         </div>
     )
 }

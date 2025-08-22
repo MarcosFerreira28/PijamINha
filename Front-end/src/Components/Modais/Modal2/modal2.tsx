@@ -5,6 +5,11 @@ import style from "./modal2.module.css";
 import seta from "../../../assets/expand.png";
 import { useState } from "react";
 import Modal3 from "../Modal3/modal3";
+import type { Address } from "../../../interfaces/Address";
+import type { SalePajama } from "../../../interfaces/SalePajama";
+import type { Sale } from "../../../interfaces/Sale";
+import axios from "axios";
+
 
 const schema = z
     .object({
@@ -14,25 +19,32 @@ const schema = z
     })
     .refine(
         (data) => {
-        if (data.formaPagamento === "cartao") {
-            return /^\d{16}$/.test(data.numeroCartao || "");
-        }
-        return true;
+            if (data.formaPagamento === "cartao") {
+                return /^\d{16}$/.test(data.numeroCartao || "");
+            }
+            return true;
         },
         {
-        message: "Número de cartão inválido",
-        path: ["numeroCartao"],
+            message: "Número de cartão inválido",
+            path: ["numeroCartao"],
         }
     );
 
-    type FormData = z.infer<typeof schema>;
+type FormData = z.infer<typeof schema>;
 
-    interface Modal2Props {
+interface Modal2Props {
     onClose: () => void;
-    }
+    adress: Address;
+    buyerName: string;
+    cpf: string;
+    salePajamas: SalePajama[];
+    totalPrice: number;
+}
 
-    export default function Modal2({ onClose }: Modal2Props) {
+export default function Modal2({ onClose, adress, buyerName, cpf, salePajamas, totalPrice }: Modal2Props) {
     const [abrirModal3, setAbrirModal3] = useState(false);
+    const [saleData, setSaleData] = useState<Sale | null>(null);
+    const [sucesso,setSucesso]= useState(false);
 
     const {
         register,
@@ -47,63 +59,105 @@ const schema = z
 
     const onSubmit = (data: FormData) => {
         console.log("Dados de pagamento:", data);
-        setAbrirModal3(true); // <- abre Modal3
+        
+        const paymentMethodMap = {
+            'pix': 'PIX' as const,
+            'boleto': 'MONEY' as const,
+            'cartao': 'CREDIT_CARD' as const,
+        };
+
+        const sale: Sale = {
+            buyerName,
+            cpf,
+            price: totalPrice,
+            paymentMethod: paymentMethodMap[data.formaPagamento as keyof typeof paymentMethodMap],
+            installments: data.parcelamento ? parseInt(data.parcelamento) : undefined,
+            cardNumber: data.numeroCartao,
+            adress,
+            salePajamas,
+        };
+
+        console.log("Objeto Sale criado:", sale);
+        setSaleData(sale);
+        setAbrirModal3(true);
     };
 
     const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
         if (e.target === e.currentTarget) {
-        onClose();
+            onClose();
         }
+    }
+    
+    const handleRequest = async (data:Sale) => {  
+        try {
+            const response = await axios.post('http://localhost:3333/sales', data);
+
+            if (response.status === 201) {
+                setSucesso(true);
+            }
+        } catch (error) {
+            alert('Erro ao enviar o feedback. Tente novamente.');
+            console.error(error);
+        }      
+
     };
 
     return (
         <div className={style.modalTotal} onClick={handleOverlayClick}>
-        <div className={style.modal}>
-            <h2>Pagamento</h2>
-            <form onSubmit={handleSubmit(onSubmit)} className={style.formulario}>
-            <select {...register("formaPagamento")}>
-                <option value="">Selecione</option>
-                <option value="pix">Pix</option>
-                <option value="boleto">Boleto</option>
-                <option value="cartao">Cartão</option>
-            </select>
-            {errors.formaPagamento && <p>{errors.formaPagamento.message}</p>}
+            <div className={style.modal}>
+                <h2>Pagamento</h2>
+                <form onSubmit={handleSubmit(onSubmit)} className={style.formulario}>
+                    <select {...register("formaPagamento")}>
+                        <option value="">Selecione</option>
+                        <option value="pix">Pix</option>
+                        <option value="boleto">Boleto</option>
+                        <option value="cartao">Cartão</option>
+                    </select>
+                    {errors.formaPagamento && <p>{errors.formaPagamento.message}</p>}
 
-            {formaPagamento === "cartao" && (
-                <>
-                <select {...register("parcelamento")}>
-                    <option value="">Selecione o parcelamento</option>
-                    <option value="1">À vista</option>
-                    <option value="2">2x sem juros</option>
-                    <option value="3">3x sem juros</option>
-                    <option value="4">4x sem juros</option>
-                    <option value="5">5x sem juros</option>
-                </select>
+                    {formaPagamento === "cartao" && (
+                        <>
+                            <select {...register("parcelamento")}>
+                                <option value="">Selecione o parcelamento</option>
+                                <option value="1">À vista</option>
+                                <option value="2">2x sem juros</option>
+                                <option value="3">3x sem juros</option>
+                                <option value="4">4x sem juros</option>
+                                <option value="5">5x sem juros</option>
+                            </select>
 
-                <input
-                    type="text"
-                    placeholder="Número do cartão"
-                    {...register("numeroCartao")}
-                />
-                {errors.numeroCartao && <p>{errors.numeroCartao.message}</p>}
-                </>
-            )}
+                            <input
+                                type="text"
+                                placeholder="Número do cartão"
+                                {...register("numeroCartao")}
+                            />
+                            {errors.numeroCartao && <p>{errors.numeroCartao.message}</p>}
+                        </>
+                    )}
 
-            <div className={style.botoes}>
-                <button type="button" onClick={onClose} className={style.voltar}>
-                <img src={seta} alt="seta" />
-                <p>VOLTAR</p>
-                </button>
-                <button type="submit" className={style.enviar}>
-                <p>ENVIAR</p>
-                </button>
+                    <div className={style.botoes}>
+                        <button type="button" onClick={onClose} className={style.voltar}>
+                            <img src={seta} alt="seta" />
+                            <p>VOLTAR</p>
+                        </button>
+                        <button type="submit" className={style.enviar}
+                        onClick={()=> handleRequest(saleData!)}>
+                            <p>ENVIAR</p>
+                        </button>
+                    </div>
+                </form>
             </div>
-            </form>
-        </div>
 
-        {abrirModal3 && <Modal3 onClose={() => setAbrirModal3(false)} />}
+            {abrirModal3 && saleData && (
+                <Modal3 
+                    onClose={() => setAbrirModal3(false)} 
+                    saleData={saleData}
+                    sucesso={sucesso}
+                />
+            )}
         </div>
     );
 }
+
 
 
